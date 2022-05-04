@@ -1,4 +1,5 @@
-import { Center, useTheme } from '@chakra-ui/react'
+import { Box, useTheme } from '@chakra-ui/react'
+import { HamburgerIcon } from 'components/hamburger-icon'
 import { Logo } from 'components/logo'
 
 function TopNavbar() {
@@ -7,9 +8,17 @@ function TopNavbar() {
   } = useTheme()
 
   return (
-    <Center h="8rem" position="fixed" width="100vw" bg={brandBlue}>
+    <Box
+      h="8rem"
+      position="fixed"
+      width="100vw"
+      display="flex"
+      alignItems="center"
+      padding={10}
+    >
+      <HamburgerIcon />
       <Logo color={brandWhite} />
-    </Center>
+    </Box>
   )
 }
 
