@@ -3,12 +3,12 @@ import { Logo } from 'components/logo'
 
 function TopNavbar() {
   const {
-    colors: { brandRed },
+    colors: { brandWhite, brandBlue },
   } = useTheme()
 
   return (
-    <Center h="5rem" border="1px" borderColor="green">
-      <Logo color={brandRed} />
+    <Center h="8rem" position="fixed" width="100vw" bg={brandBlue}>
+      <Logo color={brandWhite} />
     </Center>
   )
 }

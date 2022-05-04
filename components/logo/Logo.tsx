@@ -1,6 +1,6 @@
-function Logo({ color = 'red' }: Props) {
+function Logo({ color }: Props) {
   return (
-    <svg width="30%" height="100%">
+    <svg width="22rem" height="5rem">
       <g>
         <path
           fill={color}
@@ -53,7 +53,7 @@ function Logo({ color = 'red' }: Props) {
 }
 
 type Props = {
-  color?: string
+  color: string
 }
 
 export { Logo }
