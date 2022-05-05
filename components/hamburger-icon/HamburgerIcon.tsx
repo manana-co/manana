@@ -1,17 +1,9 @@
 function HamburgerIcon() {
   return (
-    <svg height="50px" width="50px">
-      <g style={{ display: 'flex' }}>
-        <g>
-          <rect fill="white" width="77.7" height="5" />
-        </g>
-        <g>
-          <rect fill="white" y="18.51" width="77.7" height="5" />
-        </g>
-        <g>
-          <rect fill="white" y="37.01" width="77.7" height="5" />
-        </g>
-      </g>
+    <svg height="25px" width="42px">
+      <rect fill="white" width="40" height="3" />
+      <rect fill="white" y="10" width="40" height="3" />
+      <rect fill="white" y="20" width="40" height="3" />
     </svg>
   )
 }
