@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Box, Image, useTheme } from '@chakra-ui/react'
 import { TopNavbar } from 'components/top-navbar'
+import { Footer } from 'components/footer'
 
 const Home: NextPage = () => {
   const {
@@ -25,9 +26,10 @@ const Home: NextPage = () => {
           width="100vw"
         />
       </Box>
-      <main>
+      {/* <main>
         <Box height="12000px" />
-      </main>
+      </main> */}
+      <Footer />
     </Box>
   )
 }
