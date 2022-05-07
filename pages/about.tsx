@@ -1,12 +1,13 @@
-import { Box, useTheme } from '@chakra-ui/react'
+import { Box, Text, useTheme } from '@chakra-ui/react'
 
 function About() {
   const {
     colors: { brandTan },
   } = useTheme()
+
   return (
     <Box bg={brandTan} h="1000px">
-      Hello
+      <Text>Hello</Text>
     </Box>
   )
 }
