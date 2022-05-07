@@ -14,17 +14,8 @@ const Home: NextPage = () => {
         <title>Mañana Co.</title>
       </Head>
       <TopNavbar />
-      <Box
-        maxHeight="100vh"
-        overflow="hidden"
-        display="flex"
-        alignItems="center"
-      >
-        <Image
-          src="main-landing-defender.jpeg"
-          alt="main landing image"
-          width="100vw"
-        />
+      <Box maxHeight="100vh" overflow="hidden" display="flex" alignItems="center">
+        <Image src="main-landing-defender.jpeg" alt="main landing image" width="100vw" />
       </Box>
       {/* <main>
         <Box height="12000px" />
