@@ -4,10 +4,17 @@ import { Instagram, Twitter, Facebook } from 'components/icons'
 
 function Footer() {
   const {
-    colors: { brandTan },
+    colors: { brandTan, brandBlue },
   } = useTheme()
   return (
-    <Stack direction="row" as="footer" padding="3rem" height="22rem" justify="space-between">
+    <Stack
+      bg={brandBlue}
+      direction="row"
+      as="footer"
+      padding="3rem"
+      height="22rem"
+      justify="space-between"
+    >
       <Stack direction="row" spacing="4rem" height="100%" width="100%" align="center">
         <Badge />
         <Stack direction="column" spacing="1.5rem" color={brandTan} height="100%" paddingY="5px">

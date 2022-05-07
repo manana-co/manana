@@ -1,10 +1,8 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Box, Image, useTheme } from '@chakra-ui/react'
 import { TopNavbar } from 'components/top-navbar'
-import { Footer } from 'components/footer'
 
-const Home: NextPage = () => {
+function Home() {
   const {
     colors: { brandBlue },
   } = useTheme()
@@ -20,7 +18,6 @@ const Home: NextPage = () => {
       {/* <main>
         <Box height="12000px" />
       </main> */}
-      <Footer />
     </Box>
   )
 }
