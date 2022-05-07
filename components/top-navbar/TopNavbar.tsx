@@ -1,7 +1,7 @@
 import { Box, useTheme } from '@chakra-ui/react'
-import { HamburgerIcon } from 'components/hamburger-icon'
+import { HamburgerButton } from 'components/hamburger-button'
 import { Logo } from 'components/logo'
-import { ShoppingCartIcon } from 'components/shopping-cart-icon'
+import { ShoppingCartButton } from 'components/shopping-cart-button'
 
 function TopNavbar() {
   const {
@@ -19,9 +19,9 @@ function TopNavbar() {
       padding={10}
       // border="1px solid red"
     >
-      <HamburgerIcon />
+      <HamburgerButton />
       <Logo color={brandWhite} />
-      <ShoppingCartIcon />
+      <ShoppingCartButton />
     </Box>
   )
 }

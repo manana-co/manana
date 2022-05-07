@@ -1,4 +1,4 @@
-function ShoppingCartIcon() {
+function ShoppingCartButton() {
   return (
     <svg width="30px" height="35px">
       <path
@@ -11,4 +11,4 @@ function ShoppingCartIcon() {
   )
 }
 
-export { ShoppingCartIcon }
+export { ShoppingCartButton }

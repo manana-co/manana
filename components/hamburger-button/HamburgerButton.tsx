@@ -1,4 +1,4 @@
-function HamburgerIcon() {
+function HamburgerButton() {
   return (
     <svg height="25px" width="42px">
       <rect fill="white" width="40" height="3" />
@@ -8,4 +8,4 @@ function HamburgerIcon() {
   )
 }
 
-export { HamburgerIcon }
+export { HamburgerButton }
