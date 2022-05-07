@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Box, Image, useTheme } from '@chakra-ui/react'
 import { TopNavbar } from 'components/top-navbar'
 import { ProductSection } from 'components/product-section'
+import { CarouselSection } from 'components/carousel-section'
 
 function Home() {
   const {
@@ -17,6 +18,7 @@ function Home() {
         <Image src="main-landing-defender.jpeg" alt="main landing image" width="100vw" />
       </Box>
       <ProductSection title="SURF STUFF" />
+      <CarouselSection />
       <ProductSection title="BEST SELLERS" />
       {/* <main>
         <Box height="12000px" />
