@@ -1,4 +1,5 @@
-import { Box, Divider, Heading, useTheme } from '@chakra-ui/react'
+import { Box, Divider, Heading, Stack, useTheme } from '@chakra-ui/react'
+import { ProductImage } from 'components/product-image'
 
 function ProductSection({ title }: Props) {
   const {
@@ -10,6 +11,21 @@ function ProductSection({ title }: Props) {
       <Heading color={brandRed} size="lg" marginTop="1rem">
         {title}
       </Heading>
+      <Stack
+        direction="row"
+        spacing="2rem"
+        height="calc(100% - 60px)"
+        paddingY="2rem"
+        overflowX="auto"
+      >
+        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="" alternateText="test" />
+      </Stack>
     </Box>
   )
 }
