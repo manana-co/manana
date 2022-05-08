@@ -13,8 +13,8 @@ function ProductSection({ title }: Props) {
       </Heading>
       <Stack
         direction="row"
-        spacing="2rem"
         height="calc(100% - 60px)"
+        spacing="2rem"
         paddingY="2rem"
         overflowX="auto"
       >
