@@ -4,4 +4,4 @@
 pnpm lint
 pnpm make-pretty
 pnpm test:related
-git add
+git add .
