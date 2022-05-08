@@ -1,5 +1,7 @@
 import Head from 'next/head'
-import { Box, Image, useTheme } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Box, useTheme } from '@chakra-ui/react'
+import defenderImage from 'public/main-landing-defender.jpeg'
 import { TopNavbar } from 'components/top-navbar'
 import { ProductSection } from 'components/product-section'
 import { CarouselSection } from 'components/carousel-section'
@@ -15,8 +17,8 @@ function Home() {
         <title>Mañana Co.</title>
       </Head>
       <TopNavbar />
-      <Box maxHeight="100vh" overflow="hidden" display="flex" alignItems="center">
-        <Image src="main-landing-defender.jpeg" alt="main landing image" width="100vw" />
+      <Box maxHeight="100vh" width="100%" overflow="hidden" display="flex" alignItems="center">
+        <Image src={defenderImage} alt="main landing image" layout="intrinsic" priority />
       </Box>
       <ProductSection title="SURF STUFF" />
       <CarouselSection />

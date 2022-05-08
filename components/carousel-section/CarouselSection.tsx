@@ -1,14 +1,17 @@
-import { useTheme, Box, Stack, Heading, Text, Image, Flex } from '@chakra-ui/react'
+import Image from 'next/image'
+import { useTheme, Box, Stack, Heading, Text, Flex } from '@chakra-ui/react'
+import glassingImage from 'public/glassing.jpeg'
 
 function CarouselSection() {
   const {
     colors: { brandBlue, brandTan },
     fonts: { title, body },
   } = useTheme()
+
   return (
-    <Box bg={brandBlue} height="40rem">
-      <Stack direction="row" padding="4rem" height="100%" justify="space-between">
-        <Box width="45%" color={brandTan}>
+    <Box bg={brandBlue} height="40rem" width="100vw">
+      <Stack direction="row" padding="4rem" height="100%" width="100%" justify="space-between">
+        <Box width="40rem" color={brandTan}>
           <Heading as="h1" size="4xl" fontSize="92px" fontFamily={title}>
             Mission Statement
           </Heading>
@@ -17,9 +20,14 @@ function CarouselSection() {
             passion project of making custom wakesurf boards for the fine people of Austin.
           </Text>
         </Box>
-        <Box height="100%" width="45%" padding="1.5rem" bg={brandTan} alignItems="center">
-          <Flex maxHeight="100%" overflow="hidden">
-            <Image src="glassing.jpeg" aria-label="Working on boards" fit="cover" />
+        <Box height="100%" width="auto" padding="1.5rem" bg={brandTan} alignItems="center">
+          <Flex height="100%" maxWidth="20rem" overflow="hidden">
+            <Image
+              src={glassingImage}
+              aria-label="Working on boards"
+              // width="100%"
+              // layout="fill"
+            />
           </Flex>
         </Box>
       </Stack>

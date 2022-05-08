@@ -34,6 +34,7 @@ function TopNavbar() {
       sx={{
         transition: 'background 0.3s ease-in',
       }}
+      zIndex={100}
     >
       <HamburgerButton color={iconColor} />
       <Logo color={iconColor} />
