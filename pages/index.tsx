@@ -8,6 +8,7 @@ function Home() {
   const {
     colors: { brandBlue },
   } = useTheme()
+
   return (
     <Box bg={brandBlue}>
       <Head>
