@@ -18,13 +18,11 @@ function ProductSection({ title }: Props) {
         paddingY="2rem"
         overflowX="auto"
       >
-        <ProductImage imageSrc="" alternateText="test" />
-        <ProductImage imageSrc="" alternateText="test" />
-        <ProductImage imageSrc="" alternateText="test" />
-        <ProductImage imageSrc="" alternateText="test" />
-        <ProductImage imageSrc="" alternateText="test" />
-        <ProductImage imageSrc="" alternateText="test" />
-        <ProductImage imageSrc="" alternateText="test" />
+        <ProductImage imageSrc="hat-example.png" alternateText="test" />
+        <ProductImage imageSrc="board-example.png" alternateText="test" />
+        <ProductImage imageSrc="mug-example.png" alternateText="test" />
+        <ProductImage imageSrc="shirt-example.png" alternateText="test" />
+        <ProductImage imageSrc="shorts-example.png" alternateText="test" />
       </Stack>
     </Box>
   )

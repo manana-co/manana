@@ -1,18 +1,14 @@
-import { Image, useTheme } from '@chakra-ui/react'
+import { Image, Box, useTheme, Center } from '@chakra-ui/react'
 
 function ProductImage({ imageSrc, alternateText }: Props) {
   const {
     colors: { brandTan },
   } = useTheme()
+
   return (
-    <Image
-      src={imageSrc}
-      alt={alternateText}
-      height="100%"
-      width="30rem"
-      minWidth="30rem"
-      bg={brandTan}
-    />
+    <Center height="100%" minWidth="30rem" bg={brandTan}>
+      <Image src={imageSrc} alt={alternateText} maxHeight="100%" maxWidth="100%" />
+    </Center>
   )
 }
 
