@@ -5,7 +5,7 @@ import { Instagram, Twitter, Facebook } from 'components/icons'
 function Footer() {
   const {
     colors: { brandTan, brandBlue },
-    fonts: { font2 },
+    fonts: { body },
   } = useTheme()
   return (
     <Stack
@@ -15,7 +15,7 @@ function Footer() {
       padding="3rem"
       height="22rem"
       justify="space-between"
-      fontFamily={font2}
+      fontFamily={body}
     >
       <Stack direction="row" spacing="4rem" height="100%" width="100%" align="center">
         <Badge />

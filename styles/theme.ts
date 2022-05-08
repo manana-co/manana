@@ -8,11 +8,11 @@ const theme = extendTheme({
     brandWhite: '#FFFFFF',
   },
   fonts: {
-    font1: 'HWT Republic Gothic Solid, sans-serif',
-    font2: 'Open Sans, sans-serif',
-    font3: 'Open Sans Regular, sans-serif',
-    font4: 'Open Sans Semi Bold, sans-serif',
-    font5: 'Open Sans Semi Bold Italic, sans-serif',
+    title: 'Vollkorn, sans-serif',
+    body: 'Open Sans, sans-serif',
+    // font3: 'Open Sans Regular, sans-serif',
+    // font4: 'Open Sans Semi Bold, sans-serif',
+    // font5: 'Open Sans Semi Bold Italic, sans-serif',
   },
 })
 
