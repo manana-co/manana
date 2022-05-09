@@ -3,12 +3,14 @@ import { Box, useTheme } from '@chakra-ui/react'
 import { HamburgerButton } from 'components/hamburger-button'
 import { Logo } from 'components/logo'
 import { ShoppingCartButton } from 'components/shopping-cart-button'
+import { MainMenu } from 'components/main-menu'
 
 function TopNavbar() {
   const {
     colors: { brandWhite, brandRed },
   } = useTheme()
   const [scrollValue, setScrollValue] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrollValue(window.pageYOffset)
@@ -18,6 +20,8 @@ function TopNavbar() {
       window.removeEventListener('scroll', onScroll)
     }
   })
+
+  const toggleMenu = () => setIsMenuOpen((currentState) => !currentState)
 
   const iconColor = scrollValue > 0 ? brandRed : brandWhite
 
@@ -36,9 +40,10 @@ function TopNavbar() {
       }}
       zIndex={100}
     >
-      <HamburgerButton color={iconColor} />
+      <HamburgerButton color={iconColor} onClick={toggleMenu} />
       <Logo color={iconColor} />
       <ShoppingCartButton color={iconColor} />
+      <MainMenu isOpen={isMenuOpen} onClose={toggleMenu} />
     </Box>
   )
 }
