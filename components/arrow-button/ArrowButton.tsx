@@ -1,6 +1,6 @@
 import { IconButton, useTheme } from '@chakra-ui/react'
 
-function ArrowButton({ direction = 'forward', onClick }: Props) {
+function ArrowButton({ direction = 'forward', onClick = () => {} }: Props) {
   const {
     colors: { brandWhite },
   } = useTheme()
@@ -22,6 +22,7 @@ function ArrowButton({ direction = 'forward', onClick }: Props) {
 
 type Props = {
   direction?: 'back' | 'forward'
+  onClick?: () => unknown
 }
 
 function Icon({ direction, color }: IconProps) {
@@ -29,7 +30,6 @@ function Icon({ direction, color }: IconProps) {
   return (
     <svg fill={color} width="54px" height="37px" style={{ transform }}>
       <polygon
-        // transform="rotate(180deg)"
         transform="scale(0.5)"
         points="69.86,0 66.32,3.54 96.67,33.89 0,33.89 0,38.89 96.67,38.89 66.32,69.24 69.86,72.77 106.24,36.39 "
       />

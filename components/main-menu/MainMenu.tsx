@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 
 import { ArrowButton } from 'components/arrow-button'
+import { MainMenuButton } from 'components/main-menu-button'
 
 function MainMenu({ isOpen, onClose }: Props) {
   const {
@@ -28,44 +29,20 @@ function MainMenu({ isOpen, onClose }: Props) {
             BOARDS
           </Heading>
           <Divider bg={brandWhite} height="1px" mb="1rem" />
-          <Button
-            display="flex"
-            alignItems="center"
-            height="5rem"
-            variant="unstyled"
-            _focus={{ boxShadow: 'none' }}
-          >
-            <Heading color={brandWhite} size="4xl" fontFamily={title}>
-              Surf
-            </Heading>
-            <ArrowButton />
-          </Button>
-          <Flex align="center" height="5rem">
-            <Heading color={brandWhite} size="4xl" fontFamily={title}>
-              Wakesurf
-            </Heading>
-            <ArrowButton />
-          </Flex>
+          <MainMenuButton text="Surf" showArrow />
+          <MainMenuButton text="Wakesurf" showArrow />
           <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
             APPAREL
           </Heading>
           <Divider bg={brandWhite} height="1px" mb="1rem" />
-          <Heading color={brandWhite} size="4xl" fontFamily={title}>
-            Hats
-          </Heading>
-          <Heading color={brandWhite} size="4xl" fontFamily={title}>
-            Shirts
-          </Heading>
-          <Heading color={brandWhite} size="4xl" fontFamily={title}>
-            Shorts
-          </Heading>
+          <MainMenuButton text="Hats" />
+          <MainMenuButton text="Shirts" />
+          <MainMenuButton text="Shorts" />
           <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
             GEAR
           </Heading>
           <Divider bg={brandWhite} height="1px" mb="1rem" />
-          <Heading color={brandWhite} size="4xl" fontFamily={title}>
-            Gear
-          </Heading>
+          <MainMenuButton text="Gear" />
         </DrawerBody>
       </DrawerContent>
     </Drawer>
