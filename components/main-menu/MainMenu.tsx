@@ -3,27 +3,23 @@ import {
   DrawerBody,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   useTheme,
   Heading,
   Divider,
-  Flex,
-  Button,
 } from '@chakra-ui/react'
 
-import { ArrowButton } from 'components/arrow-button'
+import { CloseButton } from 'components/close-button'
 import { MainMenuButton } from 'components/main-menu-button'
 
 function MainMenu({ isOpen, onClose }: Props) {
   const {
     colors: { brandBlue, brandWhite },
-    fonts: { title },
   } = useTheme()
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="full" placement="left">
       <DrawerOverlay />
       <DrawerContent bg={brandBlue}>
-        <DrawerCloseButton _focus={{ boxShadow: 'none' }} color={brandWhite} size="lg" />
+        <CloseButton onClick={onClose} />
         <DrawerBody>
           <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
             BOARDS
