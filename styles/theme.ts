@@ -2,7 +2,7 @@ import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
   colors: {
-    brandRed: '#E82810',
+    brandRed: '#D03228',
     brandBlue: '#317491',
     brandTan: '#EBE2D7',
     brandWhite: '#FFFFFF',

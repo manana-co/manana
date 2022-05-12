@@ -1,7 +1,7 @@
 import { Button, Heading, useTheme } from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
 
-function MainMenuButton({ text, showArrow = false }: Props) {
+function MainMenuButton({ text, showArrow = false, onClick }: Props) {
   const {
     colors: { brandWhite },
     fonts: { title },
@@ -13,6 +13,7 @@ function MainMenuButton({ text, showArrow = false }: Props) {
       height="5rem"
       variant="unstyled"
       _focus={{ boxShadow: 'none' }}
+      onClick={onClick}
     >
       <Heading color={brandWhite} size="4xl" fontFamily={title}>
         {text}
@@ -25,6 +26,7 @@ function MainMenuButton({ text, showArrow = false }: Props) {
 type Props = {
   text: string
   showArrow?: boolean
+  onClick?: () => unknown
 }
 
 export { MainMenuButton }

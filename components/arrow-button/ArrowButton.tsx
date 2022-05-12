@@ -1,9 +1,11 @@
 import { IconButton, useTheme } from '@chakra-ui/react'
 
-function ArrowButton({ direction = 'forward', onClick = () => {} }: Props) {
+function ArrowButton({ direction = 'forward', onClick = () => {}, isMenuButton = false }: Props) {
   const {
     colors: { brandWhite },
   } = useTheme()
+
+  const extraStyles = isMenuButton ? menuButtonStyles : {}
 
   return (
     <IconButton
@@ -16,6 +18,7 @@ function ArrowButton({ direction = 'forward', onClick = () => {} }: Props) {
       display="flex"
       justifyContent="center"
       onClick={onClick}
+      sx={extraStyles}
     />
   )
 }
@@ -23,6 +26,7 @@ function ArrowButton({ direction = 'forward', onClick = () => {} }: Props) {
 type Props = {
   direction?: 'back' | 'forward'
   onClick?: () => unknown
+  isMenuButton?: boolean
 }
 
 function Icon({ direction, color }: IconProps) {
@@ -35,6 +39,13 @@ function Icon({ direction, color }: IconProps) {
       />
     </svg>
   )
+}
+
+const menuButtonStyles = {
+  position: 'absolute',
+  right: 0,
+  width: '4rem',
+  marginRight: '1rem',
 }
 
 type IconProps = {

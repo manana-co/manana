@@ -4,6 +4,7 @@ import { HamburgerButton } from 'components/hamburger-button'
 import { Logo } from 'components/logo'
 import { ShoppingCartButton } from 'components/shopping-cart-button'
 import { MainMenu } from 'components/main-menu'
+import { SubMenu } from 'components/sub-menu'
 
 function TopNavbar() {
   const {
@@ -11,6 +12,7 @@ function TopNavbar() {
   } = useTheme()
   const [scrollValue, setScrollValue] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrollValue(window.pageYOffset)
@@ -22,6 +24,7 @@ function TopNavbar() {
   })
 
   const toggleMenu = () => setIsMenuOpen((currentState) => !currentState)
+  const toggleSubMenu = () => setIsSubMenuOpen((currentState) => !currentState)
 
   const iconColor = scrollValue > 0 ? brandRed : brandWhite
 
@@ -43,7 +46,8 @@ function TopNavbar() {
       <HamburgerButton color={iconColor} onClick={toggleMenu} />
       <Logo color={iconColor} />
       <ShoppingCartButton color={iconColor} />
-      <MainMenu isOpen={isMenuOpen} onClose={toggleMenu} />
+      <MainMenu isOpen={isMenuOpen} onClose={toggleMenu} openSubMenu={toggleSubMenu} />
+      <SubMenu isOpen={isSubMenuOpen} onClose={toggleSubMenu} />
     </Box>
   )
 }

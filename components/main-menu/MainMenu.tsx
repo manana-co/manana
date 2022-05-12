@@ -11,7 +11,7 @@ import {
 import { CloseButton } from 'components/close-button'
 import { MainMenuButton } from 'components/main-menu-button'
 
-function MainMenu({ isOpen, onClose }: Props) {
+function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
   const {
     colors: { brandBlue, brandWhite },
   } = useTheme()
@@ -26,7 +26,7 @@ function MainMenu({ isOpen, onClose }: Props) {
           </Heading>
           <Divider bg={brandWhite} height="1px" mb="1rem" />
           <MainMenuButton text="Surf" showArrow />
-          <MainMenuButton text="Wakesurf" showArrow />
+          <MainMenuButton text="Wakesurf" showArrow onClick={openSubMenu} />
           <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
             APPAREL
           </Heading>
@@ -48,6 +48,7 @@ function MainMenu({ isOpen, onClose }: Props) {
 type Props = {
   isOpen: boolean
   onClose: () => void
+  openSubMenu: () => unknown
 }
 
 export { MainMenu }
