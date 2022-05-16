@@ -1,5 +1,5 @@
 import { Button, Heading, useTheme } from '@chakra-ui/react'
-import { ArrowButton } from 'components/arrow-button'
+import { Arrow } from 'components/icons/Arrow'
 
 function MainMenuButton({ text, showArrow = false, onClick }: Props) {
   const {
@@ -18,7 +18,7 @@ function MainMenuButton({ text, showArrow = false, onClick }: Props) {
       <Heading color={brandWhite} size="4xl" fontFamily={title}>
         {text}
       </Heading>
-      {showArrow && <ArrowButton />}
+      {showArrow && <Arrow color={brandWhite} />}
     </Button>
   )
 }
