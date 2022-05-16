@@ -15,10 +15,8 @@ function SubMenu({ onClose, isOpen }: Props) {
     colors: { brandRed, brandWhite },
   } = useTheme()
   return (
-    <Drawer onClose={onClose} isOpen={isOpen} size="full" placement="left">
-      <DrawerOverlay />
+    <Drawer onClose={onClose} isOpen={isOpen} size="lg" placement="left">
       <DrawerContent bg={brandRed}>
-        {/* <CloseButton onClick={onClose} /> */}
         <ArrowButton direction="back" onClick={onClose} isMenuButton />
         <DrawerBody>
           <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">

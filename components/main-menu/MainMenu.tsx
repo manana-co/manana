@@ -16,7 +16,7 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
     colors: { brandBlue, brandWhite },
   } = useTheme()
   return (
-    <Drawer onClose={onClose} isOpen={isOpen} size="full" placement="left">
+    <Drawer onClose={onClose} isOpen={isOpen} size="lg" placement="left">
       <DrawerOverlay />
       <DrawerContent bg={brandBlue}>
         <CloseButton onClick={onClose} />
