@@ -12,6 +12,7 @@ specifiers:
   '@types/node': 17.0.31
   '@types/react': ^18.0.8
   '@types/react-dom': 18.0.3
+  '@types/shopify-buy': ^2.10.10
   eslint: 8.14.0
   eslint-config-next: 12.1.6
   eslint-config-prettier: ^8.5.0
@@ -22,6 +23,8 @@ specifiers:
   prettier: ^2.6.2
   react: ^18.1.0
   react-dom: 18.1.0
+  shopify-buy: ^2.15.1
+  swr: ^1.3.0
   typescript: 4.6.4
 
 dependencies:
@@ -35,6 +38,8 @@ dependencies:
   next: 12.1.6_talmm3uuvp6ssixt2qevhfgvue
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
+  shopify-buy: 2.15.1
+  swr: 1.3.0_react@18.1.0
 
 devDependencies:
   '@testing-library/react': 13.1.1_ef5jwxihqo6n7gxfmzogljlgcm
@@ -42,6 +47,7 @@ devDependencies:
   '@types/node': 17.0.31
   '@types/react': 18.0.8
   '@types/react-dom': 18.0.3
+  '@types/shopify-buy': 2.10.10
   eslint: 8.14.0
   eslint-config-next: 12.1.6_27u4zztysjhw3gcwzw7kecgb4y
   eslint-config-prettier: 8.5.0_eslint@8.14.0
@@ -2427,6 +2433,13 @@ packages:
     resolution:
       {
         integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==,
+      }
+    dev: true
+
+  /@types/shopify-buy/2.10.10:
+    resolution:
+      {
+        integrity: sha512-KNX9ToXmH67+w2K+snlPbanM/dnmVxBKll7H1+UgPMJTDWxFzWttoNaiueSsiUEmNwu3NoFuGXdwew1bTLY4TQ==,
       }
     dev: true
 
@@ -5967,6 +5980,13 @@ packages:
     engines: { node: '>=8' }
     dev: true
 
+  /shopify-buy/2.15.1:
+    resolution:
+      {
+        integrity: sha512-ijtQXSTlzNWJ4xEYucfvJZ80PYYEKub+sVcXr77krDagv0NM9SHzkUVk37tMDJIwzh5KM+LOmed6ZN5V1cFyBg==,
+      }
+    dev: false
+
   /side-channel/1.0.4:
     resolution:
       {
@@ -6228,6 +6248,17 @@ packages:
         integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==,
       }
     engines: { node: '>= 0.4' }
+
+  /swr/1.3.0_react@18.1.0:
+    resolution:
+      {
+        integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==,
+      }
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.1.0
+    dev: false
 
   /terminal-link/2.1.1:
     resolution:
