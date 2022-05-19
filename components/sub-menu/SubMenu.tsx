@@ -1,14 +1,7 @@
-import {
-  Drawer,
-  DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
-  useTheme,
-  Heading,
-  Divider,
-} from '@chakra-ui/react'
+import { Drawer, DrawerBody, DrawerContent, useTheme, Heading, Divider } from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
 import { MainMenuButton } from 'components/main-menu-button'
+import { MenuHeading } from 'components/menu-heading'
 
 function SubMenu({ onClose, isOpen }: Props) {
   const {
@@ -19,10 +12,7 @@ function SubMenu({ onClose, isOpen }: Props) {
       <DrawerContent bg={brandRed}>
         <ArrowButton direction="back" onClick={onClose} isMenuButton />
         <DrawerBody>
-          <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
-            BOARDS
-          </Heading>
-          <Divider bg={brandWhite} height="1px" mb="1rem" />
+          <MenuHeading text="WAKESURF" />
           <MainMenuButton text="Molo" />
           <MainMenuButton text="Semi-Pro" />
           <MainMenuButton text="Leslie" />

@@ -10,10 +10,11 @@ import {
 
 import { CloseButton } from 'components/close-button'
 import { MainMenuButton } from 'components/main-menu-button'
+import { MenuHeading } from 'components/menu-heading'
 
 function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
   const {
-    colors: { brandBlue, brandWhite },
+    colors: { brandBlue },
   } = useTheme()
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="lg" placement="left">
@@ -21,23 +22,14 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
       <DrawerContent bg={brandBlue}>
         <CloseButton onClick={onClose} />
         <DrawerBody>
-          <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
-            BOARDS
-          </Heading>
-          <Divider bg={brandWhite} height="1px" mb="1rem" />
+          <MenuHeading text="BOARDS" />
           <MainMenuButton text="Surf" showArrow />
           <MainMenuButton text="Wakesurf" showArrow onClick={openSubMenu} />
-          <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
-            APPAREL
-          </Heading>
-          <Divider bg={brandWhite} height="1px" mb="1rem" />
+          <MenuHeading text="APPAREL" />
           <MainMenuButton text="Hats" />
           <MainMenuButton text="Shirts" />
           <MainMenuButton text="Shorts" />
-          <Heading color={brandWhite} size="md" mt="2rem" mb="1rem">
-            GEAR
-          </Heading>
-          <Divider bg={brandWhite} height="1px" mb="1rem" />
+          <MenuHeading text="GEAR" />
           <MainMenuButton text="Gear" />
         </DrawerBody>
       </DrawerContent>
