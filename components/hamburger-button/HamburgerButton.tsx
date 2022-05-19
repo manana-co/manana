@@ -8,7 +8,7 @@ function HamburgerButton({ color, onClick }: Props) {
       _focus={{ boxShadow: 'none' }}
       onClick={onClick}
     >
-      <svg height="25px" width="42px" fill={color}>
+      <svg height="25px" width="42px" fill={color} transform="scale(0.8)">
         <rect width="40" height="3" />
         <rect y="10" width="40" height="3" />
         <rect y="20" width="40" height="3" />

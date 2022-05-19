@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, useTheme } from '@chakra-ui/react'
+import { Flex, useTheme } from '@chakra-ui/react'
 import { HamburgerButton } from 'components/hamburger-button'
 import { Logo } from 'components/logo'
 import { ShoppingCartButton } from 'components/shopping-cart-button'
@@ -29,11 +29,10 @@ function TopNavbar() {
   const iconColor = scrollValue > 0 ? brandRed : brandWhite
 
   return (
-    <Box
-      h="8rem"
+    <Flex
+      h="6rem"
       position="fixed"
       width="100vw"
-      display="flex"
       alignItems="center"
       justifyContent="space-between"
       padding={10}
@@ -48,7 +47,7 @@ function TopNavbar() {
       <ShoppingCartButton color={iconColor} />
       <MainMenu isOpen={isMenuOpen} onClose={toggleMenu} openSubMenu={toggleSubMenu} />
       <SubMenu isOpen={isSubMenuOpen} onClose={toggleSubMenu} />
-    </Box>
+    </Flex>
   )
 }
 

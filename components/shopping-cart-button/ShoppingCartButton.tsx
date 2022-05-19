@@ -1,6 +1,6 @@
 function ShoppingCartButton({ color }: Props) {
   return (
-    <svg width="30px" height="35px" fill={color}>
+    <svg width="30px" height="35px" fill={color} transform="scale(0.8)">
       <path
         transform="scale(0.5)"
         d="M49.68,24.5v-4.47C49.68,8.98,40.69,0,29.65,0C18.61,0,9.62,8.98,9.62,20.03v4.47H0v44.03h59.3V24.5H49.68z
