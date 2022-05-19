@@ -10,7 +10,14 @@ function CarouselSection() {
 
   return (
     <Box bg={brandBlue} height="40rem" width="100vw">
-      <Stack direction="row" padding="4rem" height="100%" width="100%" justify="space-between">
+      <Stack
+        direction="row"
+        padding="4rem"
+        height="100%"
+        width="100%"
+        justify="space-between"
+        userSelect="none"
+      >
         <Box width="40rem" color={brandTan}>
           <Heading as="h1" size="4xl" fontSize="92px" fontFamily={title}>
             Mission Statement

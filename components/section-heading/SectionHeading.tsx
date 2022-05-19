@@ -6,7 +6,7 @@ function SectionHeading({ text }: Props) {
   } = useTheme()
 
   return (
-    <Box padding="2rem 2rem 0">
+    <Box padding="2rem 2rem 0" userSelect="none">
       <Divider bg={brandRed} height="2px" opacity={1} />
       <Heading color={brandRed} size="lg" marginTop="1rem">
         {text}

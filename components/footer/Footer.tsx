@@ -16,6 +16,7 @@ function Footer() {
       height="22rem"
       justify="space-between"
       fontFamily={body}
+      userSelect="none"
     >
       <Stack direction="row" spacing="4rem" height="100%" width="100%" align="center">
         <Badge />

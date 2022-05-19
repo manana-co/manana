@@ -17,7 +17,14 @@ function Home() {
   return (
     <Box bg={brandBlue}>
       <TopNavbar />
-      <Box maxHeight="100vh" width="100%" overflow="hidden" display="flex" alignItems="center">
+      <Box
+        maxHeight="100vh"
+        width="100%"
+        overflow="hidden"
+        display="flex"
+        alignItems="center"
+        userSelect="none"
+      >
         <Image src={defenderImage} alt="main landing image" layout="intrinsic" priority />
       </Box>
       <ProductSection title="SURF STUFF" />
