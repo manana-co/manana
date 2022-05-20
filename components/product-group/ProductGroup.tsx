@@ -1,41 +1,55 @@
-import { Button, Stack, Heading, useTheme } from '@chakra-ui/react'
+import { Box, Button, Stack, Heading, useTheme } from '@chakra-ui/react'
 import { ProductImage } from 'components/product-image'
+import { Product } from 'utils/shared-types'
 
-function ProductGroup() {
+function ProductGroup({ product: { imageSrc, title, price } }: Props) {
   const {
-    colors: { brandBlue, brandRed },
-    fonts: { title, body },
+    colors: { brandBlue, brandRed, brandWhite },
+    fonts: { title: titleFont, body },
   } = useTheme()
   return (
     <Stack
       display="inline-flex"
       direction="column"
       alignItems="center"
+      justifyContent="space-between"
       margin="1rem"
-      height="30rem"
+      height="29rem"
+      width="25rem"
     >
-      {/* <ProductImage imageSrc="hat-example.png" alternateText="" /> */}
-      <ProductImage imageSrc="board-example.png" alternateText="test" />
-      <Heading size="xl" fontFamily={title} color={brandBlue} padding="1rem 0 0.5rem">
-        Red Hat
-      </Heading>
-      <Button
-        variant="unstyled"
-        fontFamily={body}
-        color={brandRed}
-        border={`0.1rem solid ${brandRed}`}
-        borderRadius="none"
-        width="80%"
+      <Box height="22rem" width="100%">
+        <ProductImage imageSrc={imageSrc} alternateText="test" />
+      </Box>
+      <Stack
+        direction="column"
+        height="6rem"
+        width="100%"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        SHOP NOW - $35
-      </Button>
+        <Heading size="xl" fontFamily={titleFont} color={brandBlue}>
+          {title}
+        </Heading>
+        <Button
+          variant="unstyled"
+          fontFamily={body}
+          color={brandRed}
+          border={`0.1rem solid ${brandRed}`}
+          borderRadius="none"
+          width="80%"
+          display="flex"
+          alignItems="center"
+          _hover={{ background: brandRed, color: brandWhite }}
+        >
+          {`SHOP NOW - ${price}`}
+        </Button>
+      </Stack>
     </Stack>
   )
 }
 
-// <ProductImage imageSrc="board-example.png" alternateText="test" />
-// <ProductImage imageSrc="mug-example.png" alternateText="test" />
-// <ProductImage imageSrc="shirt-example.png" alternateText="test" />
-// <ProductImage imageSrc="shorts-example.png" alternateText="test" />
+type Props = {
+  product: Product
+}
 
 export { ProductGroup }

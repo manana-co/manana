@@ -8,5 +8,11 @@ const routes: Record<RouteName, PossibleRoutes> = {
   notARoute: '',
 }
 
+type Product = {
+  imageSrc: string
+  title: string
+  price: string
+}
+
 export { routes }
-export type { RouteName }
+export type { RouteName, Product }
