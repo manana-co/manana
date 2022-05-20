@@ -25,6 +25,10 @@ function TopNavbar() {
 
   const toggleMenu = () => setIsMenuOpen((currentState) => !currentState)
   const toggleSubMenu = () => setIsSubMenuOpen((currentState) => !currentState)
+  const closeBothMenus = () => {
+    toggleMenu()
+    setIsSubMenuOpen(false)
+  }
 
   const iconColor = scrollValue > 0 ? brandRed : brandWhite
 

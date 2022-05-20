@@ -15,6 +15,7 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
   const {
     colors: { brandBlue, brandWhite },
   } = useTheme()
+
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="lg" placement="left">
       <DrawerOverlay />
@@ -22,17 +23,17 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
         <CloseButton onClick={onClose} />
         <DrawerBody paddingTop="2rem">
           <MenuHeading text="BOARDS" />
-          <MainMenuButton text="Surf" showArrow />
+          <MainMenuButton text="Surf" showArrow route="/" />
           <MainMenuButton text="Wakesurf" showArrow onClick={openSubMenu} />
           <MenuHeading text="APPAREL" />
-          <MainMenuButton text="Hats" />
-          <MainMenuButton text="Shirts" />
-          <MainMenuButton text="Shorts" />
+          <MainMenuButton text="Hats" route="/" />
+          <MainMenuButton text="Shirts" route="/" />
+          <MainMenuButton text="Shorts" route="/" />
           <MenuHeading text="GEAR" />
-          <MainMenuButton text="Gear" />
+          <MainMenuButton text="Gear" route="/" />
           <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" />
-          <MainMenuButton text="Shop All" size="2xl" />
-          <MainMenuButton text="About Us" size="2xl" />
+          <MainMenuButton text="Shop All" size="2xl" route="/shop-all" onClick={onClose} />
+          <MainMenuButton text="About Us" size="2xl" route="/about-us" />
         </DrawerBody>
       </DrawerContent>
     </Drawer>
