@@ -23,17 +23,17 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
         <CloseButton onClick={onClose} />
         <DrawerBody paddingTop="2rem">
           <MenuHeading text="BOARDS" />
-          <MainMenuButton text="Surf" showArrow route="/" />
+          <MainMenuButton text="Surf" showArrow route="home" />
           <MainMenuButton text="Wakesurf" showArrow onClick={openSubMenu} />
           <MenuHeading text="APPAREL" />
-          <MainMenuButton text="Hats" route="/" />
-          <MainMenuButton text="Shirts" route="/" />
-          <MainMenuButton text="Shorts" route="/" />
+          <MainMenuButton text="Hats" route="home" />
+          <MainMenuButton text="Shirts" route="home" />
+          <MainMenuButton text="Shorts" route="home" />
           <MenuHeading text="GEAR" />
-          <MainMenuButton text="Gear" route="/" />
+          <MainMenuButton text="Gear" route="home" />
           <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" />
-          <MainMenuButton text="Shop All" size="2xl" route="/shop-all" onClick={onClose} />
-          <MainMenuButton text="About Us" size="2xl" route="/about-us" />
+          <MainMenuButton text="Shop All" size="2xl" route="shopAll" onClick={onClose} />
+          <MainMenuButton text="About Us" size="2xl" route="aboutUs" />
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -1,14 +1,21 @@
 import Link from 'next/link'
 import { Button, Heading, useTheme } from '@chakra-ui/react'
 import { Arrow } from 'components/icons/Arrow'
+import { routes, RouteName } from 'utils/shared-types'
 
-function MainMenuButton({ text, showArrow = false, onClick, size = '4xl', route = '' }: Props) {
+function MainMenuButton({
+  text,
+  showArrow = false,
+  onClick,
+  size = '4xl',
+  route = 'notARoute',
+}: Props) {
   const {
     colors: { brandWhite },
     fonts: { title },
   } = useTheme()
   return (
-    <Link href={route}>
+    <Link href={routes[route]}>
       <Button
         display="flex"
         alignItems="center"
@@ -31,9 +38,7 @@ type Props = {
   showArrow?: boolean
   onClick?: () => unknown
   size?: '4xl' | '2xl'
-  route?: Routes
+  route?: RouteName
 }
-
-type Routes = '/' | '/shop-all' | '/about-us' | ''
 
 export { MainMenuButton }
