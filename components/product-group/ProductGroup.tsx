@@ -18,7 +18,7 @@ function ProductGroup({ product: { imageSrc, title, price } }: Props) {
       width="25rem"
     >
       <Box height="22rem" width="100%">
-        <ProductImage imageSrc={imageSrc} alternateText="test" />
+        <ProductImage imageSrc={imageSrc} alternateText="test" inGroup />
       </Box>
       <Stack
         direction="column"

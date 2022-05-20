@@ -1,6 +1,6 @@
 import { Image, useTheme, Center } from '@chakra-ui/react'
 
-function ProductImage({ imageSrc, alternateText }: Props) {
+function ProductImage({ imageSrc, alternateText, inGroup = false }: Props) {
   const {
     colors: { brandTan },
   } = useTheme()
@@ -8,7 +8,7 @@ function ProductImage({ imageSrc, alternateText }: Props) {
   return (
     <Center
       height="100%"
-      minWidth="100%"
+      minWidth={inGroup ? '100%' : '30rem'}
       background={brandTan}
       userSelect="none"
       padding="2rem 1rem"
@@ -21,6 +21,7 @@ function ProductImage({ imageSrc, alternateText }: Props) {
 type Props = {
   imageSrc: string
   alternateText: string
+  inGroup?: boolean
 }
 
 export { ProductImage }
