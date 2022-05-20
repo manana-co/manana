@@ -1,7 +1,7 @@
 import { Button, Heading, useTheme } from '@chakra-ui/react'
 import { Arrow } from 'components/icons/Arrow'
 
-function MainMenuButton({ text, showArrow = false, onClick }: Props) {
+function MainMenuButton({ text, showArrow = false, onClick, size = '4xl' }: Props) {
   const {
     colors: { brandWhite },
     fonts: { title },
@@ -15,7 +15,7 @@ function MainMenuButton({ text, showArrow = false, onClick }: Props) {
       _focus={{ boxShadow: 'none' }}
       onClick={onClick}
     >
-      <Heading color={brandWhite} size="4xl" fontFamily={title}>
+      <Heading color={brandWhite} size={size} fontFamily={title}>
         {text}
       </Heading>
       {showArrow && <Arrow color={brandWhite} />}
@@ -27,6 +27,7 @@ type Props = {
   text: string
   showArrow?: boolean
   onClick?: () => unknown
+  size?: '4xl' | '2xl'
 }
 
 export { MainMenuButton }
