@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react'
-import { SectionHeading } from 'components/section-heading'
 import Image from 'next/image'
+import { ProductGroup } from 'components/product-group'
+import { SectionHeading } from 'components/section-heading'
 import boatHatImage from 'public/boat-with-hat.jpeg'
 
 function ShopAll() {
@@ -16,7 +17,10 @@ function ShopAll() {
       >
         <Image src={boatHatImage} alt="main landing image" layout="intrinsic" priority />
       </Box>
-      <SectionHeading text="SHOP ALL" />
+      <Box height="1000rem">
+        <SectionHeading text="SHOP ALL" />
+        <ProductGroup />
+      </Box>
     </Box>
   )
 }
