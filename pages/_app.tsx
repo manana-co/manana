@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from 'styles/theme'
+import { TopNavbar } from 'components/top-navbar'
 import { Footer } from 'components/footer'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Mañana Co.</title>
       </Head>
+      <TopNavbar />
       <Component {...pageProps} />
       <Footer />
     </ChakraProvider>

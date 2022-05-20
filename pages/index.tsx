@@ -1,22 +1,18 @@
-import { useEffect } from 'react'
 import Image from 'next/image'
 import { Box, useTheme } from '@chakra-ui/react'
 import defenderImage from 'public/main-landing-defender.jpeg'
-import { TopNavbar } from 'components/top-navbar'
 import { ProductSection } from 'components/product-section'
 import { CarouselSection } from 'components/carousel-section'
-import { useAllProducts } from 'hooks/useAllProducts'
+// import { useAllProducts } from 'hooks/useAllProducts'
 
 function Home() {
   const {
     colors: { brandBlue },
   } = useTheme()
-  const { isLoading, products, isError } = useAllProducts()
-  console.log(2, isLoading, products)
+  // const { isLoading, products, isError } = useAllProducts()
 
   return (
     <Box bg={brandBlue}>
-      <TopNavbar />
       <Box
         maxHeight="100vh"
         width="100%"

@@ -37,9 +37,7 @@ function TopNavbar() {
       justifyContent="space-between"
       padding={10}
       bg={scrollValue > 0 ? brandWhite : 'transparent'}
-      sx={{
-        transition: 'background 0.3s ease-in',
-      }}
+      sx={{ transition: 'background 0.3s ease-in' }}
       zIndex={100}
     >
       <HamburgerButton color={iconColor} onClick={toggleMenu} />

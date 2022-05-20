@@ -8,7 +8,7 @@ function Logo({ color }: Props) {
         justifyContent: 'center',
         alignItems: 'center',
       }}
-      transform="scale(0.6)"
+      transform="scale(0.5)"
     >
       <path
         fill={color}
