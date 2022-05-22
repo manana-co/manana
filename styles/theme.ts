@@ -14,6 +14,9 @@ const theme = extendTheme({
     // font4: 'Open Sans Semi Bold, sans-serif',
     // font5: 'Open Sans Semi Bold Italic, sans-serif',
   },
+  heights: {
+    topNavBar: '6rem',
+  },
 })
 
 export { theme }
