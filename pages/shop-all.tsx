@@ -7,7 +7,7 @@ import { Product } from 'utils/shared-types'
 
 function ShopAll() {
   return (
-    <Box>
+    <>
       <Box
         maxHeight="100vh"
         width="100%"
@@ -24,7 +24,7 @@ function ShopAll() {
           <ProductGroup key={product.title} product={product} />
         ))}
       </Box>
-    </Box>
+    </>
   )
 }
 

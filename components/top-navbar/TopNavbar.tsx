@@ -48,7 +48,7 @@ function TopNavbar() {
       <Logo color={iconColor} />
       <ShoppingCartButton color={iconColor} />
       <MainMenu isOpen={isMenuOpen} onClose={toggleMenu} openSubMenu={toggleSubMenu} />
-      <SubMenu isOpen={isSubMenuOpen} onClose={toggleSubMenu} />
+      <SubMenu isOpen={isSubMenuOpen} onClose={toggleSubMenu} onCloseMenu={closeBothMenus} />
     </Flex>
   )
 }

@@ -2,10 +2,11 @@ import { Drawer, DrawerBody, DrawerContent, useTheme, Heading, Divider } from '@
 import { ArrowButton } from 'components/arrow-button'
 import { MainMenuButton } from 'components/main-menu-button'
 import { MenuHeading } from 'components/menu-heading'
+import Link from 'next/link'
 
-function SubMenu({ onClose, isOpen }: Props) {
+function SubMenu({ onClose, isOpen, onCloseMenu }: Props) {
   const {
-    colors: { brandRed, brandWhite },
+    colors: { brandRed },
   } = useTheme()
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="lg" placement="left">
@@ -14,7 +15,7 @@ function SubMenu({ onClose, isOpen }: Props) {
         <DrawerBody>
           <MenuHeading text="WAKESURF" />
           <MainMenuButton text="Molo" />
-          <MainMenuButton text="Semi-Pro" />
+          <MainMenuButton text="Semi-Pro" onClick={onCloseMenu} route="product" />
           <MainMenuButton text="Leslie" />
           <MainMenuButton text="Cousin Greg" />
           <MainMenuButton text="Shop All" />
@@ -27,6 +28,7 @@ function SubMenu({ onClose, isOpen }: Props) {
 type Props = {
   onClose: () => void
   isOpen: boolean
+  onCloseMenu: () => void
 }
 
 export { SubMenu }
