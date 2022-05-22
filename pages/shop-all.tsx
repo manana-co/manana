@@ -18,8 +18,8 @@ function ShopAll() {
       >
         <Image src={boatHatImage} alt="main landing image" layout="intrinsic" priority />
       </Box>
-      <Box height="1000rem">
-        <SectionHeading text="SHOP ALL" />
+      <SectionHeading text="SHOP ALL" />
+      <Box height="100rem" padding="1rem">
         {testProducts.map((product) => (
           <ProductGroup key={product.title} product={product} />
         ))}
