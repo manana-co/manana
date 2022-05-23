@@ -8,6 +8,7 @@ function SubMenu({ onClose, isOpen, onCloseMenu }: Props) {
   const {
     colors: { brandRed },
   } = useTheme()
+
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="lg" placement="left">
       <DrawerContent bg={brandRed}>
