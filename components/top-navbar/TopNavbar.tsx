@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, memo } from 'react'
+import { useRouter } from 'next/router'
 import { Flex, useTheme } from '@chakra-ui/react'
 import { HamburgerButton } from 'components/hamburger-button'
 import { Logo } from 'components/logo'
@@ -9,8 +10,23 @@ import { ShoppingCart } from 'components/shopping-cart'
 
 function TopNavbar() {
   const {
-    colors: { brandWhite, brandRed },
+    colors: { brandWhite, brandRed, brandTan },
   } = useTheme()
+  const navColors: Record<ColorGroup, ColorSetup> = useMemo(
+    () => ({
+      '/': {
+        main: [brandWhite, 'transparent'],
+        scroll: [brandRed, brandWhite],
+      },
+      '/product': {
+        main: [brandRed, brandTan],
+        scroll: [brandRed, brandWhite],
+      },
+    }),
+    [brandRed, brandTan, brandWhite],
+  )
+
+  const { pathname } = useRouter()
   const [scrollValue, setScrollValue] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
@@ -34,7 +50,8 @@ function TopNavbar() {
 
   const toggleShoppingCart = () => setIsShoppingCartOpen((currentState) => !currentState)
 
-  const iconColor = scrollValue > 0 ? brandRed : brandWhite
+  const [iconColor, backgroundColor] =
+    navColors[pathname as ColorGroup][scrollValue > 0 ? 'scroll' : 'main']
 
   return (
     <Flex
@@ -44,7 +61,7 @@ function TopNavbar() {
       alignItems="center"
       justifyContent="space-between"
       padding={10}
-      bg={scrollValue > 0 ? brandWhite : 'transparent'}
+      bg={backgroundColor}
       sx={{ transition: 'background 0.3s ease-in' }}
       zIndex={100}
     >
@@ -56,6 +73,13 @@ function TopNavbar() {
       <ShoppingCart isOpen={isShoppingCartOpen} onClose={toggleShoppingCart} />
     </Flex>
   )
+}
+
+type ColorGroup = '/product' | '/'
+
+type ColorSetup = {
+  main: [string, string]
+  scroll: [string, string]
 }
 
 export { TopNavbar }
