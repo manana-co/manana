@@ -19,6 +19,7 @@ import { ShoppingCartItem } from 'components/shopping-cart-item'
 function ShoppingCart({ isOpen, onClose }: Props) {
   const {
     colors: { brandBlue, brandWhite },
+    fonts: { title, body },
   } = useTheme()
 
   const numberOfCartItems = 2
@@ -29,7 +30,9 @@ function ShoppingCart({ isOpen, onClose }: Props) {
       <DrawerContent bg={brandBlue} color={brandWhite}>
         <CloseButton onClick={onClose} />
         <DrawerHeader>
-          <Heading size="lg">Shopping Cart ({`${numberOfCartItems}`} items)</Heading>
+          <Heading size="lg" fontFamily={title}>
+            Shopping Cart ({`${numberOfCartItems}`} items)
+          </Heading>
         </DrawerHeader>
         <DrawerBody padding="2rem">
           <ShoppingCartItem />
@@ -37,13 +40,17 @@ function ShoppingCart({ isOpen, onClose }: Props) {
         <DrawerFooter>
           <Stack direction="column" width="100%">
             <Flex justifyContent="space-between">
-              <Heading size="lg">Subtotal:</Heading>
-              <Heading size="lg">{`$${899.0}`}</Heading>
+              <Heading size="lg" fontFamily={title}>
+                Subtotal:
+              </Heading>
+              <Heading size="lg" fontFamily={title}>{`$${899.0}`}</Heading>
             </Flex>
-            <Text opacity={0.7} pb="1rem">
+            <Text opacity={0.7} pb="1rem" fontFamily={body}>
               Shipping and taxes calculated at checkout
             </Text>
-            <Button color="#000000">Checkout</Button>
+            <Button color="#000000" fontFamily={body}>
+              Checkout
+            </Button>
           </Stack>
         </DrawerFooter>
       </DrawerContent>
