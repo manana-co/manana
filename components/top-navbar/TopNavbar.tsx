@@ -5,6 +5,7 @@ import { Logo } from 'components/logo'
 import { ShoppingCartButton } from 'components/shopping-cart-button'
 import { MainMenu } from 'components/main-menu'
 import { SubMenu } from 'components/sub-menu'
+import { ShoppingCart } from 'components/shopping-cart'
 
 function TopNavbar() {
   const {
@@ -13,6 +14,7 @@ function TopNavbar() {
   const [scrollValue, setScrollValue] = useState(0)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
+  const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrollValue(window.pageYOffset)
@@ -30,6 +32,8 @@ function TopNavbar() {
     setIsSubMenuOpen(false)
   }
 
+  const toggleShoppingCart = () => setIsShoppingCartOpen((currentState) => !currentState)
+
   const iconColor = scrollValue > 0 ? brandRed : brandWhite
 
   return (
@@ -46,9 +50,10 @@ function TopNavbar() {
     >
       <HamburgerButton color={iconColor} onClick={toggleMenu} />
       <Logo color={iconColor} />
-      <ShoppingCartButton color={iconColor} />
+      <ShoppingCartButton color={iconColor} onClick={toggleShoppingCart} />
       <MainMenu isOpen={isMenuOpen} onClose={toggleMenu} openSubMenu={toggleSubMenu} />
       <SubMenu isOpen={isSubMenuOpen} onClose={toggleSubMenu} onCloseMenu={closeBothMenus} />
+      <ShoppingCart isOpen={isShoppingCartOpen} onClose={toggleShoppingCart} />
     </Flex>
   )
 }
