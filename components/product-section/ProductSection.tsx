@@ -1,10 +1,10 @@
-import { Box, Divider, Heading, Stack, useTheme } from '@chakra-ui/react'
+import { Box, Stack, useTheme } from '@chakra-ui/react'
 import { ProductImage } from 'components/product-image'
 import { SectionHeading } from 'components/section-heading'
 
 function ProductSection({ title }: Props) {
   const {
-    colors: { brandWhite, brandRed },
+    colors: { brandWhite },
   } = useTheme()
   return (
     <Box as="section" height="50rem" bg={brandWhite}>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, memo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { Flex, useTheme } from '@chakra-ui/react'
 import { HamburgerButton } from 'components/hamburger-button'

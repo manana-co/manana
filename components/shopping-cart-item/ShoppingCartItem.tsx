@@ -1,4 +1,4 @@
-import { Grid, Box, Stack, Text, Select } from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 function ShoppingCartItem() {
   // const quantity = 2
   // const dropDownItems = Array.from(new Array(quantity + 2), x => x)

@@ -3,7 +3,7 @@ import { Arrow } from 'components/icons/Arrow'
 
 function ArrowButton({
   direction = 'forward',
-  onClick = () => {},
+  onClick = () => undefined,
   isMenuButton = false,
   color,
 }: Props) {

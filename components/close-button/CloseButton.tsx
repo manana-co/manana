@@ -1,4 +1,4 @@
-import { Button, Center, useTheme } from '@chakra-ui/react'
+import { Button, useTheme } from '@chakra-ui/react'
 
 function CloseButton({ onClick }: Props) {
   const {

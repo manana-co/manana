@@ -1,8 +1,7 @@
-import { Drawer, DrawerBody, DrawerContent, useTheme, Heading, Divider } from '@chakra-ui/react'
+import { Drawer, DrawerBody, DrawerContent, useTheme } from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
 import { MainMenuButton } from 'components/main-menu-button'
 import { MenuHeading } from 'components/menu-heading'
-import Link from 'next/link'
 
 function SubMenu({ onClose, isOpen, onCloseMenu }: Props) {
   const {

@@ -1,4 +1,4 @@
-import { useTheme, Divider, Box, Heading, Flex, Stack, Button } from '@chakra-ui/react'
+import { useTheme, Box, Heading, Flex, Stack, Button } from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
 
 function Product() {

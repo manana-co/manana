@@ -1,4 +1,4 @@
-import { Box, Button, Flex, HStack, IconButton, Stack, Text, useTheme } from '@chakra-ui/react'
+import { IconButton, Stack, Text, useTheme } from '@chakra-ui/react'
 import { Badge } from 'components/badge'
 import { Instagram, Twitter, Facebook } from 'components/icons'
 
