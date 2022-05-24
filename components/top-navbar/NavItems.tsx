@@ -17,7 +17,7 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
       },
       '/product': {
         main: [brandRed, brandTan],
-        scroll: [brandRed, brandWhite],
+        scroll: [brandTan, brandRed],
       },
     }),
     [brandRed, brandTan, brandWhite],
@@ -35,11 +35,12 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
   })
 
   const [iconColor, backgroundColor] =
-    navColors[pathname as ColorGroup][scrollValue > 0 ? 'scroll' : 'main']
+    navColors[pathname as ColorGroup]?.[scrollValue > 0 ? 'scroll' : 'main'] ||
+    navColors['/'][scrollValue > 0 ? 'scroll' : 'main']
 
   return (
     <Flex
-      h="6rem"
+      height="6rem"
       position="fixed"
       width="100vw"
       alignItems="center"
