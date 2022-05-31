@@ -1,4 +1,15 @@
-import { useTheme, Box, Heading, Flex, Stack, Button } from '@chakra-ui/react'
+import Image from 'next/image'
+import {
+  useTheme,
+  Box,
+  Heading,
+  Flex,
+  Stack,
+  Button,
+  Grid,
+  Center,
+  useMediaQuery,
+} from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
 
 function Product() {
@@ -7,6 +18,7 @@ function Product() {
     heights: { topNavBar },
     fonts: { title, body },
   } = useTheme()
+  const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
 
   const borderStyle = `2px solid ${brandRed}`
   const price = 800
@@ -80,7 +92,26 @@ function Product() {
           </Flex>
         </Stack>
       </Flex>
-      <Box height="100rem"></Box>
+      {/* <Grid height="40rem" templateColumns="2" width="100%" border="1px solid red"> */}
+      <Grid templateColumns={isLargerThan1280 ? 'repeat(2, 1fr)' : '1fr'} gap={5} height="40rem">
+        <Image src="/boards-on-car.jpeg" alt="test" height="100%" width="100%" />
+        <Image src="/wave-yellow-board.jpeg" alt="test" height="100%" width="100%" />
+      </Grid>
+      <Center height="30rem" flexDirection="column">
+        <Heading
+          size="4xl"
+          marginBottom="2rem"
+          fontFamily={title}
+          color={brandBlue}
+          _before={{ content: 'open-quote' }}
+          _after={{ content: 'close-quote' }}
+        >
+          Hunk-o-shit
+        </Heading>
+        <Heading size="lg" fontFamily={body} color={brandRed}>
+          Some guy on yelp
+        </Heading>
+      </Center>
     </Box>
   )
 }
