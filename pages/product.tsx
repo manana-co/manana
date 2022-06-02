@@ -11,6 +11,7 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
+import { ImageCarousel } from 'components/image-carousel'
 
 function Product() {
   const {
@@ -36,9 +37,11 @@ function Product() {
           Cupidatat cupidatat nulla sunt non consectetur deserunt.
         </Heading>
       </Box>
-      <Flex height="45rem" paddingBottom="2rem" borderTop={borderStyle}>
-        <Box height="100%" width="50%" borderRight={borderStyle}></Box>
-        <Stack direction="column" height="100%" width="50%" fontFamily={body} paddingLeft="3rem">
+      <Grid templateColumns="1fr 1fr" height="45rem" paddingBottom="2rem" borderTop={borderStyle}>
+        <Box padding="2rem" maxHeight="100%">
+          <ImageCarousel />
+        </Box>
+        <Stack direction="column" fontFamily={body}>
           <Flex alignItems="center" height="33.33%" borderBottom={borderStyle} width="100%">
             <Heading size="md" color={brandRed}>
               COLORS
@@ -91,8 +94,7 @@ function Product() {
             >{`ADD TO CARD - $${price}`}</Button>
           </Flex>
         </Stack>
-      </Flex>
-      {/* <Grid height="40rem" templateColumns="2" width="100%" border="1px solid red"> */}
+      </Grid>
       <Grid templateColumns={isLargerThan1280 ? 'repeat(2, 1fr)' : '1fr'} gap={5} height="40rem">
         <Image src="/boards-on-car.jpeg" alt="test" height="100%" width="100%" />
         <Image src="/wave-yellow-board.jpeg" alt="test" height="100%" width="100%" />
