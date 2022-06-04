@@ -1,23 +1,14 @@
 import { Box } from '@chakra-ui/react'
-import Image from 'next/image'
 import { ProductGroup } from 'components/product-group'
 import { SectionHeading } from 'components/section-heading'
 import boatHatImage from 'public/boat-with-hat.jpeg'
 import { Product } from 'utils/shared-types'
+import { SplashImage } from 'components/splash-image'
 
 function ShopAll() {
   return (
     <>
-      <Box
-        maxHeight="100vh"
-        width="100%"
-        overflow="hidden"
-        display="flex"
-        alignItems="center"
-        userSelect="none"
-      >
-        <Image src={boatHatImage} alt="main landing image" layout="intrinsic" priority />
-      </Box>
+      <SplashImage image={boatHatImage} />
       <SectionHeading text="SHOP ALL" />
       <Box height="100rem" padding="1rem">
         {testProducts.map((product) => (

@@ -32,7 +32,9 @@ function ImageCarousel() {
             justifyContent="center"
             alignItems="center"
           >
-            <Image src={src} alt="test" height={200} width={200} />
+            <Image src={src} alt="test" layout="responsive" height="100%" width="100%" />
+            {/* <Image src={src} alt="test" layout='fill'/> */}
+            {/* <Image src={src} alt="test" height={200} width={200} /> */}
           </Box>
         ))}
       </Flex>

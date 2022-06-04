@@ -1,0 +1,1 @@
+export { SplashImage } from './SplashImage'
