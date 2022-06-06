@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import { Flex, useTheme } from '@chakra-ui/react'
+import { Flex, SimpleGrid, useTheme } from '@chakra-ui/react'
 import { HamburgerButton } from 'components/hamburger-button'
 import { Logo } from 'components/logo'
 import { ShoppingCartButton } from 'components/shopping-cart-button'
@@ -43,9 +43,10 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
       height="6rem"
       position="fixed"
       width="100vw"
+      maxWidth="100vw"
       alignItems="center"
       justifyContent="space-between"
-      padding={10}
+      paddingX={5}
       bg={backgroundColor}
       sx={{ transition: 'background 0.3s ease-in' }}
       zIndex={100}

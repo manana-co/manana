@@ -4,15 +4,11 @@ function Logo({ color }: Props) {
   return (
     <Link href="/">
       <svg
-        height="70px"
-        width="327px"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          cursor: 'pointer',
-        }}
-        transform="scale(0.5)"
+        viewBox="0 0 330 70"
+        preserveAspectRatio="none"
+        height="30px"
+        width="150px"
+        style={{ cursor: 'pointer' }}
       >
         <path
           fill={color}

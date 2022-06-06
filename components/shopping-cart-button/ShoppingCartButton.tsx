@@ -7,6 +7,7 @@ function ShoppingCartButton({ color, onClick }: Props) {
       variant="unstyled"
       _focus={{ boxShadow: 'none' }}
       onClick={onClick}
+      transform={['scale(0.7)', 'scale(0.7)', 'scale(1)', 'scale(1)']}
     >
       <svg width="30px" height="35px" fill={color} transform="scale(0.8)">
         <path
