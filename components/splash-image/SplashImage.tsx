@@ -12,7 +12,6 @@ function SplashImage({ image, imagePosition = 'center' }: Props) {
         layout="fill"
         objectFit="cover"
         objectPosition={imagePosition}
-        placeholder="blur"
         quality={100}
         priority
       />

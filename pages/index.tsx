@@ -11,7 +11,7 @@ function Home() {
   } = useTheme()
 
   return (
-    <Box bg={brandBlue}>
+    <Box bg={brandBlue} width="100vw">
       <SplashImage image={defenderImage} imagePosition="bottom center" />
       <ProductSection title="SURF STUFF" />
       <CarouselSection />

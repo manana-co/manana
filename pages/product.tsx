@@ -6,6 +6,7 @@ import {
   Flex,
   Stack,
   Button,
+  SimpleGrid,
   Grid,
   Center,
   useMediaQuery,
@@ -37,7 +38,7 @@ function Product() {
           Cupidatat cupidatat nulla sunt non consectetur deserunt.
         </Heading>
       </Box>
-      <Grid templateColumns="1fr 1fr" height="45rem" paddingBottom="2rem" borderTop={borderStyle}>
+      <SimpleGrid columns={1} height="45rem" paddingBottom="2rem" borderTop={borderStyle}>
         <Box padding="2rem" maxHeight="100%">
           <ImageCarousel />
         </Box>
@@ -94,7 +95,7 @@ function Product() {
             >{`ADD TO CARD - $${price}`}</Button>
           </Flex>
         </Stack>
-      </Grid>
+      </SimpleGrid>
       <Grid templateColumns={isLargerThan1280 ? 'repeat(2, 1fr)' : '1fr'} gap={5} height="40rem">
         <Image src="/boards-on-car.jpeg" alt="test" height="100%" width="100%" />
         <Image src="/wave-yellow-board.jpeg" alt="test" height="100%" width="100%" />
