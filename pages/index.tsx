@@ -1,6 +1,6 @@
 import { Box, useTheme } from '@chakra-ui/react'
 import { ProductSection } from 'components/product-section'
-import { CarouselSection } from 'components/carousel-section'
+// import { CarouselSection } from 'components/carousel-section'
 // import { useAllProducts } from 'hooks/useAllProducts'
 import defenderImage from 'public/main-landing-defender.jpeg'
 import { SplashImage } from 'components/splash-image'
@@ -11,10 +11,10 @@ function Home() {
   } = useTheme()
 
   return (
-    <Box bg={brandBlue} width="100vw">
+    <Box bg={brandBlue}>
       <SplashImage image={defenderImage} imagePosition="bottom center" />
       <ProductSection title="SURF STUFF" />
-      <CarouselSection />
+      {/* <CarouselSection /> */}
       <ProductSection title="BEST SELLERS" />
     </Box>
   )
