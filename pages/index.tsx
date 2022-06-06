@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <Box bg={brandBlue}>
-      <SplashImage image={defenderImage} />
+      <SplashImage image={defenderImage} imagePosition="bottom center" />
       <ProductSection title="SURF STUFF" />
       <CarouselSection />
       <ProductSection title="BEST SELLERS" />
