@@ -9,34 +9,39 @@ function CarouselSection() {
   } = useTheme()
 
   return (
-    <Box bg={brandBlue} padding={['1rem', '2rem']}>
-      <SimpleGrid minChildWidth="30rem">
-        <Stack
-          color={brandTan}
-          justifyContent="center"
-          padding={['1rem', '2rem']}
-          maxWidth="calc(100vw - 2rem)"
-        >
-          <Heading as="h1" size="4xl" fontFamily={title}>
-            Mission Statement
-          </Heading>
-          <Text fontSize={['xl', '2xl']} fontFamily={body}>
-            Born improbably out of a garage in the landlocked capital of Texas, Mañana started as a
-            passion project of making custom wakesurf boards for the fine people of Austin.
-          </Text>
-        </Stack>
-        {/* <Box>
-          <Flex height="100%" maxWidth="20rem" overflow="hidden">
-            <Image
-              src={glassingImage}
-              aria-label="Working on boards"
-              // width="100%"
-              // layout="fill"
-            />
-          </Flex>
-        </Box> */}
-      </SimpleGrid>
-    </Box>
+    <SimpleGrid minChildWidth="30rem" padding={['1rem', '2rem']} bg={brandBlue}>
+      <Stack
+        color={brandTan}
+        justifyContent="center"
+        padding={['1rem', '2rem']}
+        maxWidth={['calc(100vw - 2rem)', '90vw', '90vw', '60rem']}
+        placeSelf={['unset', 'center']}
+      >
+        <Heading as="h1" size="4xl" fontFamily={title}>
+          Mission Statement
+        </Heading>
+        <Text fontSize={['xl', '2xl']} fontFamily={body}>
+          Born improbably out of a garage in the landlocked capital of Texas, Mañana started as a
+          passion project of making custom wakesurf boards for the fine people of Austin.
+        </Text>
+      </Stack>
+      {/* <Box
+        position="relative"
+        maxWidth="calc(100vw - 2rem)"
+        padding="1rem"
+        background={brandTan}
+        minHeight="36rem"
+      >
+        <Image
+          src={glassingImage}
+          aria-label="Working on boards"
+          layout="fill"
+          objectFit="scale-down"
+          quality={100}
+          priority
+        />
+      </Box> */}
+    </SimpleGrid>
   )
 }
 
