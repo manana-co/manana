@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <TopNavbar />
       <Component {...pageProps} />
-      {/* <Footer /> */}
+      <Footer />
     </ChakraProvider>
   )
 }

@@ -7,13 +7,13 @@ function ProductSection({ title }: Props) {
     colors: { brandWhite },
   } = useTheme()
   return (
-    <Box as="section" height="50rem" bg={brandWhite}>
+    <Box as="section" bg={brandWhite}>
       <SectionHeading text={title} />
       <Stack
         direction="row"
-        height="calc(100% - (55px + 2rem))"
+        height={['30rem', '30rem', '35rem', '35rem']}
         spacing="2rem"
-        padding="2rem"
+        padding={['1rem', '2rem']}
         overflowX="auto"
       >
         <ProductImage imageSrc="hat-example.png" alternateText="test" />

@@ -8,7 +8,7 @@ function ProductImage({ imageSrc, alternateText, inGroup = false }: Props) {
   return (
     <Center
       height="100%"
-      minWidth={inGroup ? '100%' : '30rem'}
+      minWidth={inGroup ? '100%' : '20rem'}
       background={brandTan}
       userSelect="none"
       padding="2rem 1rem"
