@@ -1,4 +1,4 @@
-import { IconButton, Stack, Text, useTheme } from '@chakra-ui/react'
+import { IconButton, Stack, Text, useTheme, SimpleGrid } from '@chakra-ui/react'
 import { Badge } from 'components/badge'
 import { Instagram, Twitter, Facebook } from 'components/icons'
 
@@ -13,12 +13,11 @@ function Footer() {
       direction="row"
       as="footer"
       padding="3rem"
-      height="22rem"
       justify="space-between"
       fontFamily={body}
       userSelect="none"
     >
-      <Stack direction="row" spacing="4rem" height="100%" width="100%" align="center">
+      <SimpleGrid minChildWidth="18rem" spacing="4rem" height="100%" width="100%">
         <Badge />
         <Stack direction="column" spacing="1.5rem" color={brandTan} height="100%" paddingY="5px">
           <Text>CONTACT:</Text>
@@ -36,30 +35,30 @@ function Footer() {
             Terms of Service
           </Text>
         </Stack>
-      </Stack>
-      <Stack direction="column" fill={brandTan}>
-        <IconButton
-          _focus={{ boxShadow: 'none' }}
-          icon={<Instagram />}
-          aria-label="Instagram"
-          variant="unstyled"
-          padding="3px"
-        />
-        <IconButton
-          _focus={{ boxShadow: 'none' }}
-          icon={<Twitter />}
-          aria-label="Twitter"
-          variant="unstyled"
-          padding="3px"
-        />
-        <IconButton
-          _focus={{ boxShadow: 'none' }}
-          icon={<Facebook />}
-          aria-label="Facebook"
-          variant="unstyled"
-          padding="3px"
-        />
-      </Stack>
+        <Stack direction="column" fill={brandTan}>
+          <IconButton
+            _focus={{ boxShadow: 'none' }}
+            icon={<Instagram />}
+            aria-label="Instagram"
+            variant="unstyled"
+            padding="3px"
+          />
+          <IconButton
+            _focus={{ boxShadow: 'none' }}
+            icon={<Twitter />}
+            aria-label="Twitter"
+            variant="unstyled"
+            padding="3px"
+          />
+          <IconButton
+            _focus={{ boxShadow: 'none' }}
+            icon={<Facebook />}
+            aria-label="Facebook"
+            variant="unstyled"
+            padding="3px"
+          />
+        </Stack>
+      </SimpleGrid>
     </Stack>
   )
 }
