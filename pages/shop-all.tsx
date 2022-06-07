@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import { ProductGroup } from 'components/product-group'
 import { SectionHeading } from 'components/section-heading'
 import boatHatImage from 'public/boat-with-hat.jpeg'
@@ -46,9 +46,5 @@ const testProducts: Product[] = [
     price: '$35',
   },
 ]
-// <ProductImage imageSrc="board-example.png" alternateText="test" />
-// <ProductImage imageSrc="mug-example.png" alternateText="test" />
-// <ProductImage imageSrc="shirt-example.png" alternateText="test" />
-// <ProductImage imageSrc="shorts-example.png" alternateText="test" />
 
 export default ShopAll

@@ -7,6 +7,7 @@ function ProductGroup({ product: { imageSrc, title, price } }: Props) {
     colors: { brandBlue, brandRed, brandWhite },
     fonts: { title: titleFont, body },
   } = useTheme()
+
   return (
     <Stack direction="column" alignItems="center" justifyContent="space-between">
       <Box height="22rem" width="100%">
