@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 import { ProductGroup } from 'components/product-group'
 import { SectionHeading } from 'components/section-heading'
 import boatHatImage from 'public/boat-with-hat.jpeg'
@@ -10,11 +10,11 @@ function ShopAll() {
     <>
       <SplashImage image={boatHatImage} />
       <SectionHeading text="SHOP ALL" />
-      <Box height="100rem" padding="1rem">
+      <SimpleGrid minChildWidth="20rem" padding="1rem" spacing={10}>
         {testProducts.map((product) => (
           <ProductGroup key={product.title} product={product} />
         ))}
-      </Box>
+      </SimpleGrid>
     </>
   )
 }

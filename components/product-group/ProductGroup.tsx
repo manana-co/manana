@@ -8,15 +8,7 @@ function ProductGroup({ product: { imageSrc, title, price } }: Props) {
     fonts: { title: titleFont, body },
   } = useTheme()
   return (
-    <Stack
-      display="inline-flex"
-      direction="column"
-      alignItems="center"
-      justifyContent="space-between"
-      margin="1rem"
-      height="29rem"
-      width="25rem"
-    >
+    <Stack direction="column" alignItems="center" justifyContent="space-between">
       <Box height="22rem" width="100%">
         <ProductImage imageSrc={imageSrc} alternateText="test" inGroup />
       </Box>
