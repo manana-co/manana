@@ -4,6 +4,7 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 
 function SplashImage({ image, imagePosition = 'center' }: Props) {
   const [width, height] = useAspectRatio()
+
   return (
     <AspectRatio position="relative" maxWidth="100vw" maxHeight="100vh" ratio={width / height}>
       <Image

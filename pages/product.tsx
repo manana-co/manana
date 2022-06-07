@@ -30,7 +30,7 @@ function Product() {
       <Box borderY={borderStyle}>
         <ArrowButton direction="back" color={brandRed} />
       </Box>
-      <Box padding="2rem">
+      <Box padding="1rem">
         <Heading size="4xl" color={brandBlue} fontFamily={title}>
           Semi-Pro
         </Heading>
@@ -38,12 +38,17 @@ function Product() {
           Cupidatat cupidatat nulla sunt non consectetur deserunt.
         </Heading>
       </Box>
-      <SimpleGrid columns={1} height="45rem" paddingBottom="2rem" borderTop={borderStyle}>
-        <Box padding="2rem" maxHeight="100%">
+      <SimpleGrid
+        minChildWidth="30rem"
+        maxWidth="100%"
+        paddingBottom="2rem"
+        borderTop={borderStyle}
+      >
+        <Box height="30rem" maxWidth="calc(100vw - 2rem)">
           <ImageCarousel />
         </Box>
-        <Stack direction="column" fontFamily={body}>
-          <Flex alignItems="center" height="33.33%" borderBottom={borderStyle} width="100%">
+        <Stack direction="column" fontFamily={body} maxWidth="calc(100vw - 2rem)">
+          <Flex alignItems="center" height="10rem" borderBottom={borderStyle} width="100%">
             <Heading size="md" color={brandRed}>
               COLORS
             </Heading>
@@ -51,7 +56,7 @@ function Product() {
           <Flex
             flexDirection="column"
             justifyContent="center"
-            height="33.33%"
+            height="10rem"
             borderBottom={borderStyle}
             width="100%"
           >
@@ -81,16 +86,17 @@ function Product() {
               >{`6' 6"`}</Button>
             </Stack>
           </Flex>
-          <Flex height="33.33%" marginLeft="3rem" width="100%" alignItems="center">
+          <Flex height="10rem" width="100%" alignItems="center">
             <Button
               variant="unstyled"
-              fontSize={32}
+              fontSize={28}
               color={brandRed}
               border={borderStyle}
               borderRadius={0}
-              padding="2rem 4rem"
+              padding="2rem"
               display="flex"
               alignItems="center"
+              width="30rem"
               _hover={{ background: brandRed, color: brandTan }}
             >{`ADD TO CARD - $${price}`}</Button>
           </Flex>
