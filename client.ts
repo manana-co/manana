@@ -1,8 +1,8 @@
 import Client from 'shopify-buy'
 
 const client = Client.buildClient({
-  domain: 'manana-surf.myshopify.com',
-  storefrontAccessToken: 'fb958a325caed70977e9c1cee0d71b5f',
+  domain: process.env.NEXT_PUBLIC_STOREFRONT_DOMAIN || '',
+  storefrontAccessToken: process.env.NEXT_PUBLIC_STOREFRONT_TOKEN || '',
 })
 
 export { client }

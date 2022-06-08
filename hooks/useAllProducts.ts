@@ -3,12 +3,13 @@ import { client } from 'client'
 
 async function fetcher() {
   const allProducts = await client.product.fetchAll()
-  return allProducts.map(({ title, description, images, options, variants }) => ({
+  return allProducts.map(({ title, description, images, options, variants, ...allElse }) => ({
     title,
     description,
     images,
     options,
     variants,
+    ...allElse,
   }))
 }
 

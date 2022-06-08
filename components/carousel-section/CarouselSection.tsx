@@ -1,6 +1,5 @@
-import Image from 'next/image'
-import { useTheme, Box, SimpleGrid, Heading, Text, Flex, Stack } from '@chakra-ui/react'
-import glassingImage from 'public/glassing.jpeg'
+import { useTheme, SimpleGrid, Heading, Text, Stack } from '@chakra-ui/react'
+// import glassingImage from 'public/glassing.jpeg'
 
 function CarouselSection() {
   const {
