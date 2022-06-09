@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { client } from 'client'
 
-async function fetcher() {
+async function getAllProducts() {
   const allProducts = await client.product.fetchAll()
   return allProducts.map(({ title, description, images, options, variants, ...allElse }) => ({
     title,
@@ -14,7 +14,7 @@ async function fetcher() {
 }
 
 function useAllProducts() {
-  const { data, error } = useSWR('allProducts', fetcher)
+  const { data, error } = useSWR('allProducts', getAllProducts)
   return {
     products: data,
     isLoading: !data && !error,
@@ -22,4 +22,4 @@ function useAllProducts() {
   }
 }
 
-export { useAllProducts }
+export { useAllProducts, getAllProducts }

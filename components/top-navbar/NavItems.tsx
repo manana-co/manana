@@ -7,7 +7,7 @@ import { ShoppingCartButton } from 'components/shopping-cart-button'
 
 function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
   const {
-    colors: { brandWhite, brandRed, brandTan },
+    colors: { brandWhite, brandRed, brandTan, brandBlue },
   } = useTheme()
   const navColors: Record<ColorGroup, ColorSetup> = useMemo(
     () => ({
@@ -19,8 +19,12 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
         main: [brandRed, brandTan],
         scroll: [brandTan, brandRed],
       },
+      '/shop-all': {
+        main: [brandWhite, 'transparent'],
+        scroll: [brandWhite, brandBlue],
+      },
     }),
-    [brandRed, brandTan, brandWhite],
+    [brandRed, brandTan, brandWhite, brandBlue],
   )
   const { pathname } = useRouter()
   const [scrollValue, setScrollValue] = useState(0)

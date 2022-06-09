@@ -1,11 +1,15 @@
 import { Box, Stack, useTheme } from '@chakra-ui/react'
 import { ProductImage } from 'components/product-image'
 import { SectionHeading } from 'components/section-heading'
+import { useAllProducts } from 'hooks/useAllProducts'
 
 function ProductSection({ title }: Props) {
   const {
     colors: { brandWhite },
   } = useTheme()
+  const { products, isLoading, isError } = useAllProducts()
+
+  console.log({ products, isLoading, isError })
   return (
     <Box as="section" bg={brandWhite}>
       <SectionHeading text={title} />
