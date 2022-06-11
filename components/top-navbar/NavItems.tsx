@@ -23,6 +23,10 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
         main: [brandWhite, 'transparent'],
         scroll: [brandWhite, brandBlue],
       },
+      '/about-us': {
+        main: [brandRed, 'transparent'],
+        scroll: [brandRed, brandTan],
+      },
     }),
     [brandRed, brandTan, brandWhite, brandBlue],
   )
