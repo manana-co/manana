@@ -27,8 +27,8 @@ function About() {
         margin={['2rem 0', '4rem 0']}
       />
       <SimpleGrid minChildWidth="30rem" fontFamily={body} fontSize={['32px', '48px']}>
-        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
-          <DefenderIllustration />
+        <Center minHeight="20rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          {/* <DefenderIllustration /> */}
         </Center>
         <Text borderLeft={`2px solid ${brandRed}`} padding="0 2rem" maxWidth="calc(100vw - 2rem)">
           Born improbably out of a garage in the landlocked capital of Texas, Mañana started as a
@@ -48,8 +48,8 @@ function About() {
           quality materials in a place that supported the surf community. He packed his car and set
           out on his trip.
         </Text>
-        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
-          <DefenderIllustration />
+        <Center minHeight="20rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          {/* <DefenderIllustration /> */}
         </Center>
       </SimpleGrid>
       <Divider
@@ -60,8 +60,8 @@ function About() {
         margin={['2rem 0', '4rem 0']}
       />
       <SimpleGrid minChildWidth="30rem" fontFamily={body} fontSize={['32px', '48px']}>
-        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
-          <DefenderIllustration />
+        <Center minHeight="20rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          {/* <DefenderIllustration /> */}
         </Center>
         <Text borderLeft={`2px solid ${brandRed}`} padding="0 2rem" maxWidth="calc(100vw - 2rem)">
           After months of searching, surfing, and more searching throughout southern California and
@@ -81,8 +81,8 @@ function About() {
           Whenever he asked the crew when a board would be fin- ished, they always replied “mañana.”
           And the brand was born.
         </Text>
-        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
-          <DefenderIllustration />
+        <Center minHeight="20rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          {/* <DefenderIllustration /> */}
         </Center>
       </SimpleGrid>
     </Box>
