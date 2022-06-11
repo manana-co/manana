@@ -31,9 +31,9 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
           <MainMenuButton text="Shorts" route="home" />
           <MenuHeading text="GEAR" />
           <MainMenuButton text="Gear" route="home" />
-          <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" />
+          <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" variant="unstyled" />
           <MainMenuButton text="Shop All" size="2xl" route="shopAll" onClick={onClose} />
-          <MainMenuButton text="About Us" size="2xl" route="aboutUs" />
+          <MainMenuButton text="About Us" size="2xl" route="aboutUs" onClick={onClose} />
         </DrawerBody>
       </DrawerContent>
     </Drawer>

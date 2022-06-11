@@ -1,0 +1,1 @@
+export { DefenderIllustration } from './DefenderIllustration'

@@ -1,9 +1,10 @@
-import { Box, Center, Heading, Text, useTheme } from '@chakra-ui/react'
+import { Box, Center, Heading, Text, useTheme, Divider, SimpleGrid } from '@chakra-ui/react'
+import { DefenderIllustration } from 'components/defender-illustration'
 
 function About() {
   const {
-    colors: { brandTan, brandBlue },
-    fonts: { title },
+    colors: { brandTan, brandBlue, brandRed },
+    fonts: { title, body },
   } = useTheme()
 
   return (
@@ -18,7 +19,72 @@ function About() {
           Rooted in Austin Crafted in Baja
         </Heading>
       </Center>
-      {/* <Text >Hello</Text> */}
+      <Divider
+        bg={brandRed}
+        height="2px"
+        opacity={1}
+        variant="unstyled"
+        margin={['2rem 0', '4rem 0']}
+      />
+      <SimpleGrid minChildWidth="30rem" fontFamily={body} fontSize={['32px', '48px']}>
+        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          <DefenderIllustration />
+        </Center>
+        <Text borderLeft={`2px solid ${brandRed}`} padding="0 2rem" maxWidth="calc(100vw - 2rem)">
+          Born improbably out of a garage in the landlocked capital of Texas, Mañana started as a
+          passion project of making custom wakesurf boards for the fine people of Austin.
+        </Text>
+      </SimpleGrid>
+      <Divider
+        bg={brandRed}
+        height="2px"
+        opacity={1}
+        variant="unstyled"
+        margin={['2rem 0', '4rem 0']}
+      />
+      <SimpleGrid minChildWidth="30rem" fontFamily={body} fontSize={['32px', '48px']}>
+        <Text borderRight={`2px solid ${brandRed}`} padding="0 2rem" maxWidth="calc(100vw - 2rem)">
+          As demand grew, Alec set out on a journey in search for a factory. He needed access to
+          quality materials in a place that supported the surf community. He packed his car and set
+          out on his trip.
+        </Text>
+        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          <DefenderIllustration />
+        </Center>
+      </SimpleGrid>
+      <Divider
+        bg={brandRed}
+        height="2px"
+        opacity={1}
+        variant="unstyled"
+        margin={['2rem 0', '4rem 0']}
+      />
+      <SimpleGrid minChildWidth="30rem" fontFamily={body} fontSize={['32px', '48px']}>
+        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          <DefenderIllustration />
+        </Center>
+        <Text borderLeft={`2px solid ${brandRed}`} padding="0 2rem" maxWidth="calc(100vw - 2rem)">
+          After months of searching, surfing, and more searching throughout southern California and
+          Mexico, Alec settled on a quaint spot in Baja.
+        </Text>
+      </SimpleGrid>
+      <Divider
+        bg={brandRed}
+        height="2px"
+        opacity={1}
+        variant="unstyled"
+        margin={['2rem 0', '4rem 0']}
+      />
+      <SimpleGrid minChildWidth="30rem" fontFamily={body} fontSize={['32px', '48px']}>
+        <Text borderRight={`2px solid ${brandRed}`} padding="0 2rem" maxWidth="calc(100vw - 2rem)">
+          He formed a small crew dedi- cated to shaping and the hand-built process of boards.
+          Whenever he asked the crew when a board would be fin- ished, they always replied “mañana.”
+          And the brand was born.
+        </Text>
+        <Center height="30rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          <DefenderIllustration />
+        </Center>
+      </SimpleGrid>
     </Box>
   )
 }

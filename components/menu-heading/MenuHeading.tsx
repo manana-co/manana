@@ -9,7 +9,7 @@ function MenuHeading({ text }: Props) {
       <Heading color={brandWhite} size="md" mt="2rem" mb="1rem" userSelect="none">
         {text}
       </Heading>
-      <Divider bg={brandWhite} height="1px" mb="1rem" />
+      <Divider bg={brandWhite} height="1px" mb="1rem" variant="unstyled" />
     </>
   )
 }
