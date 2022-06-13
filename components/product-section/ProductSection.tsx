@@ -9,7 +9,6 @@ function ProductSection({ title }: Props) {
   } = useTheme()
   const { products, isLoading, isError } = useAllProducts()
 
-  console.log({ products, isLoading, isError })
   return (
     <Box as="section" bg={brandWhite}>
       <SectionHeading text={title} />
