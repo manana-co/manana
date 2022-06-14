@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { Flex, Box, Button } from '@chakra-ui/react'
-// import { ProductImage } from 'components/product-image'
 
 import hatImage from 'public/hat-example.png'
 import boardImage from 'public/board-example.png'
@@ -27,54 +26,24 @@ function ImageCarousel() {
         position="relative"
       >
         {mockImageSrcs.map(({ src, id }) => (
-          <Box
-            key={id}
-            id={`${id}`}
-            scrollSnapAlign="start"
-            flexShrink={0}
-            marginRight="50px"
-            height="100%"
-            width="100%"
-            borderRadius="10px"
-            transformOrigin="center center"
-            transform="scale(1)"
-            transition="transform 0.5s"
-            position="relative"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            scrollMarginTop="10rem"
-          >
-            <Image src={src} alt="test" layout="fill" width="100%" />
+          <Box key={id} id={id} flexShrink={0} height="100%" width="100%" position="relative">
+            <Image src={src} alt="test" layout="fill" objectFit="contain" />
           </Box>
         ))}
-        {/* <Box
-          scrollSnapAlign="start"
-          flexShrink={0}
-          marginRight="50px"
-          height="100%"
-          width="100%"
-          borderRadius="10px"
-          transformOrigin="center center"
-          transform="scale(1)"
-          transition="transform 0.5s"
-          position="relative"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        > */}
-        {/* <Image src={hatImage} alt="test" layout="fill" width="100%" /> */}
-        {/* </Box> */}
       </Flex>
-      {/* Buttons <a href="#picture-1" /> */}
       {mockImageSrcs.map(({ id }) => (
-        <Button as="a" key={id} href={`#${id}`} style={{ width: '10px', height: '10px' }}></Button>
+        <Button
+          as="a"
+          key={id}
+          onClick={(e) => {
+            e.preventDefault()
+            const photo = document.getElementById(id)
+            photo?.scrollIntoView({ block: 'nearest' })
+          }}
+        ></Button>
       ))}
     </Box>
   )
 }
 
 export { ImageCarousel }
-
-// {/* <Image src={src} alt="test" layout='fill'/> */}
-// {/* <Image src={src} alt="test" height={200} width={200} /> */}

@@ -1,5 +1,4 @@
 import 'reset-css'
-import 'styles/global.css'
 import '@fontsource/open-sans/700.css'
 import '@fontsource/vollkorn/900.css'
 import type { AppProps } from 'next/app'
