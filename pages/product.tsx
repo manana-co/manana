@@ -20,7 +20,7 @@ function Product() {
     heights: { topNavBar },
     fonts: { title, body },
   } = useTheme()
-  const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)')
+  const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
 
   const borderStyle = `2px solid ${brandRed}`
   const price = 800
@@ -103,10 +103,19 @@ function Product() {
             </Flex>
           </Stack>
         </SimpleGrid>
-        <Grid templateColumns={isLargerThan1280 ? 'repeat(2, 1fr)' : '1fr'} gap={5} height="40rem">
-          <Image src="/boards-on-car.jpeg" alt="test" height="100%" width="100%" />
-          <Image src="/wave-yellow-board.jpeg" alt="test" height="100%" width="100%" />
-        </Grid>
+        <SimpleGrid
+          minChildWidth="40rem"
+          spacing="1rem"
+          height={isLargerThan400 ? '80rem' : '30rem'}
+          maxWidth="calc(100vw - 2rem)"
+        >
+          <Box position="relative" maxWidth="calc(100vw - 2rem)">
+            <Image src="/boards-on-car.jpeg" alt="test" layout="fill" objectFit="contain" />
+          </Box>
+          <Box position="relative" maxWidth="calc(100vw - 2rem)">
+            <Image src="/wave-yellow-board.jpeg" alt="test" layout="fill" objectFit="contain" />
+          </Box>
+        </SimpleGrid>
         <Center height="30rem" flexDirection="column">
           <Heading
             size="4xl"
