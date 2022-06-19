@@ -14,6 +14,7 @@ import { ArrowButton } from 'components/arrow-button'
 import { ImageCarousel } from 'components/image-carousel'
 import { useRouter } from 'next/router'
 import { useProduct } from 'hooks/useProduct'
+import { VariantButton } from 'components/variant-button'
 
 function Product() {
   const { query } = useRouter()
@@ -24,11 +25,13 @@ function Product() {
   } = useTheme()
   const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
 
-  const { product } = useProduct(query.id as string)
-  console.log('in product page', product)
+  const { product, isLoading, isError } = useProduct(query.id as string)
+  console.log('in product page', product, isLoading, isError)
 
   const borderStyle = `2px solid ${brandRed}`
   const price = 800
+
+  if (!product || isLoading || isError) return null
 
   return (
     <Box background={brandTan} padding={`${topNavBar} 1rem 0`} scrollPaddingTop="5rem">
@@ -38,12 +41,10 @@ function Product() {
         </Box>
         <Box padding="1rem">
           <Heading size="4xl" color={brandBlue} fontFamily={title}>
-            Semi-Pro
+            {product.title}
           </Heading>
           <Heading size="lg" color={brandBlue} fontFamily={body}>
-            Cupidatat cupidatat nulla sunt non consectetur deserunt. Fugiat duis reprehenderit
-            excepteur et elit eu consectetur irure aliquip laboris culpa qui reprehenderit. Magna id
-            nostrud nostrud nisi et dolor est magna eiusmod eiusmod laborum.
+            {product.description}
           </Heading>
         </Box>
         <SimpleGrid
@@ -56,44 +57,25 @@ function Product() {
             <ImageCarousel />
           </Box>
           <Stack direction="column" fontFamily={body} maxWidth="calc(100vw - 2rem)">
-            <Flex alignItems="center" height="10rem" borderBottom={borderStyle} width="100%">
-              <Heading size="md" color={brandRed}>
-                COLORS
-              </Heading>
-            </Flex>
-            <Flex
-              flexDirection="column"
-              justifyContent="center"
-              height="10rem"
-              borderBottom={borderStyle}
-              width="100%"
-            >
-              <Heading size="md" color={brandRed} marginBottom="2rem">
-                SIZE
-              </Heading>
-              <Stack direction="row">
-                <Button
-                  variant="unstyled"
-                  color={brandRed}
-                  border={borderStyle}
-                  borderRadius={0}
-                  display="flex"
-                  alignItems="center"
-                  width="5rem"
-                  _hover={{ background: brandRed, color: brandTan }}
-                >{`6' 0"`}</Button>
-                <Button
-                  variant="unstyled"
-                  color={brandRed}
-                  border={borderStyle}
-                  borderRadius={0}
-                  display="flex"
-                  alignItems="center"
-                  width="5rem"
-                  _hover={{ background: brandRed, color: brandTan }}
-                >{`6' 6"`}</Button>
-              </Stack>
-            </Flex>
+            {product.options.map((option) => (
+              <Flex
+                key={option.name}
+                flexDirection="column"
+                justifyContent="center"
+                height="10rem"
+                borderBottom={borderStyle}
+                width="100%"
+              >
+                <Heading size="md" color={brandRed} marginBottom="2rem">
+                  {option.name.toUpperCase()}
+                </Heading>
+                <Stack direction="row">
+                  {option.values.map((value) => (
+                    <VariantButton key={value.value} text={value.value} />
+                  ))}
+                </Stack>
+              </Flex>
+            ))}
             <Flex height="10rem" width="100%" alignItems="center">
               <Button
                 variant="unstyled"

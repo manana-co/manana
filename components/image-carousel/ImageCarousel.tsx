@@ -35,7 +35,6 @@ function ImageCarousel() {
           '::-webkit-scrollbar': {
             display: 'none',
           },
-          '-ms-overflow-style': 'none',
         }}
       >
         {mockImageSrcs.map(({ src, id }) => (
