@@ -7,7 +7,6 @@ import {
   Stack,
   Button,
   SimpleGrid,
-  Grid,
   Center,
   useMediaQuery,
 } from '@chakra-ui/react'
@@ -36,7 +35,9 @@ function Product() {
             Semi-Pro
           </Heading>
           <Heading size="lg" color={brandBlue} fontFamily={body}>
-            Cupidatat cupidatat nulla sunt non consectetur deserunt.
+            Cupidatat cupidatat nulla sunt non consectetur deserunt. Fugiat duis reprehenderit
+            excepteur et elit eu consectetur irure aliquip laboris culpa qui reprehenderit. Magna id
+            nostrud nostrud nisi et dolor est magna eiusmod eiusmod laborum.
           </Heading>
         </Box>
         <SimpleGrid

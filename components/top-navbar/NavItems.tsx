@@ -15,7 +15,11 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
         main: [brandWhite, 'transparent'],
         scroll: [brandRed, brandWhite],
       },
-      '/product': {
+      '/product/example': {
+        main: [brandRed, brandTan],
+        scroll: [brandTan, brandRed],
+      },
+      '/product/[id]': {
         main: [brandRed, brandTan],
         scroll: [brandTan, brandRed],
       },
@@ -31,6 +35,7 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
     [brandRed, brandTan, brandWhite, brandBlue],
   )
   const { pathname } = useRouter()
+
   const [scrollValue, setScrollValue] = useState(0)
 
   useEffect(() => {
@@ -71,7 +76,7 @@ type Props = {
   toggleShoppingCart: () => void
 }
 
-type ColorGroup = '/product' | '/'
+type ColorGroup = '/product/[id]' | '/'
 
 type ColorSetup = {
   main: [string, string]

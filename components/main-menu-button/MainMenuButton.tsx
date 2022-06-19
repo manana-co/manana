@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Button, Heading, useTheme } from '@chakra-ui/react'
 import { Arrow } from 'components/icons/Arrow'
-import { routes, RouteName } from 'utils/shared-types'
+import { routes, RouteName } from 'utils'
 
 function MainMenuButton({
   text,

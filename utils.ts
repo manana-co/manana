@@ -9,11 +9,9 @@ const routes: Record<RouteName, PossibleRoutes> = {
   notARoute: '',
 }
 
-type Product = {
-  imageSrc: string
-  title: string
-  price: string
+function getId(rawId: string) {
+  return rawId.split('/').pop()
 }
 
-export { routes }
-export type { RouteName, Product }
+export { routes, getId }
+export type { RouteName }
