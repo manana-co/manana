@@ -2,21 +2,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Flex, Box, Button, useTheme } from '@chakra-ui/react'
 
-import hatImage from 'public/hat-example.png'
-import boardImage from 'public/board-example.png'
-import mugImage from 'public/mug-example.png'
-import shirtImage from 'public/shirt-example.png'
-import shortsImage from 'public/shorts-example.png'
-
-const mockImageSrcs = [
-  { src: hatImage, id: 'hat' },
-  { src: boardImage, id: 'board' },
-  { src: mugImage, id: 'mug' },
-  { src: shirtImage, id: 'shirt' },
-  { src: shortsImage, id: 'shorts' },
-]
-
-function ImageCarousel() {
+function ImageCarousel({ images }: Props) {
   const {
     colors: { brandBlue },
   } = useTheme()
@@ -37,19 +23,26 @@ function ImageCarousel() {
           },
         }}
       >
-        {mockImageSrcs.map(({ src, id }) => (
-          <Box key={id} id={id} flexShrink={0} height="100%" width="100%" position="relative">
-            <Image src={src} alt="test" layout="fill" objectFit="contain" priority />
+        {images.map(({ src, id, attrs: { altText } }) => (
+          <Box
+            key={id}
+            id={id as string}
+            flexShrink={0}
+            height="100%"
+            width="100%"
+            position="relative"
+          >
+            <Image src={src} alt={altText} layout="fill" objectFit="contain" priority />
           </Box>
         ))}
       </Flex>
       <Flex justifyContent="center">
-        {mockImageSrcs.map(({ id }, index) => (
+        {images.map(({ id }, index) => (
           <Button
             key={id}
             onClick={(e) => {
               e.preventDefault()
-              const photo = document.getElementById(id)
+              const photo = document.getElementById(id as string)
               setActivePicture(index)
               photo?.scrollIntoView({ block: 'nearest' })
             }}
@@ -67,6 +60,10 @@ function ImageCarousel() {
       </Flex>
     </Box>
   )
+}
+
+type Props = {
+  images: ShopifyBuy.Image[]
 }
 
 export { ImageCarousel }

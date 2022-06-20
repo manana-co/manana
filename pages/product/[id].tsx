@@ -26,7 +26,7 @@ function Product() {
   const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
 
   const { product, isLoading, isError } = useProduct(query.id as string)
-  console.log('in product page', product, isLoading, isError)
+  console.log('>>>', product)
 
   const borderStyle = `2px solid ${brandRed}`
   const price = 800
@@ -54,7 +54,7 @@ function Product() {
           borderTop={borderStyle}
         >
           <Box height="30rem" maxWidth="calc(100vw - 2rem)">
-            <ImageCarousel />
+            <ImageCarousel images={product.images} />
           </Box>
           <Stack direction="column" fontFamily={body} maxWidth="calc(100vw - 2rem)">
             {product.options.map((option) => (
