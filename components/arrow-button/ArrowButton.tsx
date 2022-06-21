@@ -18,7 +18,6 @@ function ArrowButton({
       icon={<Arrow direction={direction} color={color || brandWhite} />}
       aria-label={`${direction} arrow button`}
       variant="unstyled"
-      _focus={{ boxShadow: 'none' }}
       height="4rem"
       width="5rem"
       display="flex"

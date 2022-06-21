@@ -37,26 +37,13 @@ function Footer() {
         </Stack>
         <Stack direction="column" fill={brandTan}>
           <IconButton
-            _focus={{ boxShadow: 'none' }}
             icon={<Instagram />}
             aria-label="Instagram"
             variant="unstyled"
             padding="3px"
           />
-          <IconButton
-            _focus={{ boxShadow: 'none' }}
-            icon={<Twitter />}
-            aria-label="Twitter"
-            variant="unstyled"
-            padding="3px"
-          />
-          <IconButton
-            _focus={{ boxShadow: 'none' }}
-            icon={<Facebook />}
-            aria-label="Facebook"
-            variant="unstyled"
-            padding="3px"
-          />
+          <IconButton icon={<Twitter />} aria-label="Twitter" variant="unstyled" padding="3px" />
+          <IconButton icon={<Facebook />} aria-label="Facebook" variant="unstyled" padding="3px" />
         </Stack>
       </SimpleGrid>
     </Stack>

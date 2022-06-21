@@ -53,8 +53,7 @@ function ImageCarousel({ images }: Props) {
             width="1rem"
             minWidth="1rem"
             borderRadius="10px"
-            margin="0 0.5rem"
-            _focus={{ boxShadow: 'none' }}
+            margin="1rem 0.5rem"
           ></Button>
         ))}
       </Flex>

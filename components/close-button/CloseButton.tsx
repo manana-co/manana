@@ -7,7 +7,6 @@ function CloseButton({ onClick }: Props) {
   return (
     <Button
       variant="unstyled"
-      _focus={{ boxShadow: 'none' }}
       position="absolute"
       right={0}
       width="4rem"

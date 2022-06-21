@@ -17,6 +17,18 @@ const theme = extendTheme({
   heights: {
     topNavBar: '6rem',
   },
+  components: {
+    Button: {
+      variants: {
+        unstyled: {
+          ':focus': {
+            outline: 'none',
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
+  },
 })
 
 export { theme }

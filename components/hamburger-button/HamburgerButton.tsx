@@ -5,7 +5,6 @@ function HamburgerButton({ color, onClick }: Props) {
     <IconButton
       aria-label="menu button"
       variant="unstyled"
-      _focus={{ boxShadow: 'none' }}
       onClick={onClick}
       transform={['scale(0.7)', 'scale(0.7)', 'scale(1)', 'scale(1)']}
     >

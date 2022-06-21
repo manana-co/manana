@@ -16,14 +16,7 @@ function MainMenuButton({
   } = useTheme()
   return (
     <Link href={routes[route]}>
-      <Button
-        display="flex"
-        alignItems="center"
-        height="5rem"
-        variant="unstyled"
-        _focus={{ boxShadow: 'none' }}
-        onClick={onClick}
-      >
+      <Button display="flex" alignItems="center" height="5rem" variant="unstyled" onClick={onClick}>
         <Heading color={brandWhite} size={size} fontFamily={title}>
           {text}
         </Heading>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import {
   useTheme,
@@ -21,17 +22,21 @@ function Product() {
   const {
     colors: { brandRed, brandTan, brandBlue },
     heights: { topNavBar },
-    fonts: { title, body },
+    fonts: { title: titleFont, body },
   } = useTheme()
   const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
 
   const { product, isLoading, isError } = useProduct(query.id as string)
-  console.log('>>>', product)
+
+  const [selectedColor, setSelectedColor] = useState('')
+  const [selectedSize, setSelectedSize] = useState('')
 
   const borderStyle = `2px solid ${brandRed}`
   const price = 800
 
   if (!product || isLoading || isError) return null
+
+  const { title, description, options, images } = product
 
   return (
     <Box background={brandTan} padding={`${topNavBar} 1rem 0`} scrollPaddingTop="5rem">
@@ -40,11 +45,11 @@ function Product() {
           <ArrowButton direction="back" color={brandRed} />
         </Box>
         <Box padding="1rem">
-          <Heading size="4xl" color={brandBlue} fontFamily={title}>
-            {product.title}
+          <Heading size="4xl" color={brandBlue} fontFamily={titleFont}>
+            {title}
           </Heading>
           <Heading size="lg" color={brandBlue} fontFamily={body}>
-            {product.description}
+            {description}
           </Heading>
         </Box>
         <SimpleGrid
@@ -53,11 +58,11 @@ function Product() {
           paddingBottom="2rem"
           borderTop={borderStyle}
         >
-          <Box height="30rem" maxWidth="calc(100vw - 2rem)">
-            <ImageCarousel images={product.images} />
+          <Box height="35rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+            <ImageCarousel images={images} />
           </Box>
           <Stack direction="column" fontFamily={body} maxWidth="calc(100vw - 2rem)">
-            {product.options.map((option) => (
+            {options.map((option) => (
               <Flex
                 key={option.name}
                 flexDirection="column"
@@ -70,9 +75,29 @@ function Product() {
                   {option.name.toUpperCase()}
                 </Heading>
                 <Stack direction="row">
-                  {option.values.map((value) => (
-                    <VariantButton key={value.value} text={value.value} />
-                  ))}
+                  {option.values.map((value, index) => {
+                    if (option.name === 'Color') {
+                      return (
+                        <VariantButton
+                          key={value.value}
+                          text={value.value}
+                          selected={selectedColor ? selectedColor === value.value : index === 0}
+                          onSelect={setSelectedColor}
+                        />
+                      )
+                    }
+                    if (option.name === 'Size') {
+                      return (
+                        <VariantButton
+                          key={value.value}
+                          text={value.value}
+                          selected={selectedSize ? selectedSize === value.value : index === 0}
+                          onSelect={setSelectedSize}
+                        />
+                      )
+                    }
+                    return null
+                  })}
                 </Stack>
               </Flex>
             ))}
@@ -109,7 +134,7 @@ function Product() {
           <Heading
             size="4xl"
             marginBottom="2rem"
-            fontFamily={title}
+            fontFamily={titleFont}
             color={brandBlue}
             _before={{ content: 'open-quote' }}
             _after={{ content: 'close-quote' }}
