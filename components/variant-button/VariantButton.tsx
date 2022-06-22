@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
 import { Button, useTheme } from '@chakra-ui/react'
 
-function VariantButton({ text, selected = false, onSelect }: Props) {
+function VariantButton({ text, selected = false, optionType, onSelect }: Props) {
   const {
     colors: { brandRed, brandTan, brandBlue },
   } = useTheme()
@@ -18,7 +17,7 @@ function VariantButton({ text, selected = false, onSelect }: Props) {
       alignItems="center"
       width="5rem"
       _hover={{ background: selected ? brandRed : `${brandBlue}50` }}
-      onClick={() => onSelect(text)}
+      onClick={() => onSelect(optionType, text)}
     >
       {text}
     </Button>
@@ -28,7 +27,8 @@ function VariantButton({ text, selected = false, onSelect }: Props) {
 type Props = {
   text: string
   selected?: boolean
-  onSelect: Dispatch<SetStateAction<string>>
+  onSelect: (optionType: Props['optionType'], value: string) => void
+  optionType: 'Color' | 'Size'
 }
 
 export { VariantButton }

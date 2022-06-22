@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import {
   useTheme,
@@ -28,8 +28,30 @@ function Product() {
 
   const { product, isLoading, isError } = useProduct(query.id as string)
 
-  const [selectedColor, setSelectedColor] = useState('')
-  const [selectedSize, setSelectedSize] = useState('')
+  const [selectedVariant, setSelectedVariant] = useState<ModifiedProductVariant | undefined>(
+    product?.variants[0] as ModifiedProductVariant,
+  )
+  const [activeImageId, setActiveImageId] = useState<string>(selectedVariant?.image.id as string)
+
+  const setNewSelectedVariant = (optionType: 'Color' | 'Size', optionValue: string) => {
+    const currentSelectedOptions: Record<'Color' | 'Size', string> | undefined =
+      selectedVariant?.selectedOptions.reduce(
+        (final, current) => ({
+          ...final,
+          [current.name]: current.value,
+        }),
+        {} as Record<'Color' | 'Size', string>,
+      )
+
+    const newVariant = (product?.variants as ModifiedProductVariant[]).find(({ selectedOptions }) =>
+      selectedOptions.every(({ name, value }) => {
+        if (name === optionType) return value === optionValue
+        return currentSelectedOptions?.[name as 'Color' | 'Size'] === value
+      }),
+    )
+    setSelectedVariant(newVariant)
+    setActiveImageId(newVariant?.image.id as string)
+  }
 
   const borderStyle = `2px solid ${brandRed}`
   const price = 800
@@ -37,7 +59,14 @@ function Product() {
   if (!product || isLoading || isError) return null
 
   const { title, description, options, images, variants } = product
-  console.log(product)
+  const variantImages = variants.map((variant: ShopifyBuy.ProductVariant) => variant.image)
+
+  const { value: selectedColor } = selectedVariant?.selectedOptions.find(
+    ({ name }: { name: string }) => name === 'Color',
+  ) || { value: undefined }
+  const { value: selectedSize } = selectedVariant?.selectedOptions.find(
+    ({ name }: { name: string }) => name === 'Size',
+  ) || { value: undefined }
 
   return (
     <Box background={brandTan} padding={`${topNavBar} 1rem 0`} scrollPaddingTop="5rem">
@@ -60,7 +89,11 @@ function Product() {
           borderTop={borderStyle}
         >
           <Box height="35rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
-            <ImageCarousel images={images} />
+            <ImageCarousel
+              images={variantImages}
+              activeImageId={activeImageId}
+              setActiveImageId={setActiveImageId}
+            />
           </Box>
           <Stack direction="column" fontFamily={body} maxWidth="calc(100vw - 2rem)">
             {options.map((option) => (
@@ -76,14 +109,15 @@ function Product() {
                   {option.name.toUpperCase()}
                 </Heading>
                 <Stack direction="row">
-                  {option.values.map((value, index) => {
+                  {option.values.map((value) => {
                     if (option.name === 'Color') {
                       return (
                         <VariantButton
                           key={value.value}
                           text={value.value}
-                          selected={selectedColor ? selectedColor === value.value : index === 0}
-                          onSelect={setSelectedColor}
+                          optionType="Color"
+                          selected={selectedColor === value.value}
+                          onSelect={setNewSelectedVariant}
                         />
                       )
                     }
@@ -92,8 +126,9 @@ function Product() {
                         <VariantButton
                           key={value.value}
                           text={value.value}
-                          selected={selectedSize ? selectedSize === value.value : index === 0}
-                          onSelect={setSelectedSize}
+                          optionType="Size"
+                          selected={selectedSize === value.value}
+                          onSelect={setNewSelectedVariant}
                         />
                       )
                     }
@@ -149,6 +184,13 @@ function Product() {
       </Box>
     </Box>
   )
+}
+
+type ModifiedProductVariant = ShopifyBuy.ProductVariant & {
+  selectedOptions: {
+    name: string
+    value: string
+  }[]
 }
 
 export default Product

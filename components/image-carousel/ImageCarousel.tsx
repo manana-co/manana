@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useMemo, Dispatch, SetStateAction, useEffect } from 'react'
 import Image from 'next/image'
 import { Flex, Box, Button, useTheme } from '@chakra-ui/react'
 
-function ImageCarousel({ images }: Props) {
+function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
   const {
     colors: { brandBlue },
   } = useTheme()
-  const [activePicture, setActivePicture] = useState(0)
+  const uniqueImages = useMemo(() => getUniqueImages(images), [images])
+  // prob don't need this ^ when products have unique variants
+
+  useEffect(() => {
+    const photo = document.getElementById(activeImageId as string)
+    photo?.scrollIntoView({ block: 'nearest' })
+  }, [activeImageId])
 
   return (
     <Box bg="transparent" height="100%" width="100%">
@@ -22,8 +28,9 @@ function ImageCarousel({ images }: Props) {
             display: 'none',
           },
         }}
+        overflow="hidden"
       >
-        {images.map(({ src, id, attrs: { altText } }) => (
+        {uniqueImages.map(({ src, id, attrs: { altText } }) => (
           <Box
             key={id}
             id={id as string}
@@ -37,16 +44,16 @@ function ImageCarousel({ images }: Props) {
         ))}
       </Flex>
       <Flex justifyContent="center">
-        {images.map(({ id }, index) => (
+        {uniqueImages.map(({ id }) => (
           <Button
             key={id}
             onClick={(e) => {
               e.preventDefault()
               const photo = document.getElementById(id as string)
-              setActivePicture(index)
+              setActiveImageId(id as string)
               photo?.scrollIntoView({ block: 'nearest' })
             }}
-            background={activePicture === index ? brandBlue : 'none'}
+            background={activeImageId === id ? brandBlue : 'none'}
             variant="unstyled"
             border={`1px solid ${brandBlue}`}
             height="1rem"
@@ -61,8 +68,18 @@ function ImageCarousel({ images }: Props) {
   )
 }
 
+function getUniqueImages(images: ShopifyBuy.Image[]) {
+  return images.reduce((finalList, currentImage) => {
+    const imageAlreadyThere = finalList.some(({ id }) => id === currentImage.id)
+    if (imageAlreadyThere) return finalList
+    return finalList.concat(currentImage)
+  }, [] as ShopifyBuy.Image[])
+}
+
 type Props = {
   images: ShopifyBuy.Image[]
+  activeImageId: string
+  setActiveImageId: Dispatch<SetStateAction<string>>
 }
 
 export { ImageCarousel }
