@@ -36,7 +36,8 @@ function Product() {
 
   if (!product || isLoading || isError) return null
 
-  const { title, description, options, images } = product
+  const { title, description, options, images, variants } = product
+  console.log(product)
 
   return (
     <Box background={brandTan} padding={`${topNavBar} 1rem 0`} scrollPaddingTop="5rem">
