@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import {
   useTheme,
@@ -32,6 +32,12 @@ function Product() {
     product?.variants[0] as ModifiedProductVariant,
   )
   const [activeImageId, setActiveImageId] = useState<string>(selectedVariant?.image.id as string)
+
+  useEffect(() => {
+    if (product && !selectedVariant) {
+      setSelectedVariant(product.variants[0] as ModifiedProductVariant)
+    }
+  }, [selectedVariant, product])
 
   const setNewSelectedVariant = (optionType: 'Color' | 'Size', optionValue: string) => {
     const currentSelectedOptions: Record<'Color' | 'Size', string> | undefined =
@@ -87,8 +93,9 @@ function Product() {
           maxWidth="100%"
           paddingBottom="2rem"
           borderTop={borderStyle}
+          minHeight="50rem"
         >
-          <Box height="35rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          <Box height="40rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
             <ImageCarousel
               images={variantImages}
               activeImageId={activeImageId}
