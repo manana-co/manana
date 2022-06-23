@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Flex, Box, Button, useTheme, IconButton } from '@chakra-ui/react'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 
-function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
+function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: Props) {
   const {
     colors: { brandBlue },
   } = useTheme()
@@ -15,17 +15,25 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
     photo?.scrollIntoView({ block: 'nearest' })
   }, [activeImageId])
 
-  const changeImage = (direction: boolean) => {
-    const currentImageIndex = uniqueImages.findIndex((image) => image.id === activeImageId)
+  const changeImageByArrow = (direction: boolean) => {
+    const currentImageIndex = uniqueImages.findIndex(({ image }) => image.id === activeImageId)
     const nextIndex = direction ? currentImageIndex + 1 : currentImageIndex - 1 || 0
     const lastIndex = uniqueImages.length - 1
     if (nextIndex === -1) {
-      return setActiveImageId(uniqueImages[lastIndex].id as string)
+      setVariant(uniqueImages[lastIndex].variantId)
+      return setActiveImageId(uniqueImages[lastIndex].image.id as string)
     }
     if (nextIndex > lastIndex) {
-      return setActiveImageId(uniqueImages[0].id as string)
+      setVariant(uniqueImages[0].variantId)
+      return setActiveImageId(uniqueImages[0].image.id as string)
     }
-    setActiveImageId(uniqueImages[nextIndex].id as string)
+    setVariant(uniqueImages[nextIndex].variantId)
+    setActiveImageId(uniqueImages[nextIndex].image.id as string)
+  }
+
+  const changeImageByButton = (imageId: string, variantId: string) => {
+    setActiveImageId(imageId)
+    setVariant(variantId)
   }
 
   return (
@@ -37,7 +45,7 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
           variant="unstyled"
           aria-label="left arrow"
           icon={<AiOutlineArrowLeft />}
-          onClick={() => changeImage(false)}
+          onClick={() => changeImageByArrow(false)}
           position="absolute"
           zIndex={1}
         />
@@ -54,18 +62,18 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
             },
           }}
         >
-          {uniqueImages.map(({ src, id, attrs: { altText } }, index) => (
+          {uniqueImages.map(({ image }, index) => (
             <Box
-              key={id}
-              id={id as string}
+              key={image.id}
+              id={image.id as string}
               flexShrink={0}
               height="100%"
               width="100%"
               position="relative"
             >
               <Image
-                src={src}
-                alt={altText}
+                src={image.src}
+                alt={image.attrs.altText}
                 layout="fill"
                 objectFit="contain"
                 priority={index === 0}
@@ -79,17 +87,17 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
           variant="unstyled"
           aria-label="right arrow"
           icon={<AiOutlineArrowRight />}
-          onClick={() => changeImage(true)}
+          onClick={() => changeImageByArrow(true)}
           position="absolute"
           zIndex={1}
           right={0}
         />
       </Flex>
       <Flex justifyContent="center" marginTop="2rem">
-        {uniqueImages.map(({ id }) => (
+        {uniqueImages.map(({ image: { id }, variantId }) => (
           <Button
             key={id}
-            onClick={() => setActiveImageId(id as string)}
+            onClick={() => changeImageByButton(id as string, variantId)}
             background={activeImageId === id ? brandBlue : 'none'}
             variant="unstyled"
             border={`1px solid ${brandBlue}`}
@@ -105,18 +113,24 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
   )
 }
 
-function getUniqueImages(images: ShopifyBuy.Image[]) {
+function getUniqueImages(images: Image[]) {
   return images.reduce((finalList, currentImage) => {
-    const imageAlreadyThere = finalList.some(({ id }) => id === currentImage.id)
+    const imageAlreadyThere = finalList.some(({ image }) => image.id === currentImage.image.id)
     if (imageAlreadyThere) return finalList
     return finalList.concat(currentImage)
-  }, [] as ShopifyBuy.Image[])
+  }, [] as Image[])
 }
 
 type Props = {
-  images: ShopifyBuy.Image[]
+  images: Image[]
   activeImageId: string
   setActiveImageId: Dispatch<SetStateAction<string>>
+  setVariant: (variantId: string) => void
+}
+
+type Image = {
+  image: ShopifyBuy.Image
+  variantId: string
 }
 
 export { ImageCarousel }

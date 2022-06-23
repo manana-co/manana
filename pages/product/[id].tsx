@@ -59,13 +59,20 @@ function Product() {
     setActiveImageId(newVariant?.image.id as string)
   }
 
+  const setVariantById = (variantId: string) => {
+    const variantToSet = product?.variants.find(({ id }) => id === variantId)
+    setSelectedVariant(variantToSet as ModifiedProductVariant)
+  }
+
   const borderStyle = `2px solid ${brandRed}`
-  const price = 800
 
   if (!product || isLoading || isError) return null
 
-  const { title, description, options, images, variants } = product
-  const variantImages = variants.map((variant: ShopifyBuy.ProductVariant) => variant.image)
+  const { title, description, options, variants } = product
+  const variantImages = variants.map(({ image, id }: ShopifyBuy.ProductVariant) => ({
+    image,
+    variantId: id as string,
+  }))
 
   const { value: selectedColor } = selectedVariant?.selectedOptions.find(
     ({ name }: { name: string }) => name === 'Color',
@@ -100,6 +107,7 @@ function Product() {
               images={variantImages}
               activeImageId={activeImageId}
               setActiveImageId={setActiveImageId}
+              setVariant={setVariantById}
             />
           </Box>
           <Stack
@@ -162,7 +170,7 @@ function Product() {
                 alignItems="center"
                 width="30rem"
                 _hover={{ background: brandRed, color: brandTan }}
-              >{`ADD TO CARD - $${price}`}</Button>
+              >{`ADD TO CARD - $${selectedVariant?.price}`}</Button>
             </Flex>
           </Stack>
         </SimpleGrid>
