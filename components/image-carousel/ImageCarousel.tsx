@@ -30,20 +30,23 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
 
   return (
     <Box bg="transparent" height="100%" width="100%" position="relative">
-      <Flex height="100%" justifyContent="space-between" alignItems="center">
+      <Flex height="100%" alignItems="center" position="relative">
         <IconButton
+          display="flex"
+          alignItems="center"
           variant="unstyled"
           aria-label="left arrow"
           icon={<AiOutlineArrowLeft />}
           onClick={() => changeImage(false)}
+          position="absolute"
+          zIndex={1}
         />
         <Flex
           overflowX="auto"
           scrollSnapType="x mandatory"
           scrollBehavior="smooth"
           height="100%"
-          width="80%"
-          position="relative"
+          width="100%"
           sx={{
             scrollbarWidth: 'none',
             '::-webkit-scrollbar': {
@@ -51,7 +54,7 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
             },
           }}
         >
-          {uniqueImages.map(({ src, id, attrs: { altText } }) => (
+          {uniqueImages.map(({ src, id, attrs: { altText } }, index) => (
             <Box
               key={id}
               id={id as string}
@@ -60,18 +63,29 @@ function ImageCarousel({ images, activeImageId, setActiveImageId }: Props) {
               width="100%"
               position="relative"
             >
-              <Image src={src} alt={altText} layout="fill" objectFit="contain" priority />
+              <Image
+                src={src}
+                alt={altText}
+                layout="fill"
+                objectFit="contain"
+                priority={index === 0}
+              />
             </Box>
           ))}
         </Flex>
         <IconButton
+          display="flex"
+          alignItems="center"
           variant="unstyled"
           aria-label="right arrow"
           icon={<AiOutlineArrowRight />}
           onClick={() => changeImage(true)}
+          position="absolute"
+          zIndex={1}
+          right={0}
         />
       </Flex>
-      <Flex justifyContent="center">
+      <Flex justifyContent="center" marginTop="2rem">
         {uniqueImages.map(({ id }) => (
           <Button
             key={id}

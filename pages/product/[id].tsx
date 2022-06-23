@@ -95,14 +95,20 @@ function Product() {
           borderTop={borderStyle}
           minHeight="50rem"
         >
-          <Box height="40rem" maxWidth="calc(100vw - 2rem)" padding="2rem">
+          <Box height="40rem" maxWidth="calc(100vw - 2rem)" padding="2rem 1rem 2rem 0">
             <ImageCarousel
               images={variantImages}
               activeImageId={activeImageId}
               setActiveImageId={setActiveImageId}
             />
           </Box>
-          <Stack direction="column" fontFamily={body} maxWidth="calc(100vw - 2rem)">
+          <Stack
+            direction="column"
+            fontFamily={body}
+            maxWidth="calc(100vw - 2rem)"
+            borderLeft={borderStyle}
+            paddingLeft="1rem"
+          >
             {options.map((option) => (
               <Flex
                 key={option.name}
