@@ -84,9 +84,9 @@ function Product() {
   return (
     <Box background={brandTan} padding={`${topNavBar} 1rem 0`} scrollPaddingTop="5rem">
       <Box maxWidth="2000px" margin="0 auto">
-        <Box borderY={borderStyle}>
+        {/* <Box borderY={borderStyle}>
           <ArrowButton direction="back" color={brandRed} />
-        </Box>
+        </Box> */}
         <Box padding="1rem">
           <Heading size="4xl" color={brandBlue} fontFamily={titleFont}>
             {title}
