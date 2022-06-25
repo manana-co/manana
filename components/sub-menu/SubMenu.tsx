@@ -3,6 +3,8 @@ import { ArrowButton } from 'components/arrow-button'
 import { MainMenuButton } from 'components/main-menu-button'
 import { MenuHeading } from 'components/menu-heading'
 import { CollectionType, useCollection } from 'hooks/useCollection'
+import Link from 'next/link'
+import { getId } from 'utils'
 
 function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
   const {
@@ -20,13 +22,10 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
         <DrawerBody>
           <MenuHeading text={collection.title} />
           {collection.products.map((product) => (
-            <MainMenuButton key={product.id} text={product.title} />
+            <Link key={product.id} href={`product/${getId(product.id as string)}`}>
+              <MainMenuButton text={product.title} onClick={onCloseMenu} />
+            </Link>
           ))}
-          {/* <MainMenuButton text="Molo" />
-          <MainMenuButton text="Semi-Pro" onClick={onCloseMenu} route="product" />
-          <MainMenuButton text="Leslie" />
-          <MainMenuButton text="Cousin Greg" />
-          <MainMenuButton text="Shop All" /> */}
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -51,7 +51,7 @@ type Props = {
   isOpen: boolean
   onClose: () => void
   openSubMenu: () => unknown
-  setCurrentCollection: Dispatch<SetStateAction<CollectionType>>
+  setCurrentCollection: Dispatch<SetStateAction<CollectionType | undefined>>
 }
 
 export { MainMenu }
