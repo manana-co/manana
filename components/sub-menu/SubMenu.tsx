@@ -34,7 +34,7 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
               <Link
                 key={product.id}
                 href={{
-                  pathname: 'product/[id]',
+                  pathname: '/product/[id]',
                   query: { id: productId },
                 }}
               >

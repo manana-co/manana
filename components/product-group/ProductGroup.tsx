@@ -26,7 +26,7 @@ function ProductGroup({ product }: Props) {
         </Heading>
         <Link
           href={{
-            pathname: `product/[productId]`,
+            pathname: `/product/[productId]`,
             query: { productId: getId(product.id as string) },
           }}
         >

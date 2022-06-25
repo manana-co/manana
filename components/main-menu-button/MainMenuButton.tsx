@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Button, Heading, useTheme } from '@chakra-ui/react'
 import { Arrow } from 'components/icons/Arrow'
 import { routes, RouteName } from 'utils'
+import { UrlObject } from 'url'
 
 function MainMenuButton({
   text,
@@ -9,6 +10,7 @@ function MainMenuButton({
   onClick,
   size = '4xl',
   route = 'notARoute',
+  routeQuery,
 }: Props) {
   const {
     colors: { brandWhite },
@@ -26,7 +28,12 @@ function MainMenuButton({
 
   if (route === 'notARoute') return ActualButton
 
-  return <Link href={routes[route]}>{ActualButton}</Link>
+  const href = routeQuery || {
+    pathname: routes[route],
+    query: {},
+  }
+
+  return <Link href={href}>{ActualButton}</Link>
 }
 
 type Props = {
@@ -35,6 +42,7 @@ type Props = {
   onClick?: () => unknown
   size?: '4xl' | '2xl'
   route?: RouteName
+  routeQuery?: UrlObject
 }
 
 export { MainMenuButton }
