@@ -10,11 +10,18 @@ import {
 import { CloseButton } from 'components/close-button'
 import { MainMenuButton } from 'components/main-menu-button'
 import { MenuHeading } from 'components/menu-heading'
+import { CollectionType } from 'hooks/useCollection'
+import { Dispatch, SetStateAction } from 'react'
 
-function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
+function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props) {
   const {
     colors: { brandBlue, brandWhite },
   } = useTheme()
+
+  const selectCollection = (collectionType: CollectionType) => {
+    setCurrentCollection(collectionType)
+    openSubMenu()
+  }
 
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="md" placement="left">
@@ -24,7 +31,7 @@ function MainMenu({ isOpen, onClose, openSubMenu }: Props) {
         <DrawerBody paddingTop="2rem">
           <MenuHeading text="BOARDS" />
           <MainMenuButton text="Surf" showArrow route="home" />
-          <MainMenuButton text="Wakesurf" showArrow onClick={openSubMenu} />
+          <MainMenuButton text="Wakesurf" showArrow onClick={() => selectCollection('wakesurf')} />
           <MenuHeading text="APPAREL" />
           <MainMenuButton text="Hats" route="home" />
           <MainMenuButton text="Shirts" route="home" />
@@ -44,6 +51,7 @@ type Props = {
   isOpen: boolean
   onClose: () => void
   openSubMenu: () => unknown
+  setCurrentCollection: Dispatch<SetStateAction<CollectionType>>
 }
 
 export { MainMenu }
