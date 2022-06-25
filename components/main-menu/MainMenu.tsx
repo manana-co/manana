@@ -30,14 +30,18 @@ function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props)
         <CloseButton onClick={onClose} />
         <DrawerBody paddingTop="2rem">
           <MenuHeading text="BOARDS" />
-          <MainMenuButton text="Surf" showArrow route="home" />
+          <MainMenuButton text="Surf" showArrow onClick={() => selectCollection('surf')} />
           <MainMenuButton text="Wakesurf" showArrow onClick={() => selectCollection('wakesurf')} />
           <MenuHeading text="APPAREL" />
-          <MainMenuButton text="Hats" route="home" />
-          <MainMenuButton text="Shirts" route="home" />
-          <MainMenuButton text="Shorts" route="home" />
+          {/* <MainMenuButton text="Hats" onClick={() => selectCollection('hats')} />
+          <MainMenuButton text="Shirts" onClick={() => selectCollection('t-shirts')} />
+          <MainMenuButton text="Shorts" onClick={() => selectCollection('shorts')} /> */}
+          <MainMenuButton text="Hats" />
+          <MainMenuButton text="Shirts" />
+          <MainMenuButton text="Shorts" />
           <MenuHeading text="GEAR" />
-          <MainMenuButton text="Gear" route="home" />
+          {/* <MainMenuButton text="Gear" onClick={() => selectCollection('gear')} /> */}
+          <MainMenuButton text="Gear" />
           <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" variant="unstyled" />
           <MainMenuButton text="Shop All" size="2xl" route="shopAll" onClick={onClose} />
           <MainMenuButton text="About Us" size="2xl" route="aboutUs" onClick={onClose} />

@@ -11,7 +11,7 @@ import {
   Center,
   useMediaQuery,
 } from '@chakra-ui/react'
-import { ArrowButton } from 'components/arrow-button'
+// import { ArrowButton } from 'components/arrow-button'
 import { ImageCarousel } from 'components/image-carousel'
 import { useRouter } from 'next/router'
 import { useProduct } from 'hooks/useProduct'

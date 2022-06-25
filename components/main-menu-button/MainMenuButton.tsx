@@ -14,16 +14,19 @@ function MainMenuButton({
     colors: { brandWhite },
     fonts: { title },
   } = useTheme()
-  return (
-    <Link href={routes[route]}>
-      <Button display="flex" alignItems="center" height="5rem" variant="unstyled" onClick={onClick}>
-        <Heading color={brandWhite} size={size} fontFamily={title}>
-          {text}
-        </Heading>
-        {showArrow && <Arrow color={brandWhite} />}
-      </Button>
-    </Link>
+
+  const ActualButton = (
+    <Button display="flex" alignItems="center" height="5rem" variant="unstyled" onClick={onClick}>
+      <Heading color={brandWhite} size={size} fontFamily={title}>
+        {text}
+      </Heading>
+      {showArrow && <Arrow color={brandWhite} />}
+    </Button>
   )
+
+  if (route === 'notARoute') return ActualButton
+
+  return <Link href={routes[route]}>{ActualButton}</Link>
 }
 
 type Props = {

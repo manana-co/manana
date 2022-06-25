@@ -24,7 +24,12 @@ function ProductGroup({ product }: Props) {
         <Heading size="xl" fontFamily={titleFont} color={brandBlue}>
           {product.title}
         </Heading>
-        <Link href={`product/${getId(product.id as string)}`}>
+        <Link
+          href={{
+            pathname: `product/[productId]`,
+            query: { productId: getId(product.id as string) },
+          }}
+        >
           <Button
             variant="unstyled"
             fontFamily={body}
