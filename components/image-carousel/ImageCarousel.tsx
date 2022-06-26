@@ -94,20 +94,23 @@ function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: 
         />
       </Flex>
       <Flex justifyContent="center" marginTop="2rem">
-        {uniqueImages.map(({ image: { id }, variantId }) => (
-          <Button
-            key={id}
-            onClick={() => changeImageByButton(id as string, variantId)}
-            background={activeImageId === id ? brandBlue : 'none'}
-            variant="unstyled"
-            border={`1px solid ${brandBlue}`}
-            height="1rem"
-            width="1rem"
-            minWidth="1rem"
-            borderRadius="10px"
-            margin="1rem 0.5rem"
-          ></Button>
-        ))}
+        {uniqueImages.map(({ image: { id }, variantId }, index) => {
+          const isSelected = activeImageId ? activeImageId === id : index === 0
+          return (
+            <Button
+              key={id}
+              onClick={() => changeImageByButton(id as string, variantId)}
+              background={isSelected ? brandBlue : 'none'}
+              variant="unstyled"
+              border={`1px solid ${brandBlue}`}
+              height="1rem"
+              width="1rem"
+              minWidth="1rem"
+              borderRadius="10px"
+              margin="1rem 0.5rem"
+            ></Button>
+          )
+        })}
       </Flex>
     </Box>
   )
