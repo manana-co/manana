@@ -1,6 +1,12 @@
-html {
+html,
+html * {
   scroll-behavior: smooth;
   scroll-padding-top: 7rem;
+  scrollbar-width: none !important;
+}
+
+html *::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes bounce {
