@@ -5,7 +5,7 @@ function Badge() {
     colors: { brandTan },
   } = useTheme()
   return (
-    <svg height="243px" width="328px" fill={brandTan}>
+    <svg height="243px" width="328px" fill={brandTan} transform="scale(0.8)">
       <g>
         <g>
           <g>

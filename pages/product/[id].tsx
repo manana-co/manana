@@ -64,7 +64,7 @@ function Product() {
     setSelectedVariant(variantToSet as ModifiedProductVariant)
   }
 
-  const borderStyle = `2px solid ${brandRed}`
+  const borderStyle = `1.5px solid ${brandRed}`
 
   if (!product || isLoading || isError) return null
 
@@ -87,8 +87,8 @@ function Product() {
         {/* <Box borderY={borderStyle}>
           <ArrowButton direction="back" color={brandRed} />
         </Box> */}
-        <Box padding="1rem">
-          <Heading size="4xl" color={brandBlue} fontFamily={titleFont}>
+        <Box padding="2rem">
+          <Heading size="4xl" color={brandBlue} fontFamily={titleFont} marginBottom="1rem">
             {title}
           </Heading>
           <Heading size="lg" color={brandBlue} fontFamily={body}>
@@ -102,7 +102,7 @@ function Product() {
           borderTop={borderStyle}
           minHeight="50rem"
         >
-          <Box height="40rem" maxWidth="calc(100vw - 2rem)" padding="2rem 1rem 2rem 0">
+          <Box height="45rem" maxWidth="calc(100vw - 2rem)" padding="2rem 1rem 2rem 0">
             <ImageCarousel
               images={variantImages}
               activeImageId={activeImageId}

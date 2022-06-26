@@ -4,7 +4,7 @@ function VariantButton({ text, selected = false, optionType, onSelect }: Props) 
   const {
     colors: { brandRed, brandTan, brandBlue },
   } = useTheme()
-  const borderStyle = `2px solid ${brandRed}`
+  const borderStyle = `1.5px solid ${brandRed}`
 
   return (
     <Button

@@ -1,6 +1,6 @@
 import { IconButton, Stack, Text, useTheme, SimpleGrid } from '@chakra-ui/react'
 import { Badge } from 'components/badge'
-import { Instagram, Twitter, Facebook } from 'components/icons'
+import { Instagram, Facebook } from 'components/icons'
 
 function Footer() {
   const {
@@ -12,7 +12,7 @@ function Footer() {
       bg={brandBlue}
       direction="row"
       as="footer"
-      padding="3rem"
+      padding="2rem"
       justify="space-between"
       fontFamily={body}
       userSelect="none"
@@ -22,9 +22,9 @@ function Footer() {
         <Stack direction="column" spacing="1.5rem" color={brandTan} height="100%" paddingY="5px">
           <Text>CONTACT:</Text>
           <Text>
-            2205 Rebel Rd <br /> Austin, TX 78704
+            2708 S. Lamar <br /> Austin, TX 78704
           </Text>
-          <Text>(512) 431-9127</Text>
+          <Text>+1 512-763-2737</Text>
           <Text>Howdy@manana.Co</Text>
         </Stack>
         <Stack direction="column" spacing="1.5rem" color={brandTan} height="100%" paddingY="5px">
@@ -42,7 +42,6 @@ function Footer() {
             variant="unstyled"
             padding="3px"
           />
-          <IconButton icon={<Twitter />} aria-label="Twitter" variant="unstyled" padding="3px" />
           <IconButton icon={<Facebook />} aria-label="Facebook" variant="unstyled" padding="3px" />
         </Stack>
       </SimpleGrid>

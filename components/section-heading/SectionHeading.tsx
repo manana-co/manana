@@ -7,7 +7,7 @@ function SectionHeading({ text }: Props) {
 
   return (
     <Box padding={['2rem 1rem 0', '2rem 2rem 0']} userSelect="none">
-      <Divider bg={brandRed} height="2px" opacity={1} variant="unstyled" />
+      <Divider bg={brandRed} height="1.5px" opacity={1} variant="unstyled" />
       <Heading color={brandRed} size="lg" marginTop="1rem">
         {text}
       </Heading>

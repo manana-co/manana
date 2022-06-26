@@ -20,7 +20,7 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
   if (isLoading || !collection || isError) return null
 
   return (
-    <Drawer onClose={onClose} isOpen={isOpen} size="md" placement="left">
+    <Drawer onClose={onCloseMenu} isOpen={isOpen} size="md" placement="left">
       <DrawerContent bg={brandRed}>
         <ArrowButton direction="back" onClick={onClose} isMenuButton />
         <DrawerBody>
