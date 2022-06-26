@@ -13,16 +13,16 @@ function ShopAllByCollection() {
 
   const { collection, isLoading, isError } = useCollection(collectionType as CollectionType)
 
-  if (!collection || isLoading || isError) return null
-
   return (
     <>
       <SplashImage image={boatHatImage} />
       <SectionHeading text={`SHOP ALL ${typeMap[collectionType as CollectionType]}`} />
       <SimpleGrid minChildWidth="20rem" padding="1rem" spacing={10}>
-        {collection.products?.map((product) => (
-          <ProductGroup key={product.title} product={product} />
-        )) || []}
+        {((collection || !isLoading || !isError) &&
+          collection?.products?.map((product) => (
+            <ProductGroup key={product.title} product={product} />
+          ))) ||
+          []}
       </SimpleGrid>
     </>
   )

@@ -17,7 +17,14 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
 
   const { collection, isError, isLoading } = useCollection(collectionType)
 
-  if (isLoading || !collection || isError) return null
+  if (isLoading || !collection || isError) {
+    // Just empty space..
+    return (
+      <Drawer onClose={onCloseMenu} isOpen={isOpen} size="md" placement="left">
+        <DrawerContent bg={brandRed} />
+      </Drawer>
+    )
+  }
 
   return (
     <Drawer onClose={onCloseMenu} isOpen={isOpen} size="md" placement="left">

@@ -66,7 +66,7 @@ function Product() {
 
   const borderStyle = `1.5px solid ${brandRed}`
 
-  if (!product || isLoading || isError) return null
+  if (!product || isLoading || isError) return <Box background={brandTan} minHeight="100vh" />
 
   const { title, description, options, variants } = product
   const variantImages = variants.map(({ image, id }: ShopifyBuy.ProductVariant) => ({
@@ -87,7 +87,7 @@ function Product() {
         {/* <Box borderY={borderStyle}>
           <ArrowButton direction="back" color={brandRed} />
         </Box> */}
-        <Box padding="2rem">
+        <Box padding="2rem 0">
           <Heading size="4xl" color={brandBlue} fontFamily={titleFont} marginBottom="1rem">
             {title}
           </Heading>
@@ -102,7 +102,12 @@ function Product() {
           borderTop={borderStyle}
           minHeight="50rem"
         >
-          <Box height="45rem" maxWidth="calc(100vw - 2rem)" padding="2rem 1rem 2rem 0">
+          <Box
+            height={['30rem', '40rem']}
+            maxWidth="calc(100vw - 2rem)"
+            padding="2rem 1rem 2rem 0"
+            marginBottom="2rem"
+          >
             <ImageCarousel
               images={variantImages}
               activeImageId={activeImageId}
@@ -122,11 +127,11 @@ function Product() {
                 key={option.name}
                 flexDirection="column"
                 justifyContent="center"
-                height="10rem"
+                height={['8rem']}
                 borderBottom={borderStyle}
                 width="100%"
               >
-                <Heading size="md" color={brandRed} marginBottom="2rem">
+                <Heading size="md" color={brandRed} marginBottom={['1rem', '2rem']}>
                   {option.name.toUpperCase()}
                 </Heading>
                 <Stack direction="row">
@@ -161,7 +166,7 @@ function Product() {
             <Flex height="10rem" width="100%" alignItems="center">
               <Button
                 variant="unstyled"
-                fontSize={28}
+                fontSize={[24, 28]}
                 color={brandRed}
                 border={borderStyle}
                 borderRadius={0}
