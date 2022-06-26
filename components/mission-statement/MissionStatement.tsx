@@ -1,14 +1,14 @@
 import { useTheme, SimpleGrid, Heading, Text, Stack } from '@chakra-ui/react'
 // import glassingImage from 'public/glassing.jpeg'
 
-function CarouselSection() {
+function MissionStatement() {
   const {
     colors: { brandBlue, brandTan },
     fonts: { title, body },
   } = useTheme()
 
   return (
-    <SimpleGrid minChildWidth="30rem" padding={['1rem', '2rem']} bg={brandBlue}>
+    <SimpleGrid as="section" minChildWidth="30rem" padding={['1rem', '2rem']} bg={brandBlue}>
       <Stack
         color={brandTan}
         justifyContent="center"
@@ -44,4 +44,4 @@ function CarouselSection() {
   )
 }
 
-export { CarouselSection }
+export { MissionStatement }
