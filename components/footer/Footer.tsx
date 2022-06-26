@@ -1,4 +1,4 @@
-import { IconButton, Stack, Text, useTheme, SimpleGrid } from '@chakra-ui/react'
+import { IconButton, Stack, Text, useTheme, SimpleGrid, Button } from '@chakra-ui/react'
 import { Badge } from 'components/badge'
 import { Instagram, Facebook } from 'components/icons'
 import Link from 'next/link'
@@ -30,11 +30,16 @@ function Footer() {
         </Stack>
         <Stack direction="column" spacing="1.5rem" color={brandTan} height="100%" paddingY="5px">
           <Text>SUPPORT:</Text>
-          <Text>
-            Returns <br />
-            Refund Policy <br />
-            Terms of Service
-          </Text>
+          <Link href="/returns">
+            <Button variant="unstyled" textAlign="start" height="2rem">
+              Returns
+            </Button>
+          </Link>
+          <Link href="/privacy-policy">
+            <Button variant="unstyled" textAlign="start" height="2rem">
+              Privacy Policy
+            </Button>
+          </Link>
           <Stack direction="row" fill={brandTan}>
             <Link href="https://www.instagram.com/manana.surf/">
               <IconButton

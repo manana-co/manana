@@ -31,6 +31,14 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
         main: [brandRed, 'transparent'],
         scroll: [brandRed, brandTan],
       },
+      '/privacy-policy': {
+        main: [brandRed, 'transparent'],
+        scroll: [brandTan, brandRed],
+      },
+      '/returns': {
+        main: [brandRed, 'transparent'],
+        scroll: [brandTan, brandRed],
+      },
     }),
     [brandRed, brandTan, brandWhite, brandBlue],
   )

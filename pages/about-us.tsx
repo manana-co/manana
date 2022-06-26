@@ -1,5 +1,5 @@
 import { Box, Center, Heading, Text, useTheme, Divider, SimpleGrid, Flex } from '@chakra-ui/react'
-import { DefenderIllustration } from 'components/defender-illustration'
+// import { DefenderIllustration } from 'components/defender-illustration'
 
 function About() {
   const {
