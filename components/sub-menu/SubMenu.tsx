@@ -24,7 +24,7 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
       <DrawerContent bg={brandRed}>
         <ArrowButton direction="back" onClick={onClose} isMenuButton />
         <DrawerBody>
-          <MenuHeading text={collection.title} />
+          <MenuHeading text={collection.title.toUpperCase()} />
           {collection.products.map((product) => {
             const productId = getId(product.id as string)
             if (productId === currentRouteProductId) {
@@ -38,7 +38,11 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
                   query: { id: productId },
                 }}
               >
-                <MainMenuButton text={product.title} onClick={onCloseMenu} />
+                <MainMenuButton
+                  text={product.title}
+                  onClick={onCloseMenu}
+                  fontSize={['42px', '64px']}
+                />
               </Link>
             )
           })}
