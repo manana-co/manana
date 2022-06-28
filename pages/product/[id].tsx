@@ -16,6 +16,7 @@ import { ImageCarousel } from 'components/image-carousel'
 import { useRouter } from 'next/router'
 import { useProduct } from 'hooks/useProduct'
 import { VariantButton } from 'components/variant-button'
+import { useCheckout } from 'hooks/useCheckout'
 
 function Product() {
   const { query } = useRouter()
@@ -25,12 +26,12 @@ function Product() {
     fonts: { title: titleFont, body },
   } = useTheme()
   const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
-
   const { product, isLoading, isError } = useProduct(query.id as string)
-
+  const { addToCheckout } = useCheckout()
   const [selectedVariant, setSelectedVariant] = useState<ModifiedProductVariant | undefined>(
     product?.variants[0] as ModifiedProductVariant,
   )
+
   const [activeImageId, setActiveImageId] = useState<string>(selectedVariant?.image.id as string)
 
   useEffect(() => {
@@ -57,6 +58,11 @@ function Product() {
     )
     setSelectedVariant(newVariant)
     setActiveImageId(newVariant?.image.id as string)
+  }
+
+  const addVariantToShoppingCart = () => {
+    if (!selectedVariant) return null
+    addToCheckout(selectedVariant)
   }
 
   const setVariantById = (variantId: string) => {
@@ -174,6 +180,7 @@ function Product() {
                 display="flex"
                 alignItems="center"
                 width="30rem"
+                onClick={addVariantToShoppingCart}
                 _hover={{ background: brandRed, color: brandTan }}
               >{`ADD TO CARD - $${selectedVariant?.price}`}</Button>
             </Flex>

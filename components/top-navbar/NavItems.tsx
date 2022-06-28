@@ -61,7 +61,7 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
 
   return (
     <Flex
-      height="6rem"
+      height="5rem"
       position="fixed"
       width="100vw"
       maxWidth="100vw"

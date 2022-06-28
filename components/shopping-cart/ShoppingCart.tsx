@@ -12,17 +12,30 @@ import {
   Stack,
   DrawerHeader,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
+import { client } from 'client'
 import { CloseButton } from 'components/close-button'
 import { ShoppingCartItem } from 'components/shopping-cart-item'
+import { useCheckout } from 'hooks/useCheckout'
 
 function ShoppingCart({ isOpen, onClose }: Props) {
   const {
     colors: { brandBlue, brandWhite },
     fonts: { title, body },
   } = useTheme()
-
-  const numberOfCartItems = 2
+  const { lineItems } = useCheckout()
+  const { push } = useRouter()
+  // console.log('>> in shopping cart, items', lineItems)
+  const goToCheckout = async () => {
+    const { id, webUrl } = await client.checkout.create()
+    const lineItemsToSave = lineItems.map((item) => ({
+      variantId: item.id,
+      quantity: 1,
+    }))
+    await client.checkout.addLineItems(id as string, lineItemsToSave)
+    push(webUrl)
+  }
 
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="md" placement="right">
@@ -31,11 +44,13 @@ function ShoppingCart({ isOpen, onClose }: Props) {
         <CloseButton onClick={onClose} />
         <DrawerHeader>
           <Heading size="lg" fontFamily={title}>
-            Shopping Cart ({`${numberOfCartItems}`} items)
+            Shopping Cart ({lineItems.length} items)
           </Heading>
         </DrawerHeader>
         <DrawerBody padding="2rem">
-          <ShoppingCartItem />
+          {lineItems?.map((item) => (
+            <ShoppingCartItem key={item.id} item={item} />
+          ))}
         </DrawerBody>
         <DrawerFooter>
           <Stack direction="column" width="100%">
@@ -48,7 +63,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
             <Text opacity={0.7} pb="1rem" fontFamily={body}>
               Shipping and taxes calculated at checkout
             </Text>
-            <Button color="#000000" fontFamily={body}>
+            <Button color="#000000" fontFamily={body} onClick={goToCheckout}>
               Checkout
             </Button>
           </Stack>

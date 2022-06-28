@@ -1,21 +1,27 @@
-import { Grid } from '@chakra-ui/react'
-function ShoppingCartItem() {
+import { Grid, Text, Stack, Box } from '@chakra-ui/react'
+// import { LineItem, ProductVariant } from 'shopify-buy'
+import { ProductVariant } from 'shopify-buy'
+function ShoppingCartItem({ item }: Props) {
   // const quantity = 2
   // const dropDownItems = Array.from(new Array(quantity + 2), x => x)
 
   return (
     <Grid height="5rem" templateColumns="3" templateRows="1">
-      {/* <Box height="100%" border="1px solid red" />
       <Stack>
-        <Text>Molo</Text>
-        <Text>{`Tan, 6' 0"`}</Text>
+        <Text>{item.title}</Text>
+        {/* <Text>{`Tan, 6' 0"`}</Text> */}
+        {/* <Text>{`${item.selectedOptions.}, 6' 0"`}</Text> */}
       </Stack>
       <Stack direction="column">
-        <Text>$899</Text>
-        <Text>Remove</Text>
-      </Stack> */}
+        <Text>{item.price}</Text>
+        {/* <Text>Remove</Text> */}
+      </Stack>
     </Grid>
   )
+}
+
+type Props = {
+  item: ProductVariant
 }
 
 export { ShoppingCartItem }
