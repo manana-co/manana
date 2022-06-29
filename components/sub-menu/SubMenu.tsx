@@ -35,7 +35,7 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
           {collection.products.map((product) => {
             const productId = getId(product.id as string)
             if (productId === currentRouteProductId) {
-              return <MainMenuButton text={product.title} onClick={onCloseMenu} />
+              return <MainMenuButton key={product.id} text={product.title} onClick={onCloseMenu} />
             }
             return (
               <Link

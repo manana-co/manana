@@ -27,7 +27,7 @@ function Product() {
   } = useTheme()
   const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
   const { product, isLoading, isError } = useProduct(query.id as string)
-  const { addToCheckout } = useCheckout()
+  const { addLineItem } = useCheckout()
   const [selectedVariant, setSelectedVariant] = useState<ModifiedProductVariant | undefined>(
     product?.variants[0] as ModifiedProductVariant,
   )
@@ -62,7 +62,7 @@ function Product() {
 
   const addVariantToShoppingCart = () => {
     if (!selectedVariant) return null
-    addToCheckout(selectedVariant)
+    addLineItem(selectedVariant)
   }
 
   const setVariantById = (variantId: string) => {

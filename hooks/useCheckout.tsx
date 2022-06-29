@@ -1,58 +1,46 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
-// import useSWR from 'swr'
+import { createContext, ReactNode, useContext, useEffect } from 'react'
 import { client } from 'client'
-// import { LineItem, LineItemToAdd } from 'shopify-buy'
+import { useLocalStorage } from 'react-use'
 import { ProductVariant } from 'shopify-buy'
 
 type CheckoutContext = {
-  // checkoutId: string | undefined
-  lineItems: ProductVariant[]
-  addToCheckout: (itemsToAdd: ProductVariant) => void
+  addLineItem: (variant: ProductVariant) => void
+  lineItems: ProductVariant[] | undefined
 }
 
 const Checkout = createContext<CheckoutContext>({
-  // checkoutId: undefined,
-  lineItems: [],
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  addToCheckout: () => {},
+  addLineItem: () => {},
+  lineItems: [],
 })
 
-async function createNewCheckout() {
-  return await client.checkout.create()
+async function createNewCart() {
+  const newCart = await client.checkout.create()
+  return newCart
 }
 
 function CheckoutProvider({ children }: Props) {
-  // const { data: checkout } = useSWR('checkout', createNewCheckout)
-  // const [lineItems, setLineItems] = useState<LineItem[]>([])
-  const [lineItems, setLineItems] = useState<ProductVariant[]>([])
+  const [lineItems, setLineItems] = useLocalStorage<ProductVariant[]>('line-items', [])
+  console.log('line items >>>', lineItems)
 
-  // const checkoutId = (checkout?.id as string) || undefined
+  // useEffect(() => () => removeLineItems(), [removeLineItems])
 
-  // async function addToCheckout(itemToAdd: LineItemToAdd) {
-  async function addToCheckout(itemToAdd: ProductVariant) {
-    // const lineItemsToSave = [itemToAdd]
-    // const newCheckout = await client.checkout.addLineItems(checkoutId as string, lineItemsToSave)
-    // console.log('new checkout >>>', newCheckout)
-
-    // const newLineItems = newCheckout.lineItems
-
-    setLineItems((currItems) => currItems.concat(itemToAdd))
+  const addLineItem = async (variant: ProductVariant) => {
+    if (!lineItems || !lineItems.length) return setLineItems([variant])
+    const newLineItems = lineItems.concat(variant)
+    setLineItems(newLineItems)
   }
-  console.log(lineItems)
 
-  return (
-    // <Checkout.Provider value={{ checkoutId, lineItems, addToCheckout }}>
-    <Checkout.Provider value={{ lineItems, addToCheckout }}>{children}</Checkout.Provider>
-  )
+  return <Checkout.Provider value={{ lineItems, addLineItem }}>{children}</Checkout.Provider>
 }
 
 function useCheckout() {
-  const { lineItems, addToCheckout } = useContext(Checkout)
-  return { lineItems, addToCheckout }
+  const { lineItems, addLineItem } = useContext(Checkout)
+  return { lineItems, addLineItem }
 }
 
 type Props = {
   children: ReactNode
 }
 
-export { useCheckout, CheckoutProvider }
+export { useCheckout, CheckoutProvider, createNewCart }

@@ -17,7 +17,8 @@ import { useRouter } from 'next/router'
 import { client } from 'client'
 import { CloseButton } from 'components/close-button'
 import { ShoppingCartItem } from 'components/shopping-cart-item'
-import { useCheckout } from 'hooks/useCheckout'
+import { useCheckout, createNewCart } from 'hooks/useCheckout'
+import { LineItemToAdd } from 'shopify-buy'
 
 function ShoppingCart({ isOpen, onClose }: Props) {
   const {
@@ -26,14 +27,12 @@ function ShoppingCart({ isOpen, onClose }: Props) {
   } = useTheme()
   const { lineItems } = useCheckout()
   const { push } = useRouter()
-  // console.log('>> in shopping cart, items', lineItems)
+
   const goToCheckout = async () => {
-    const { id, webUrl } = await client.checkout.create()
-    const lineItemsToSave = lineItems.map((item) => ({
-      variantId: item.id,
-      quantity: 1,
-    }))
-    await client.checkout.addLineItems(id as string, lineItemsToSave)
+    if (!lineItems || !lineItems.length) return
+    const { id, webUrl } = await createNewCart()
+    const lineItemsToAdd = lineItems.map(({ id }) => ({ variantId: id, quantity: 1 }))
+    await client.checkout.addLineItems(id as string, lineItemsToAdd)
     push(webUrl)
   }
 
@@ -44,7 +43,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
         <CloseButton onClick={onClose} />
         <DrawerHeader>
           <Heading size="lg" fontFamily={title}>
-            Shopping Cart ({lineItems.length} items)
+            Shopping Cart ({lineItems?.length} items)
           </Heading>
         </DrawerHeader>
         <DrawerBody padding="2rem">
@@ -63,7 +62,12 @@ function ShoppingCart({ isOpen, onClose }: Props) {
             <Text opacity={0.7} pb="1rem" fontFamily={body}>
               Shipping and taxes calculated at checkout
             </Text>
-            <Button color="#000000" fontFamily={body} onClick={goToCheckout}>
+            <Button
+              color="#000000"
+              fontFamily={body}
+              onClick={goToCheckout}
+              disabled={!lineItems?.length}
+            >
               Checkout
             </Button>
           </Stack>
