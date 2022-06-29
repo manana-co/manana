@@ -51,9 +51,9 @@ function ShoppingCart({ isOpen, onClose }: Props) {
           </Heading>
         </DrawerHeader>
         <DrawerBody padding="2rem">
-          {lineItems &&
-            lineItems.length &&
-            lineItems.map((item) => <ShoppingCartItem key={item?.variant?.id} item={item} />)}
+          {lineItems?.length
+            ? lineItems.map((item) => <ShoppingCartItem key={item?.variant?.id} item={item} />)
+            : null}
         </DrawerBody>
         <DrawerFooter>
           <Stack direction="column" width="100%">
@@ -72,7 +72,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
               color="#000000"
               fontFamily={body}
               onClick={goToCheckout}
-              disabled={!lineItems?.length}
+              disabled={!lineItems || lineItems.length === 0}
             >
               Checkout
             </Button>
