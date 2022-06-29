@@ -1,11 +1,15 @@
-import { createContext, ReactNode, useContext, useEffect } from 'react'
+import { createContext, ReactNode, useContext } from 'react'
 import { client } from 'client'
 import { useLocalStorage } from 'react-use'
-import { ProductVariant } from 'shopify-buy'
+import { ProductVariant, Product } from 'shopify-buy'
 
+type LineItem = {
+  title: Product['title']
+  variant: ProductVariant
+}
 type CheckoutContext = {
-  addLineItem: (variant: ProductVariant) => void
-  lineItems: ProductVariant[] | undefined
+  addLineItem: (lineItem: LineItem) => void
+  lineItems: LineItem[] | undefined
 }
 
 const Checkout = createContext<CheckoutContext>({
@@ -20,14 +24,14 @@ async function createNewCart() {
 }
 
 function CheckoutProvider({ children }: Props) {
-  const [lineItems, setLineItems] = useLocalStorage<ProductVariant[]>('line-items', [])
+  const [lineItems, setLineItems] = useLocalStorage<LineItem[]>('line-items', [])
   console.log('line items >>>', lineItems)
 
   // useEffect(() => () => removeLineItems(), [removeLineItems])
 
-  const addLineItem = async (variant: ProductVariant) => {
-    if (!lineItems || !lineItems.length) return setLineItems([variant])
-    const newLineItems = lineItems.concat(variant)
+  const addLineItem = async (lineItem: LineItem) => {
+    if (!lineItems || !lineItems.length) return setLineItems([lineItem])
+    const newLineItems = lineItems.concat(lineItem)
     setLineItems(newLineItems)
   }
 
@@ -43,4 +47,5 @@ type Props = {
   children: ReactNode
 }
 
+export type { LineItem }
 export { useCheckout, CheckoutProvider, createNewCart }

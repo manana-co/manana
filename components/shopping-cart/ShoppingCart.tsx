@@ -18,7 +18,6 @@ import { client } from 'client'
 import { CloseButton } from 'components/close-button'
 import { ShoppingCartItem } from 'components/shopping-cart-item'
 import { useCheckout, createNewCart } from 'hooks/useCheckout'
-import { LineItemToAdd } from 'shopify-buy'
 
 function ShoppingCart({ isOpen, onClose }: Props) {
   const {
@@ -31,10 +30,15 @@ function ShoppingCart({ isOpen, onClose }: Props) {
   const goToCheckout = async () => {
     if (!lineItems || !lineItems.length) return
     const { id, webUrl } = await createNewCart()
-    const lineItemsToAdd = lineItems.map(({ id }) => ({ variantId: id, quantity: 1 }))
+    const lineItemsToAdd = lineItems.map(({ variant: { id } }) => ({ variantId: id, quantity: 1 }))
     await client.checkout.addLineItems(id as string, lineItemsToAdd)
     push(webUrl)
   }
+
+  const subTotal =
+    lineItems?.reduce((finalPrice, { variant }) => {
+      return finalPrice + Number(variant.price)
+    }, 0) || 0
 
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="md" placement="right">
@@ -47,9 +51,9 @@ function ShoppingCart({ isOpen, onClose }: Props) {
           </Heading>
         </DrawerHeader>
         <DrawerBody padding="2rem">
-          {lineItems?.map((item) => (
-            <ShoppingCartItem key={item.id} item={item} />
-          ))}
+          {lineItems &&
+            lineItems.length &&
+            lineItems.map((item) => <ShoppingCartItem key={item?.variant?.id} item={item} />)}
         </DrawerBody>
         <DrawerFooter>
           <Stack direction="column" width="100%">
@@ -57,7 +61,9 @@ function ShoppingCart({ isOpen, onClose }: Props) {
               <Heading size="lg" fontFamily={title}>
                 Subtotal:
               </Heading>
-              <Heading size="lg" fontFamily={title}>{`$${899.0}`}</Heading>
+              <Heading size="lg" fontFamily={title}>
+                {subTotal}
+              </Heading>
             </Flex>
             <Text opacity={0.7} pb="1rem" fontFamily={body}>
               Shipping and taxes calculated at checkout

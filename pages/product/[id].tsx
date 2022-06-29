@@ -62,7 +62,10 @@ function Product() {
 
   const addVariantToShoppingCart = () => {
     if (!selectedVariant) return null
-    addLineItem(selectedVariant)
+    addLineItem({
+      title: product?.title || '',
+      variant: selectedVariant,
+    })
   }
 
   const setVariantById = (variantId: string) => {
