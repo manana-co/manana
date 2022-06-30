@@ -62,7 +62,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
                 Subtotal:
               </Heading>
               <Heading size="lg" fontFamily={title}>
-                {subTotal}
+                {`$${subTotal}`}
               </Heading>
             </Flex>
             <Text opacity={0.7} pb="1rem" fontFamily={body}>

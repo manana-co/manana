@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext } from 'react'
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { client } from 'client'
 import { useLocalStorage } from 'react-use'
 import { ProductVariant, Product } from 'shopify-buy'
@@ -10,12 +10,17 @@ type LineItem = {
 type CheckoutContext = {
   addLineItem: (lineItem: LineItem) => void
   lineItems: LineItem[] | undefined
+  toggleShoppingCart: () => void
+  isShoppingCartOpen: boolean
 }
 
 const Checkout = createContext<CheckoutContext>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   addLineItem: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleShoppingCart: () => {},
   lineItems: [],
+  isShoppingCartOpen: false,
 })
 
 async function createNewCart() {
@@ -24,10 +29,15 @@ async function createNewCart() {
 }
 
 function CheckoutProvider({ children }: Props) {
-  const [lineItems, setLineItems] = useLocalStorage<LineItem[]>('line-items', [])
-  console.log('line items >>>', lineItems)
+  const [lineItems, setLineItems, removeLineItems] = useLocalStorage<LineItem[]>('line-items', [])
+  const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false)
 
-  // useEffect(() => () => removeLineItems(), [removeLineItems])
+  useEffect(() => {
+    console.log('running')
+    removeLineItems()
+  }, [removeLineItems])
+
+  const toggleShoppingCart = () => setIsShoppingCartOpen((currentState) => !currentState)
 
   const addLineItem = async (lineItem: LineItem) => {
     if (!lineItems || !lineItems.length) return setLineItems([lineItem])
@@ -35,12 +45,16 @@ function CheckoutProvider({ children }: Props) {
     setLineItems(newLineItems)
   }
 
-  return <Checkout.Provider value={{ lineItems, addLineItem }}>{children}</Checkout.Provider>
+  return (
+    <Checkout.Provider value={{ lineItems, addLineItem, toggleShoppingCart, isShoppingCartOpen }}>
+      {children}
+    </Checkout.Provider>
+  )
 }
 
 function useCheckout() {
-  const { lineItems, addLineItem } = useContext(Checkout)
-  return { lineItems, addLineItem }
+  const { lineItems, addLineItem, toggleShoppingCart, isShoppingCartOpen } = useContext(Checkout)
+  return { lineItems, addLineItem, toggleShoppingCart, isShoppingCartOpen }
 }
 
 type Props = {

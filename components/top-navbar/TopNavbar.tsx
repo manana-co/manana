@@ -4,12 +4,13 @@ import { SubMenu } from 'components/sub-menu'
 import { ShoppingCart } from 'components/shopping-cart'
 import { NavItems } from './NavItems'
 import { CollectionType } from 'hooks/useCollection'
+import { useCheckout } from 'hooks/useCheckout'
 
 function TopNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
-  const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false)
   const [currentCollection, setCurrentCollection] = useState<CollectionType | undefined>(undefined)
+  const { toggleShoppingCart, isShoppingCartOpen } = useCheckout()
 
   const toggleMenu = () => setIsMenuOpen((currentState) => !currentState)
   const toggleSubMenu = () => setIsSubMenuOpen((currentState) => !currentState)
@@ -17,8 +18,6 @@ function TopNavbar() {
     toggleMenu()
     setIsSubMenuOpen(false)
   }
-
-  const toggleShoppingCart = () => setIsShoppingCartOpen((currentState) => !currentState)
 
   return (
     <>
