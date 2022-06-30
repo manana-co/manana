@@ -50,7 +50,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
             Shopping Cart ({lineItems?.length} items)
           </Heading>
         </DrawerHeader>
-        <DrawerBody padding="2rem">
+        <DrawerBody padding="1rem">
           {lineItems?.length
             ? lineItems.map((item) => <ShoppingCartItem key={item?.variant?.id} item={item} />)
             : null}

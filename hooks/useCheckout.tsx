@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 import { client } from 'client'
 import { useLocalStorage } from 'react-use'
 import { ProductVariant, Product } from 'shopify-buy'
@@ -7,6 +7,7 @@ type LineItem = {
   title: Product['title']
   variant: ProductVariant
 }
+
 type CheckoutContext = {
   addLineItem: (lineItem: LineItem) => void
   lineItems: LineItem[] | undefined
@@ -29,13 +30,8 @@ async function createNewCart() {
 }
 
 function CheckoutProvider({ children }: Props) {
-  const [lineItems, setLineItems, removeLineItems] = useLocalStorage<LineItem[]>('line-items', [])
+  const [lineItems, setLineItems] = useLocalStorage<LineItem[]>('line-items', [])
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false)
-
-  useEffect(() => {
-    console.log('running')
-    removeLineItems()
-  }, [removeLineItems])
 
   const toggleShoppingCart = () => setIsShoppingCartOpen((currentState) => !currentState)
 
