@@ -38,6 +38,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
       quantity,
     }))
     await client.checkout.addLineItems(id as string, lineItemsToAdd)
+    removeLineItem()
     push(webUrl)
   }
 

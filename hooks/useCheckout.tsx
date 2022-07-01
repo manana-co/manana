@@ -11,7 +11,7 @@ type LineItem = {
 
 type CheckoutContext = {
   addLineItem: (lineItem: LineItem) => void
-  removeLineItem: (variantId: string) => void
+  removeLineItem: (variantId?: string) => void
   lineItems: LineItem[] | undefined
   toggleShoppingCart: () => void
   isShoppingCartOpen: boolean
@@ -37,7 +37,10 @@ async function createNewCart() {
 }
 
 function CheckoutProvider({ children }: Props) {
-  const [lineItems, setLineItems] = useLocalStorage<LineItem[]>('line-items', [])
+  const [lineItems, setLineItems, removeAllLineItems] = useLocalStorage<LineItem[]>(
+    'line-items',
+    [],
+  )
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false)
 
   const toggleShoppingCart = () => setIsShoppingCartOpen((currentState) => !currentState)
@@ -48,7 +51,8 @@ function CheckoutProvider({ children }: Props) {
     setLineItems(newLineItems)
   }
 
-  const removeLineItem = (variantId: string) => {
+  const removeLineItem = (variantId?: string) => {
+    if (!variantId) return removeAllLineItems()
     const newLineItems = lineItems?.filter(({ variant }) => !(variant.id === variantId))
     setLineItems(newLineItems)
   }
