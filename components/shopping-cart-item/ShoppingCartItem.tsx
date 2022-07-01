@@ -36,7 +36,7 @@ function ShoppingCartItem({ item: { title, variant, quantity }, changeQuantity }
         </Box>
       </VStack>
       <VStack direction="column" justifyContent="center">
-        <Heading size="md">{`$${variant.price}`}</Heading>
+        <Heading size="md">{`$${Number(variant.price) * quantity}`}</Heading>
         <Text>Remove</Text>
       </VStack>
     </SimpleGrid>

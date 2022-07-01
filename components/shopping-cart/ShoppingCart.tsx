@@ -42,8 +42,8 @@ function ShoppingCart({ isOpen, onClose }: Props) {
   }
 
   const subTotal =
-    lineItems?.reduce((finalPrice, { variant }) => {
-      return finalPrice + Number(variant.price)
+    lineItems?.reduce((finalPrice, { variant, quantity }) => {
+      return finalPrice + Number(variant.price) * quantity
     }, 0) || 0
 
   return (

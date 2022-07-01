@@ -53,8 +53,6 @@ function CheckoutProvider({ children }: Props) {
     setLineItems(newLineItems)
   }
 
-  console.log(lineItems)
-
   return (
     <Checkout.Provider
       value={{ lineItems, addLineItem, toggleShoppingCart, isShoppingCartOpen, changeQuantity }}
