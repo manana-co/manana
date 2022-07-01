@@ -25,7 +25,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
     colors: { brandBlue, brandWhite },
     fonts: { title, body },
   } = useTheme()
-  const { lineItems } = useCheckout()
+  const { lineItems, changeQuantity } = useCheckout()
   const { push } = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -33,7 +33,10 @@ function ShoppingCart({ isOpen, onClose }: Props) {
     setLoading(true)
     if (!lineItems || !lineItems.length) return
     const { id, webUrl } = await createNewCart()
-    const lineItemsToAdd = lineItems.map(({ variant: { id } }) => ({ variantId: id, quantity: 1 }))
+    const lineItemsToAdd = lineItems.map(({ variant: { id }, quantity }) => ({
+      variantId: id,
+      quantity,
+    }))
     await client.checkout.addLineItems(id as string, lineItemsToAdd)
     push(webUrl)
   }
@@ -55,7 +58,13 @@ function ShoppingCart({ isOpen, onClose }: Props) {
         </DrawerHeader>
         <DrawerBody padding="1rem">
           {lineItems?.length
-            ? lineItems.map((item) => <ShoppingCartItem key={item?.variant?.id} item={item} />)
+            ? lineItems.map((item) => (
+                <ShoppingCartItem
+                  key={item?.variant?.id}
+                  item={item}
+                  changeQuantity={changeQuantity}
+                />
+              ))
             : null}
         </DrawerBody>
         <DrawerFooter>

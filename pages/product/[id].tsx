@@ -27,7 +27,7 @@ function Product() {
   } = useTheme()
   const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
   const { product, isLoading, isError } = useProduct(query.id as string)
-  const { addLineItem, toggleShoppingCart } = useCheckout()
+  const { lineItems, addLineItem, toggleShoppingCart, changeQuantity } = useCheckout()
   const [selectedVariant, setSelectedVariant] = useState<ModifiedProductVariant | undefined>(
     product?.variants[0] as ModifiedProductVariant,
   )
@@ -62,9 +62,20 @@ function Product() {
 
   const addVariantToShoppingCart = () => {
     if (!selectedVariant) return null
+    const alreadySelectedVariant = lineItems?.find(
+      ({ variant }) => variant.id === selectedVariant.id,
+    )
+    if (alreadySelectedVariant) {
+      changeQuantity(
+        alreadySelectedVariant.variant.id as string,
+        alreadySelectedVariant.quantity + 1,
+      )
+      return toggleShoppingCart()
+    }
     addLineItem({
       title: product?.title || '',
       variant: selectedVariant,
+      quantity: 1,
     })
     toggleShoppingCart()
   }

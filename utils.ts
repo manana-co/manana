@@ -13,5 +13,13 @@ function getId(rawId: string) {
   return rawId.split('/').pop()
 }
 
-export { routes, getId }
+function makeArrOfNums(numOfItems: number) {
+  const arr = []
+  for (let i = 0; i < numOfItems; i++) {
+    arr.push(i + 1)
+  }
+  return arr
+}
+
+export { routes, getId, makeArrOfNums }
 export type { RouteName }
