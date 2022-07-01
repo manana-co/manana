@@ -12,16 +12,18 @@ function ProductGroup({ product }: Props) {
   return (
     <Stack direction="column" alignItems="center" justifyContent="space-between" maxWidth="25rem">
       <Box height="22rem" width="100%">
-        <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />
+        {product?.images?.[0] && (
+          <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />
+        )}
       </Box>
       <Stack
         direction="column"
-        height="6rem"
+        height="7rem"
         width="100%"
         justifyContent="space-between"
         alignItems="center"
       >
-        <Heading size="xl" fontFamily={titleFont} color={brandBlue}>
+        <Heading size="lg" fontFamily={titleFont} color={brandBlue}>
           {product.title}
         </Heading>
         <Link

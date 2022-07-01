@@ -18,6 +18,7 @@ import { client } from 'client'
 import { CloseButton } from 'components/close-button'
 import { ShoppingCartItem } from 'components/shopping-cart-item'
 import { useCheckout, createNewCart } from 'hooks/useCheckout'
+import { useState } from 'react'
 
 function ShoppingCart({ isOpen, onClose }: Props) {
   const {
@@ -26,8 +27,10 @@ function ShoppingCart({ isOpen, onClose }: Props) {
   } = useTheme()
   const { lineItems } = useCheckout()
   const { push } = useRouter()
+  const [loading, setLoading] = useState(false)
 
   const goToCheckout = async () => {
+    setLoading(true)
     if (!lineItems || !lineItems.length) return
     const { id, webUrl } = await createNewCart()
     const lineItemsToAdd = lineItems.map(({ variant: { id } }) => ({ variantId: id, quantity: 1 }))
@@ -73,6 +76,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
               fontFamily={body}
               onClick={goToCheckout}
               disabled={!lineItems || lineItems.length === 0}
+              isLoading={loading}
             >
               Checkout
             </Button>

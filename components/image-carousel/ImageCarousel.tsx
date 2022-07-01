@@ -62,24 +62,26 @@ function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: 
             },
           }}
         >
-          {uniqueImages.map(({ image }, index) => (
-            <Box
-              key={image.id}
-              id={image.id as string}
-              flexShrink={0}
-              height="100%"
-              width="100%"
-              position="relative"
-            >
-              <Image
-                src={image.src}
-                alt={image.attrs.altText}
-                layout="fill"
-                objectFit="contain"
-                priority={index === 0}
-              />
-            </Box>
-          ))}
+          {uniqueImages.map(({ image }, index) =>
+            image ? (
+              <Box
+                key={image.id}
+                id={image.id as string}
+                flexShrink={0}
+                height="100%"
+                width="100%"
+                position="relative"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.attrs.altText}
+                  layout="fill"
+                  objectFit="contain"
+                  priority={index === 0}
+                />
+              </Box>
+            ) : null,
+          )}
         </Flex>
         <IconButton
           display="flex"
@@ -94,12 +96,13 @@ function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: 
         />
       </Flex>
       <Flex justifyContent="center" marginTop="2rem">
-        {uniqueImages.map(({ image: { id }, variantId }, index) => {
-          const isSelected = activeImageId ? activeImageId === id : index === 0
+        {uniqueImages.map(({ image, variantId }, index) => {
+          if (!image) return null
+          const isSelected = activeImageId ? activeImageId === image.id : index === 0
           return (
             <Button
-              key={id}
-              onClick={() => changeImageByButton(id as string, variantId)}
+              key={image.id}
+              onClick={() => changeImageByButton(image.id as string, variantId)}
               background={isSelected ? brandBlue : 'none'}
               variant="unstyled"
               border={`1px solid ${brandBlue}`}

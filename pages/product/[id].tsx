@@ -32,7 +32,7 @@ function Product() {
     product?.variants[0] as ModifiedProductVariant,
   )
 
-  const [activeImageId, setActiveImageId] = useState<string>(selectedVariant?.image.id as string)
+  const [activeImageId, setActiveImageId] = useState<string>(selectedVariant?.image?.id as string)
 
   useEffect(() => {
     if (product && !selectedVariant) {

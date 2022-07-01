@@ -24,3 +24,23 @@ html *::-webkit-scrollbar {
     transform: translateY(-10px);
   }
 }
+
+.donut {
+  width: 2rem;
+  height: 2rem;
+  margin: 2rem;
+  border-radius: 50%;
+  border: 0.3rem solid #ffffff30;
+  border-top-color: white;
+  animation: 1.5s spin infinite linear;
+
+  &.multi {
+    border-bottom-color: white;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -13,7 +13,7 @@ function ShopAll() {
       <SplashImage image={boatHatImage} />
       <SectionHeading text="SHOP ALL" />
       <SimpleGrid minChildWidth="20rem" padding="1rem" spacing={10}>
-        {products?.map((product) => <ProductGroup key={product.title} product={product} />) || []}
+        {products?.map((product) => <ProductGroup key={product.id} product={product} />) || []}
       </SimpleGrid>
     </>
   )

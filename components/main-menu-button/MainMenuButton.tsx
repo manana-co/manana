@@ -20,9 +20,10 @@ function MainMenuButton({
 
   const ActualButton = (
     <Button
-      display="flex"
-      alignItems="center"
       height={['3rem', '5rem']}
+      maxWidth="100%"
+      display="flex"
+      justifyContent="flex-start"
       variant="unstyled"
       onClick={onClick}
     >
@@ -32,6 +33,8 @@ function MainMenuButton({
         fontSize={fontSize}
         fontFamily={title}
         marginRight={'0.5rem'}
+        overflow="hidden"
+        textOverflow="ellipsis"
       >
         {text}
       </Heading>

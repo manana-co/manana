@@ -15,7 +15,7 @@ function VariantButton({ text, selected = false, optionType, onSelect }: Props) 
       borderRadius={0}
       display="flex"
       alignItems="center"
-      width="5rem"
+      padding="0 1rem"
       _hover={{ background: selected ? brandRed : `${brandBlue}50` }}
       onClick={() => onSelect(optionType, text)}
     >

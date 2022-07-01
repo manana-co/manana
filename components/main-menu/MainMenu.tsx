@@ -74,7 +74,7 @@ function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props)
             }}
             onClick={onClose}
           />
-          <MenuHeading text="GEAR" />
+          {/* <MenuHeading text="GEAR" />
           <MainMenuButton
             text="Gear"
             fontSize={['34px', '64px']}
@@ -84,7 +84,7 @@ function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props)
               query: { collectionType: 'gear' },
             }}
             onClick={onClose}
-          />
+          /> */}
           <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" variant="unstyled" />
           <MainMenuButton
             text="Shop All"

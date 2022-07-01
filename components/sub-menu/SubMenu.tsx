@@ -1,4 +1,4 @@
-import { Drawer, DrawerBody, DrawerContent, useTheme } from '@chakra-ui/react'
+import { Center, Drawer, DrawerBody, DrawerContent, useTheme } from '@chakra-ui/react'
 import { ArrowButton } from 'components/arrow-button'
 import { MainMenuButton } from 'components/main-menu-button'
 import { MenuHeading } from 'components/menu-heading'
@@ -18,10 +18,13 @@ function SubMenu({ onClose, isOpen, onCloseMenu, collectionType }: Props) {
   const { collection, isError, isLoading } = useCollection(collectionType)
 
   if (isLoading || !collection || isError) {
-    // Just empty space..
     return (
       <Drawer onClose={onCloseMenu} isOpen={isOpen} size="md" placement="left">
-        <DrawerContent bg={brandRed} />
+        <DrawerContent bg={brandRed}>
+          <Center>
+            <div className="donut" />
+          </Center>
+        </DrawerContent>
       </Drawer>
     )
   }
