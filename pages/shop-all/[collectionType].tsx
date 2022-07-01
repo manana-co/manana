@@ -35,6 +35,8 @@ const typeMap: Record<CollectionType, string> = {
   hats: 'HATS',
   wakesurf: 'WAKESURF BOARDS',
   surf: 'SURF BOARDS',
+  'best-sellers': 'BEST SELLERS',
+  'surf-stuff': 'SURF STUFF',
 }
 
 export default ShopAllByCollection
