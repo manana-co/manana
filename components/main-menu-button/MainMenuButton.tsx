@@ -56,7 +56,6 @@ type Props = {
   text: string
   showArrow?: boolean
   onClick?: () => unknown
-  // eslint-disable-next-line @typescript-eslint/ban-types
   size?: ThemingProps['size']
   fontSize?: TypographyProps['fontSize']
   route?: RouteName

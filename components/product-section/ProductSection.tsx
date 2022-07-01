@@ -1,4 +1,4 @@
-import { Box, Stack, useTheme } from '@chakra-ui/react'
+import { Box, Button, Stack, useTheme } from '@chakra-ui/react'
 import Link from 'next/link'
 import { ProductImage } from 'components/product-image'
 import { SectionHeading } from 'components/section-heading'
@@ -7,7 +7,7 @@ import { getId } from 'utils'
 
 function ProductSection({ title, collectionType }: Props) {
   const {
-    colors: { brandWhite },
+    colors: { brandWhite, brandTan },
   } = useTheme()
   const { collection, isLoading, isError } = useCollection(collectionType)
 
@@ -32,8 +32,11 @@ function ProductSection({ title, collectionType }: Props) {
               pathname: '/product/[productId]',
               query: { productId: getId(id as string) },
             }}
+            style={{ cursor: 'pointer' }}
           >
-            <ProductImage imageSrc={images?.[0]?.src} alternateText="test" />
+            <Button height="100%" minWidth={'20rem'} background={brandTan}>
+              <ProductImage imageSrc={images?.[0]?.src} alternateText="test" />
+            </Button>
           </Link>
         ))}
       </Stack>

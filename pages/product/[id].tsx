@@ -155,7 +155,7 @@ function Product() {
                 <Heading size="md" color={brandRed} marginBottom={['1rem', '2rem']}>
                   {option.name.toUpperCase()}
                 </Heading>
-                <Stack direction="row">
+                <Stack direction="row" overflowX="scroll" minWidth="100%">
                   {option.values.map((value) => {
                     if (option.name === 'Color') {
                       return (
@@ -197,7 +197,7 @@ function Product() {
                 width="30rem"
                 onClick={addVariantToShoppingCart}
                 _hover={{ background: brandRed, color: brandTan }}
-              >{`ADD TO CARD - $${selectedVariant?.price}`}</Button>
+              >{`ADD TO CART - $${selectedVariant?.price}`}</Button>
             </Flex>
           </Stack>
         </SimpleGrid>
