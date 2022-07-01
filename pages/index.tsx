@@ -12,9 +12,9 @@ function Home() {
   return (
     <Box as="section" bg={brandBlue}>
       <SplashImage image={defenderImage} imagePosition="bottom center" />
-      <ProductSection title="SURF STUFF" />
+      <ProductSection title="SURF STUFF" collectionType="surf" />
       <MissionStatement />
-      <ProductSection title="BEST SELLERS" />
+      <ProductSection title="BEST SELLERS" collectionType="best-sellers" />
     </Box>
   )
 }

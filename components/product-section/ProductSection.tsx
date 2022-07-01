@@ -1,13 +1,19 @@
 import { Box, Stack, useTheme } from '@chakra-ui/react'
+import Link from 'next/link'
 import { ProductImage } from 'components/product-image'
 import { SectionHeading } from 'components/section-heading'
-import { useAllProducts } from 'hooks/useAllProducts'
+import { CollectionType, useCollection } from 'hooks/useCollection'
+import { getId } from 'utils'
 
-function ProductSection({ title }: Props) {
+function ProductSection({ title, collectionType }: Props) {
   const {
     colors: { brandWhite },
   } = useTheme()
-  const { products, isLoading, isError } = useAllProducts()
+  const { collection, isLoading, isError } = useCollection(collectionType)
+
+  if (!collection || isLoading || isError) {
+    return null
+  }
 
   return (
     <Box as="section" bg={brandWhite}>
@@ -19,11 +25,17 @@ function ProductSection({ title }: Props) {
         padding={['1rem', '2rem']}
         overflowX="auto"
       >
-        <ProductImage imageSrc="hat-example.png" alternateText="test" />
-        <ProductImage imageSrc="board-example.png" alternateText="test" />
-        <ProductImage imageSrc="mug-example.png" alternateText="test" />
-        <ProductImage imageSrc="shirt-example.png" alternateText="test" />
-        <ProductImage imageSrc="shorts-example.png" alternateText="test" />
+        {collection.products.map(({ images, id }) => (
+          <Link
+            key={id}
+            href={{
+              pathname: '/product/[productId]',
+              query: { productId: getId(id as string) },
+            }}
+          >
+            <ProductImage imageSrc={images?.[0]?.src} alternateText="test" />
+          </Link>
+        ))}
       </Stack>
     </Box>
   )
@@ -31,6 +43,7 @@ function ProductSection({ title }: Props) {
 
 type Props = {
   title: string
+  collectionType: CollectionType
 }
 
 export { ProductSection }

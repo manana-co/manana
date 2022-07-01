@@ -7,6 +7,7 @@ const getCollection = async (
   collectionType: CollectionType,
 ): Promise<ModifiedCollection> => {
   const response = await client.collection.fetchByHandle(collectionType)
+  console.log(response)
   return response as unknown as ModifiedCollection
 }
 
@@ -23,7 +24,7 @@ function useCollection(collectionType: CollectionType | undefined) {
   }
 }
 
-type CollectionType = 'wakesurf' | 'surf' | 'gear' | 'shorts' | 't-shirts' | 'hats'
+type CollectionType = 'wakesurf' | 'surf' | 'gear' | 'shorts' | 't-shirts' | 'hats' | 'best-sellers'
 
 type ModifiedCollection = Collection & {
   products: Product[]
