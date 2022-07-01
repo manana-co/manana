@@ -214,7 +214,7 @@ function Product() {
             <Image src="/wave-yellow-board.jpeg" alt="test" layout="fill" objectFit="contain" />
           </Box>
         </SimpleGrid>
-        <Center height="30rem" flexDirection="column">
+        {/* <Center height="30rem" flexDirection="column">
           <Heading
             size="4xl"
             marginBottom="2rem"
@@ -228,7 +228,7 @@ function Product() {
           <Heading size="lg" fontFamily={body} color={brandRed}>
             Some guy on yelp
           </Heading>
-        </Center>
+        </Center> */}
       </Box>
     </Box>
   )
