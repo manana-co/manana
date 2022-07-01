@@ -1,8 +1,12 @@
-import { Text, SimpleGrid, VStack, Image, Heading, Select, Box } from '@chakra-ui/react'
+import { Text, SimpleGrid, VStack, Image, Heading, Select, Box, Button } from '@chakra-ui/react'
 import { LineItem } from 'hooks/useCheckout'
 import { makeArrOfNums } from 'utils'
 
-function ShoppingCartItem({ item: { title, variant, quantity }, changeQuantity }: Props) {
+function ShoppingCartItem({
+  item: { title, variant, quantity },
+  changeQuantity,
+  removeLineItem,
+}: Props) {
   const quantities = makeArrOfNums(quantity + 3)
 
   return (
@@ -37,7 +41,13 @@ function ShoppingCartItem({ item: { title, variant, quantity }, changeQuantity }
       </VStack>
       <VStack direction="column" justifyContent="center">
         <Heading size="md">{`$${Number(variant.price) * quantity}`}</Heading>
-        <Text>Remove</Text>
+        <Button
+          background="transparent"
+          _hover={{ textDecoration: 'underline' }}
+          onClick={() => removeLineItem(variant.id as string)}
+        >
+          Remove
+        </Button>
       </VStack>
     </SimpleGrid>
   )
@@ -46,6 +56,7 @@ function ShoppingCartItem({ item: { title, variant, quantity }, changeQuantity }
 type Props = {
   item: LineItem
   changeQuantity: (variantId: string, newQuantity: number) => void
+  removeLineItem: (variantId: string) => void
 }
 
 export { ShoppingCartItem }

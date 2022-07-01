@@ -25,7 +25,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
     colors: { brandBlue, brandWhite },
     fonts: { title, body },
   } = useTheme()
-  const { lineItems, changeQuantity } = useCheckout()
+  const { lineItems, changeQuantity, removeLineItem } = useCheckout()
   const { push } = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -63,6 +63,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
                   key={item?.variant?.id}
                   item={item}
                   changeQuantity={changeQuantity}
+                  removeLineItem={removeLineItem}
                 />
               ))
             : null}
