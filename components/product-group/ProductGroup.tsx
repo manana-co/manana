@@ -10,34 +10,31 @@ function ProductGroup({ product }: Props) {
   } = useTheme()
 
   return (
-    <Stack
-      direction="column"
-      alignItems="center"
-      justifyContent="space-between"
-      width={['20rem', '25rem', '20rem', '25rem']}
-      margin="2rem"
+    <Link
+      href={{
+        pathname: '/product/[productId]',
+        query: { productId: getId(product.id as string) },
+      }}
     >
-      <Box height="22rem" width="100%">
-        {product?.images?.[0] && (
-          <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />
-        )}
-      </Box>
-      <Stack
-        direction="column"
-        height="7rem"
-        width="100%"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Heading size="lg" fontFamily={titleFont} color={brandBlue}>
-          {product.title}
-        </Heading>
-        <Link
-          href={{
-            pathname: '/product/[productId]',
-            query: { productId: getId(product.id as string) },
-          }}
-        >
+      <Stack direction="column" width={['20rem', '25rem', '20rem', '25rem']} margin="2rem 1rem">
+        <Box height="22rem" width="100%">
+          {product?.images?.[0] && (
+            <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />
+          )}
+        </Box>
+        <Stack direction="column" width="100%" justifyContent="space-between" alignItems="center">
+          <Heading
+            size="lg"
+            fontFamily={titleFont}
+            color={brandBlue}
+            overflow="hidden"
+            textOverflow="ellipsis"
+            margin="0 1rem"
+            whiteSpace="nowrap"
+            maxWidth="20rem"
+          >
+            {product.title}
+          </Heading>
           <Button
             variant="unstyled"
             fontFamily={body}
@@ -51,9 +48,9 @@ function ProductGroup({ product }: Props) {
           >
             {`SHOP NOW - ${product.variants[0].price}`}
           </Button>
-        </Link>
+        </Stack>
       </Stack>
-    </Stack>
+    </Link>
   )
 }
 
