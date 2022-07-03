@@ -1,4 +1,4 @@
-import { SimpleGrid } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { ProductGroup } from 'components/product-group'
 import { SectionHeading } from 'components/section-heading'
 import boatHatImage from 'public/boat-with-hat.jpeg'
@@ -17,13 +17,13 @@ function ShopAllByCollection() {
     <>
       <SplashImage image={boatHatImage} />
       <SectionHeading text={`SHOP ALL ${typeMap[collectionType as CollectionType]}`} />
-      <SimpleGrid minChildWidth="20rem" padding="1rem" spacing={10}>
+      <Flex flexWrap="wrap">
         {((collection || !isLoading || !isError) &&
           collection?.products?.map((product) => (
             <ProductGroup key={product.title} product={product} />
           ))) ||
           []}
-      </SimpleGrid>
+      </Flex>
     </>
   )
 }

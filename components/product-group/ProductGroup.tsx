@@ -10,7 +10,13 @@ function ProductGroup({ product }: Props) {
   } = useTheme()
 
   return (
-    <Stack direction="column" alignItems="center" justifyContent="space-between" maxWidth="25rem">
+    <Stack
+      direction="column"
+      alignItems="center"
+      justifyContent="space-between"
+      width={['20rem', '25rem', '20rem', '25rem']}
+      margin="2rem"
+    >
       <Box height="22rem" width="100%">
         {product?.images?.[0] && (
           <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />
