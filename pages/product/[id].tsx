@@ -24,7 +24,7 @@ function Product() {
     heights: { topNavBar },
     fonts: { title: titleFont, body },
   } = useTheme()
-  const [isLargerThan400] = useMediaQuery('(min-width: 400px)')
+  const [isLargerThan993] = useMediaQuery('(min-width: 993px)')
   const { product, isLoading, isError } = useProduct(query.id as string)
   const { lineItems, addLineItem, toggleShoppingCart, changeQuantity } = useCheckout()
   const [selectedVariant, setSelectedVariant] = useState<ModifiedProductVariant | undefined>(
@@ -102,19 +102,19 @@ function Product() {
   ) || { value: undefined }
 
   return (
-    <Box background={brandTan} padding={`${topNavBar} 1rem 0`} scrollPaddingTop="5rem">
+    <Box
+      background={brandTan}
+      padding={`${topNavBar} 1rem 0`}
+      scrollPaddingTop="5rem"
+      minHeight="calc(100vh - 250px)"
+    >
       <Box maxWidth="1400px" margin="0 auto">
         {/* <Box borderY={borderStyle}>
           <ArrowButton direction="back" color={brandRed} />
         </Box> */}
-        <Box padding="2rem 0">
-          <Heading size="4xl" color={brandBlue} fontFamily={titleFont} marginBottom="1rem">
-            {title}
-          </Heading>
-          <Heading size="lg" color={brandBlue} fontFamily={body}>
-            {description}
-          </Heading>
-        </Box>
+        <Heading size="4xl" color={brandBlue} fontFamily={titleFont} margin="1rem">
+          {title}
+        </Heading>
         <SimpleGrid
           minChildWidth="30rem"
           maxWidth="100%"
@@ -139,9 +139,12 @@ function Product() {
             direction="column"
             fontFamily={body}
             maxWidth="calc(100vw - 2rem)"
-            borderLeft={borderStyle}
+            borderLeft={isLargerThan993 ? borderStyle : 'none'}
             paddingLeft="1rem"
           >
+            <Heading size="lg" color={brandBlue} fontFamily={body} paddingTop="1rem">
+              {description}
+            </Heading>
             {options.map((option) => (
               <Flex
                 key={option.name}
