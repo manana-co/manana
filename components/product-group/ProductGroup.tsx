@@ -16,7 +16,12 @@ function ProductGroup({ product }: Props) {
         query: { productId: getId(product.id as string) },
       }}
     >
-      <Stack direction="column" width={['20rem', '25rem', '20rem', '25rem']} margin="2rem 1rem">
+      <Stack
+        direction="column"
+        width={['20rem', '25rem', '20rem', '25rem']}
+        margin="2rem 1rem"
+        cursor="pointer"
+      >
         <Box height="22rem" width="100%">
           {product?.images?.[0] && (
             <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />

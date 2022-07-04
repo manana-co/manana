@@ -123,7 +123,7 @@ function Product() {
           minHeight="50rem"
         >
           <Box
-            height={['30rem', '40rem']}
+            height={['30rem', '40rem', '40rem', '100%']}
             maxWidth="calc(100vw - 2rem)"
             padding="2rem 1rem 2rem 0"
             marginBottom="2rem"
@@ -140,9 +140,15 @@ function Product() {
             fontFamily={body}
             maxWidth="calc(100vw - 2rem)"
             borderLeft={isLargerThan993 ? borderStyle : 'none'}
-            paddingLeft="1rem"
+            paddingLeft={isLargerThan993 ? '1rem' : 'none'}
           >
-            <Heading size="lg" color={brandBlue} fontFamily={body} paddingTop="1rem">
+            <Heading
+              size="lg"
+              color={brandBlue}
+              fontFamily={body}
+              paddingY={['2rem', '2rem', '2rem', '1rem']}
+              borderBottom={borderStyle}
+            >
               {description}
             </Heading>
             {options.map((option) => (
@@ -150,14 +156,14 @@ function Product() {
                 key={option.name}
                 flexDirection="column"
                 justifyContent="center"
-                height={['8rem']}
                 borderBottom={borderStyle}
                 width="100%"
+                marginTop="1rem !important"
               >
-                <Heading size="md" color={brandRed} marginBottom={['1rem', '2rem']}>
+                <Heading size="md" color={brandRed} marginBottom="0.5rem">
                   {option.name.toUpperCase()}
                 </Heading>
-                <Stack direction="row" minWidth="100%">
+                <Stack direction="row" minWidth="100%" flexWrap="wrap" padding="1rem 0">
                   {option.values.map((value) => {
                     if (option.name === 'Color') {
                       return (

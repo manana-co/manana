@@ -18,6 +18,8 @@ function VariantButton({ text, selected = false, optionType, onSelect }: Props) 
       padding="0 1rem"
       _hover={{ background: selected ? brandRed : `${brandBlue}50` }}
       onClick={() => onSelect(optionType, text)}
+      margin="0.25rem 0.5rem !important"
+      marginInlineStart="0 !important"
     >
       {text}
     </Button>

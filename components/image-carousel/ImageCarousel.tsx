@@ -52,6 +52,7 @@ function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: 
           zIndex={1}
         />
         <Flex
+          justifyContent="center"
           overflowX="auto"
           scrollSnapType="x mandatory"
           scrollBehavior="smooth"
@@ -71,7 +72,7 @@ function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: 
                 id={image.id as string}
                 flexShrink={0}
                 height="100%"
-                width="100%"
+                width="85%"
                 position="relative"
               >
                 <Image
