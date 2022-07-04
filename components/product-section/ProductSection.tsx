@@ -34,7 +34,12 @@ function ProductSection({ title, collectionType }: Props) {
             }}
             style={{ cursor: 'pointer' }}
           >
-            <Button height="100%" minWidth={'20rem'} background={brandTan}>
+            <Button
+              height="100%"
+              minWidth={'20rem'}
+              background={brandTan}
+              _hover={{ background: brandTan }}
+            >
               <ProductImage imageSrc={images?.[0]?.src} alternateText="test" />
             </Button>
           </Link>
