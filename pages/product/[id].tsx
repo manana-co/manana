@@ -30,12 +30,14 @@ function Product() {
   const [selectedVariant, setSelectedVariant] = useState<ModifiedProductVariant | undefined>(
     product?.variants[0] as ModifiedProductVariant,
   )
-
   const [activeImageId, setActiveImageId] = useState<string>(selectedVariant?.image?.id as string)
 
   useEffect(() => {
-    if (product && !selectedVariant) {
-      setSelectedVariant(product.variants[0] as ModifiedProductVariant)
+    const selectedVariantMatchesProduct = product?.variants.some(
+      ({ id }) => id === selectedVariant?.id,
+    )
+    if ((product && !selectedVariant) || !selectedVariantMatchesProduct) {
+      setSelectedVariant(product?.variants[0] as ModifiedProductVariant)
     }
   }, [selectedVariant, product])
 
