@@ -8,7 +8,6 @@ import {
   Stack,
   Button,
   SimpleGrid,
-  Center,
   useMediaQuery,
 } from '@chakra-ui/react'
 // import { ArrowButton } from 'components/arrow-button'
@@ -155,7 +154,7 @@ function Product() {
                 <Heading size="md" color={brandRed} marginBottom={['1rem', '2rem']}>
                   {option.name.toUpperCase()}
                 </Heading>
-                <Stack direction="row" overflowX="scroll" minWidth="100%">
+                <Stack direction="row" minWidth="100%">
                   {option.values.map((value) => {
                     if (option.name === 'Color') {
                       return (
@@ -201,7 +200,7 @@ function Product() {
             </Flex>
           </Stack>
         </SimpleGrid>
-        <SimpleGrid
+        {/* <SimpleGrid
           minChildWidth="40rem"
           spacing="1rem"
           height={isLargerThan400 ? '80rem' : '30rem'}
@@ -213,7 +212,7 @@ function Product() {
           <Box position="relative" maxWidth="calc(100vw - 2rem)">
             <Image src="/wave-yellow-board.jpeg" alt="test" layout="fill" objectFit="contain" />
           </Box>
-        </SimpleGrid>
+        </SimpleGrid> */}
         {/* <Center height="30rem" flexDirection="column">
           <Heading
             size="4xl"

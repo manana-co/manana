@@ -7,6 +7,8 @@ function ImageCarousel({ images, activeImageId, setActiveImageId, setVariant }: 
   const {
     colors: { brandBlue },
   } = useTheme()
+  // console.log('>>', images)
+
   const uniqueImages = useMemo(() => getUniqueImages(images), [images])
   // prob don't need this ^ when products have unique variants
 
