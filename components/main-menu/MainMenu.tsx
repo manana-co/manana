@@ -92,12 +92,12 @@ function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props)
             route="shopAll"
             onClick={onClose}
           />
-          <MainMenuButton
+          {/* <MainMenuButton
             text="About Us"
             fontSize={['28px', '56px']}
             route="aboutUs"
             onClick={onClose}
-          />
+          /> */}
         </DrawerBody>
       </DrawerContent>
     </Drawer>
