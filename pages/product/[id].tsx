@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import {
   useTheme,
   Box,
@@ -38,6 +38,7 @@ function Product() {
     )
     if ((product && !selectedVariant) || !selectedVariantMatchesProduct) {
       setSelectedVariant(product?.variants[0] as ModifiedProductVariant)
+      setActiveImageId(product?.variants?.[0].image.id as string)
     }
   }, [selectedVariant, product])
 
@@ -90,7 +91,7 @@ function Product() {
 
   if (!product || isLoading || isError) return <Box background={brandTan} minHeight="100vh" />
 
-  const { title, description, options, variants } = product
+  const { title, description, options, variants, images } = product
   const variantImages = variants.map(({ image, id }: ShopifyBuy.ProductVariant) => ({
     image,
     variantId: id as string,
@@ -131,7 +132,8 @@ function Product() {
             marginBottom="2rem"
           >
             <ImageCarousel
-              images={variantImages}
+              variantImages={variantImages}
+              productImages={images.map((image) => ({ image }))}
               activeImageId={activeImageId}
               setActiveImageId={setActiveImageId}
               setVariant={setVariantById}
