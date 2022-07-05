@@ -93,6 +93,7 @@ function ImageCarousel({
                 layout="fill"
                 objectFit="contain"
                 priority={index === 0}
+                quality={100}
               />
             </Box>
           ))}
