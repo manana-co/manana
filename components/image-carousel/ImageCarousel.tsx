@@ -62,6 +62,8 @@ function ImageCarousel({
           onClick={() => changeImageByArrow(false)}
           position="absolute"
           zIndex={1}
+          background="#ffffff70"
+          left={3}
         />
         <Flex
           overflowX="auto"
@@ -104,7 +106,8 @@ function ImageCarousel({
           onClick={() => changeImageByArrow(true)}
           position="absolute"
           zIndex={1}
-          right={0}
+          background="#ffffff70"
+          right={3}
         />
       </Flex>
       <Flex justifyContent="center" marginTop="2rem">
