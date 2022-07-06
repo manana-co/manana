@@ -4,7 +4,7 @@ const theme = extendTheme({
   colors: {
     brandRed: '#D03228',
     brandBlue: '#317491',
-    brandTan: '#EBE2D7',
+    brandTan: '#F7F1E3',
     brandWhite: '#FFFFFF',
   },
   fonts: {
