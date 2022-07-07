@@ -1,7 +1,8 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, useMediaQuery } from '@chakra-ui/react'
 import { ProductGroup } from 'components/product-group'
 import { SectionHeading } from 'components/section-heading'
 import hatsImage from 'public/boat-with-hat.jpeg'
+import shopAll from 'public/shop-all.jpeg'
 import shortsImage from 'public/shorts.jpeg'
 import shirtsImage from 'public/shirts.jpeg'
 import { SplashImage } from 'components/splash-image'
@@ -13,15 +14,23 @@ function ShopAllByCollection() {
   const {
     query: { collectionType },
   } = useRouter()
-
+  const [isSmallerThan800] = useMediaQuery('(max-width: 800px)')
   const { collection, isLoading, isError } = useCollection(collectionType as CollectionType)
-  const { image, position } = imageMap[collectionType as CollectionType] || { image: hatsImage }
+  const { image, position } = imageMap[collectionType as CollectionType] || {
+    image: shopAll,
+    position: 'center -150px',
+  }
 
+  const shouldLeftAlignProducts = (collection?.products?.length || 1) < 3 && !isSmallerThan800
   return (
     <>
       <SplashImage image={image} specificHeight={0.5} imagePosition={position} />
       <SectionHeading text={`SHOP ALL ${typeMap[collectionType as CollectionType]}`} />
-      <Flex justifyContent="space-evenly" flexWrap="wrap" minHeight="450px">
+      <Flex
+        justifyContent={shouldLeftAlignProducts ? 'flex-start' : 'space-evenly'}
+        flexWrap="wrap"
+        minHeight="450px"
+      >
         {((collection || !isLoading || !isError) &&
           collection?.products?.map((product) => (
             <ProductGroup key={product.id} product={product} />
