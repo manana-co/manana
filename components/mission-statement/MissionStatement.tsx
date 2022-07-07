@@ -16,12 +16,13 @@ function MissionStatement() {
         maxWidth={['calc(100vw - 2rem)', '90vw', '90vw', '60rem']}
         placeSelf={['unset', 'center']}
       >
-        <Heading as="h1" size="4xl" fontFamily={title}>
+        {/* <Heading as="h1" size="4xl" fontFamily={title}>
           Mission Statement
-        </Heading>
-        <Text fontSize={['xl', '2xl']} fontFamily={body}>
+        </Heading> */}
+        <Text fontSize={['2xl', '3xl']} fontFamily={body}>
           Born improbably out of a garage in the landlocked capital of Texas, Mañana started as a
-          passion project of making custom wakesurf boards for the fine people of Austin.
+          passion project of making high quality surfboards and wakesurf boards for the fine people
+          of Austin.
         </Text>
       </Stack>
       {/* <Box
