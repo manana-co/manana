@@ -1,0 +1,1 @@
+export { SplashVideo } from './SplashVideo'

@@ -59,7 +59,7 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
     }
   })
 
-  const route = pathname.includes('product') ? pathname : asPath
+  const route = pathname?.includes('product') ? pathname : asPath
 
   const [iconColor, backgroundColor] =
     navColors[route as ColorGroup]?.[scrollValue > 0 ? 'scroll' : 'main'] ||
