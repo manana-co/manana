@@ -8,14 +8,14 @@ function ArrowButton({
   color,
 }: Props) {
   const {
-    colors: { brandWhite },
+    colors: { brandTan },
   } = useTheme()
 
   const extraStyles = isMenuButton ? menuButtonStyles : {}
 
   return (
     <IconButton
-      icon={<Arrow direction={direction} color={color || brandWhite} />}
+      icon={<Arrow direction={direction} color={color || brandTan} />}
       aria-label={`${direction} arrow button`}
       variant="unstyled"
       height="4rem"

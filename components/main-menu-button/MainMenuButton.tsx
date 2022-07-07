@@ -14,7 +14,7 @@ function MainMenuButton({
   routeQuery,
 }: Props) {
   const {
-    colors: { brandWhite },
+    colors: { brandTan },
     fonts: { title },
   } = useTheme()
 
@@ -28,7 +28,7 @@ function MainMenuButton({
       onClick={onClick}
     >
       <Heading
-        color={brandWhite}
+        color={brandTan}
         size={size}
         fontSize={fontSize}
         fontFamily={title}
@@ -38,7 +38,7 @@ function MainMenuButton({
       >
         {text}
       </Heading>
-      {showArrow && <Arrow color={brandWhite} />}
+      {showArrow && <Arrow color={brandTan} />}
     </Button>
   )
 

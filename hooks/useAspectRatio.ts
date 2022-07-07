@@ -5,7 +5,7 @@ function useAspectRatio() {
 
   useEffect(() => {
     const width = window.innerWidth
-    const height = window.innerHeight * 0.8
+    const height = window.innerHeight
     const newRatio: number = getRatio(width, height)
     setRatio([width / newRatio, height / newRatio])
   }, [])

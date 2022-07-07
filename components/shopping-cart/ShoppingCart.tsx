@@ -22,7 +22,7 @@ import { useState } from 'react'
 
 function ShoppingCart({ isOpen, onClose }: Props) {
   const {
-    colors: { brandBlue, brandWhite },
+    colors: { brandBlue, brandTan },
     fonts: { title, body },
   } = useTheme()
   const { lineItems, changeQuantity, removeLineItem } = useCheckout()
@@ -50,7 +50,7 @@ function ShoppingCart({ isOpen, onClose }: Props) {
   return (
     <Drawer onClose={onClose} isOpen={isOpen} size="md" placement="right">
       <DrawerOverlay />
-      <DrawerContent bg={brandBlue} color={brandWhite}>
+      <DrawerContent bg={brandBlue} color={brandTan}>
         <CloseButton onClick={onClose} />
         <DrawerHeader>
           <Heading size="lg" fontFamily={title}>

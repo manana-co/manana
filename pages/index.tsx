@@ -1,7 +1,7 @@
 import { Box, useTheme } from '@chakra-ui/react'
 import { ProductSection } from 'components/product-section'
 import { MissionStatement } from 'components/mission-statement'
-import defenderImage from 'public/main-landing-defender.jpeg'
+import defenderImage from 'public/defender.jpg'
 import { SplashImage } from 'components/splash-image'
 
 function Home() {

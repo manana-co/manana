@@ -16,7 +16,7 @@ import { routes } from 'utils'
 
 function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props) {
   const {
-    colors: { brandBlue, brandWhite },
+    colors: { brandBlue, brandTan },
   } = useTheme()
 
   const selectCollection = (collectionType: CollectionType) => {
@@ -85,7 +85,7 @@ function MainMenu({ isOpen, onClose, openSubMenu, setCurrentCollection }: Props)
             }}
             onClick={onClose}
           /> */}
-          <Divider bg={brandWhite} height="1px" mt="2rem" mb="1rem" variant="unstyled" />
+          <Divider bg={brandTan} height="1px" mt="2rem" mb="1rem" variant="unstyled" />
           <MainMenuButton
             text="Shop All"
             fontSize={['28px', '56px']}

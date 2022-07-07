@@ -2,7 +2,7 @@ import { Button, useTheme } from '@chakra-ui/react'
 
 function CloseButton({ onClick }: Props) {
   const {
-    colors: { brandWhite },
+    colors: { brandTan },
   } = useTheme()
   return (
     <Button
@@ -16,7 +16,7 @@ function CloseButton({ onClick }: Props) {
       alignItems="center"
       onClick={onClick}
     >
-      <svg fill={brandWhite} height="29px" width="29px">
+      <svg fill={brandTan} height="29px" width="29px">
         <polygon
           transform="scale(0.5)"
           points="58.82,3.54 55.29,0 29.41,25.88 3.54,0 0,3.54 25.88,29.41 0,55.29 3.54,58.82 29.41,32.95

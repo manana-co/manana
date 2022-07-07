@@ -7,7 +7,7 @@ import { getId } from 'utils'
 
 function ProductSection({ title, collectionType }: Props) {
   const {
-    colors: { brandWhite, brandTan },
+    colors: { brandTan, brandWhite },
   } = useTheme()
   const { collection, isLoading, isError } = useCollection(collectionType)
 

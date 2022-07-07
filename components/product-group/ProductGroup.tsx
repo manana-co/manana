@@ -5,7 +5,7 @@ import { getId } from 'utils'
 
 function ProductGroup({ product }: Props) {
   const {
-    colors: { brandBlue, brandRed, brandWhite },
+    colors: { brandBlue, brandRed, brandTan },
     fonts: { title: titleFont, body },
   } = useTheme()
 
@@ -49,7 +49,7 @@ function ProductGroup({ product }: Props) {
             width="80%"
             display="flex"
             alignItems="center"
-            _hover={{ background: brandRed, color: brandWhite }}
+            _hover={{ background: brandRed, color: brandTan }}
           >
             {`SHOP NOW - ${product.variants[0].price}`}
           </Button>
