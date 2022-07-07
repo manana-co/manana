@@ -10,7 +10,7 @@ function ShopAll() {
 
   return (
     <>
-      <SplashImage image={boatHatImage} />
+      <SplashImage image={boatHatImage} specificHeight={0.5} />
       <SectionHeading text="SHOP ALL" />
       <Flex justifyContent="space-evenly" flexWrap="wrap" minHeight="450px">
         {products || !isLoading || !isError

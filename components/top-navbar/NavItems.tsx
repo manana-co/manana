@@ -23,6 +23,10 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
         main: [brandRed, brandTan],
         scroll: [brandTan, brandRed],
       },
+      '/shop-all/shorts': {
+        main: [brandBlue, 'transparent'],
+        scroll: [brandBlue, brandTan],
+      },
       '/shop-all': {
         main: [brandTan, 'transparent'],
         scroll: [brandTan, brandBlue],
@@ -42,7 +46,7 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
     }),
     [brandRed, brandTan, brandBlue],
   )
-  const { pathname } = useRouter()
+  const { asPath, pathname } = useRouter()
 
   const [scrollValue, setScrollValue] = useState(0)
 
@@ -55,8 +59,10 @@ function NavItems({ toggleMenu, toggleShoppingCart }: Props) {
     }
   })
 
+  const route = pathname.includes('product') ? pathname : asPath
+
   const [iconColor, backgroundColor] =
-    navColors[pathname as ColorGroup]?.[scrollValue > 0 ? 'scroll' : 'main'] ||
+    navColors[route as ColorGroup]?.[scrollValue > 0 ? 'scroll' : 'main'] ||
     navColors['/'][scrollValue > 0 ? 'scroll' : 'main']
 
   return (

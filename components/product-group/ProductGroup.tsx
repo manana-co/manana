@@ -21,22 +21,29 @@ function ProductGroup({ product }: Props) {
         width={['20rem', '25rem', '20rem', '25rem']}
         margin="2rem 1rem"
         cursor="pointer"
+        justifyContent="space-between"
       >
         <Box height="22rem" width="100%">
           {product?.images?.[0] && (
             <ProductImage imageSrc={product.images[0].src} alternateText="test" inGroup />
           )}
         </Box>
-        <Stack direction="column" width="100%" justifyContent="space-between" alignItems="center">
+        <Stack
+          direction="column"
+          width="100%"
+          height="100%"
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Heading
             size="lg"
             fontFamily={titleFont}
             color={brandBlue}
-            overflow="hidden"
-            textOverflow="ellipsis"
-            margin="0 1rem"
-            whiteSpace="nowrap"
-            maxWidth="20rem"
+            height="100%"
+            margin="0 0.5rem"
+            maxWidth="90%"
+            display="flex"
+            alignItems="center"
           >
             {product.title}
           </Heading>
@@ -47,6 +54,7 @@ function ProductGroup({ product }: Props) {
             border={`0.1rem solid ${brandRed}`}
             borderRadius="none"
             width="80%"
+            height="4rem"
             display="flex"
             alignItems="center"
             _hover={{ background: brandRed, color: brandTan }}

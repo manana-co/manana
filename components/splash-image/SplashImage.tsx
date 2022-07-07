@@ -1,10 +1,11 @@
 import Image, { StaticImageData } from 'next/image'
 import { AspectRatio, useMediaQuery } from '@chakra-ui/react'
+import hatsImage from 'public/boat-with-hat.jpeg'
 
 import { useAspectRatio } from 'hooks/useAspectRatio'
 
-function SplashImage({ image, imagePosition = 'center' }: Props) {
-  const [width, height] = useAspectRatio()
+function SplashImage({ image = hatsImage, imagePosition = 'center', specificHeight = 1 }: Props) {
+  const [width, height] = useAspectRatio(specificHeight)
   const [isSmallerThan400] = useMediaQuery('(max-width: 500px)')
 
   if (isSmallerThan400) {
@@ -27,8 +28,9 @@ function SplashImage({ image, imagePosition = 'center' }: Props) {
 }
 
 type Props = {
-  image: StaticImageData
+  image?: StaticImageData
   imagePosition?: string
+  specificHeight?: number
 }
 
 export { SplashImage }
